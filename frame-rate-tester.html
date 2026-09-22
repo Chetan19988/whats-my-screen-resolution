@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What is My Frame Rate? &ndash; Live FPS & Motion Benchmark</title>
+    <meta name="description" content="Instantly test your screen frame rate (FPS) and monitor refresh rate online. Visual motion comparison testing 120Hz, 60 FPS, 30 FPS, and 15 FPS side-by-side.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/frame-rate-tester.html">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Premium SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563eb'/%3E%3Cpath d='M8 16h3m10 0h3M16 8v3m0 10v3' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ffffff'/%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Frame Rate (FPS) Tester", "item": "https://whats-my-screen-resolution.netlify.app/frame-rate-tester.html" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "What is My Frame Rate - Free FPS Checker",
+      "url": "https://whats-my-screen-resolution.netlify.app/frame-rate-tester.html",
+      "author": {
+        "@type": "Person",
+        "name": "Chetan Kumar",
+        "url": "https://www.linkedin.com/in/askchetan/"
+      },
+      "description": "Free browser tool that dynamically tests your display frame rate, average FPS, monitor refresh rate, and visual frame stepping.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any"
+    }
+    </script>
+
+    <meta property="og:title" content="What is My Frame Rate? &ndash; Live FPS &amp; Motion Benchmark">
+    <meta property="og:description" content="Test your screen frame rate and monitor refresh rate online. Free, private, no install &mdash; works on any display.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/frame-rate-tester.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="What is My Frame Rate? - Live FPS &amp; Motion Benchmark">
+    <meta name="twitter:description" content="Test your screen frame rate and monitor refresh rate online. Free, private, no install needed.">
+
+    <style>
+        :root { 
+            --p: #2563eb; 
+            --p-hover: #1d4ed8;
+            --bg: #f8fafc; 
+            --c: #ffffff; 
+            --t: #1e293b; 
+            --tm: #64748b; 
+            --border: #e2e8f0;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; padding: 1rem; }
+        main { max-width: 960px; margin: 0 auto; }
+
+        /* Hero Live Telemetry */
+        .hero { background: var(--c); padding: 3rem 1.5rem; border-radius: 1.5rem; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.06); margin-bottom: 2rem; border: 1px solid var(--border); position: relative; }
+        .hero-label { font-size: 0.9rem; text-transform: uppercase; color: var(--tm); margin-bottom: 0.75rem; letter-spacing: 0.1em; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .h2an { font-size: clamp(4rem, 14vw, 7rem); font-weight: 900; color: var(--p); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -3px; font-variant-numeric: tabular-nums; }
+        .hero-sub { font-size: 1.1rem; color: var(--tm); margin-bottom: 1.5rem; font-weight: 600; }
+        .device-class { font-weight: 700; color: var(--t); margin-bottom: 2rem; font-size: 1.15rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+        .stat { background: #f1f5f9; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); }
+        .stat-l { font-size: 0.75rem; font-weight: 700; color: var(--tm); text-transform: uppercase; }
+        .stat-v { font-size: 1.4rem; font-weight: 800; margin-top: 0.25rem; font-variant-numeric: tabular-nums; }
+
+        /* Sections & Layout */
+        .section { background: var(--c); padding: 2rem; border-radius: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; margin-bottom: 1.25rem; border-left: 5px solid var(--p); padding-left: 1rem; color: var(--t); display: flex; justify-content: space-between; align-items: center; }
+        h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--t); font-weight: 700; }
+        p { margin-bottom: 1rem; color: #475569; }
+
+        /* Motion Canvas Visualizer */
+        .canvas-card { padding: 1.5rem; overflow: hidden; }
+        .canvas-toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; gap: 1rem; }
+        .canvas-controls { display: flex; gap: 0.5rem; align-items: center; }
+        .btn-speed { background: #f1f5f9; border: 1px solid var(--border); color: var(--t); padding: 0.4rem 0.9rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s ease; }
+        .btn-speed.active { background: var(--p); color: #fff; border-color: var(--p); }
+        .canvas-container { width: 100%; border-radius: 1rem; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; position: relative; }
+        canvas#motionCanvas { display: block; width: 100%; height: 320px; }
+
+        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+        .device-card { background: #f1f5f9; border-radius: 1rem; padding: 1.25rem; border: 1px solid var(--border); }
+        .device-card h3 { font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--p); }
+        .device-card p { font-size: 0.875rem; color: #475569; margin: 0; }
+
+        .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .footer-dark { background: #0f172a; color: #f8fafc; padding: 3rem 2rem; border-radius: 1.5rem; margin-top: 3rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .footer-dark h3 { color: var(--p); margin-bottom: 1.2rem; font-size: 1.25rem; }
+        .footer-dark p { color: #94a3b8; font-size: 0.95rem; }
+        .social-links a { color: white; text-decoration: none; margin-right: 15px; font-weight: 600; font-size: 0.9rem; border-bottom: 2px solid var(--p); padding-bottom: 2px; transition: 0.2s; }
+        .social-links a:hover { color: var(--p); border-bottom-color: white; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: var(--p); }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.85); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(0.85); opacity: 0.6; }
+        }
+        .live-dot { width: 10px; height: 10px; background: var(--p); border-radius: 50%; display: inline-block; animation: pulse-dot 1.2s infinite ease-in-out; }
+        .copy-text { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<main>
+
+    <!-- Hero Live FPS Telemetry -->
+    <section class="hero" aria-label="Frame Rate Detector">
+        <div class="hero-label">Live Display Counter <span class="live-dot"></span></div>
+        <p class="h2an" id="d-fps" aria-live="polite">--</p>
+        <p class="hero-sub">Frames Per Second (FPS)</p>
+        
+        <p class="device-class">Detected Monitor Sync: <span id="d-refresh" style="color: var(--p);">Measuring...</span></p>
+        
+        <div class="grid" role="list" aria-label="Display metrics">
+            <div class="stat" role="listitem">
+                <div class="stat-l">Average FPS</div>
+                <div class="stat-v" id="d-avg">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Peak FPS</div>
+                <div class="stat-v" id="d-max">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Minimum (1% Low)</div>
+                <div class="stat-v" id="d-min">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Frame Time</div>
+                <div class="stat-v" id="d-frametime">- ms</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Framerate Comparison Canvas -->
+    <section class="section canvas-card" aria-label="Visual Framerate Comparison">
+        <div class="canvas-toolbar">
+            <div>
+                <h2 style="border:none; padding:0; margin:0;">Visual Frame Rate Comparison</h2>
+                <p style="margin:0; font-size:0.9rem; color:var(--tm);">Compare object movement and stutter across different fixed frame rates at identical velocity.</p>
+            </div>
+            <div class="canvas-controls">
+                <span style="font-size:0.85rem; font-weight:700; color:var(--tm);">Speed:</span>
+                <button class="btn-speed" data-speed="480">Slow</button>
+                <button class="btn-speed active" data-speed="960">Standard</button>
+                <button class="btn-speed" data-speed="1600">Fast</button>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="motionCanvas"></canvas>
+        </div>
+    </section>
+
+    <article>
+        <!-- Educational Diagnostics Cards -->
+        <section class="section">
+            <h2>Understanding Motion Clarity & Judder</h2>
+            <p>Moving images on a digital display are discrete snapshots presented sequentially. When the frame rate fails to match your display refresh rate or drops down to low thresholds, individual frames linger on the retina longer, creating visible stepping artifacts.</p>
+            <div class="device-grid">
+                <div class="device-card">
+                    <h3>Display Native (Uncapped)</h3>
+                    <p>Updates on every single vertical refresh cycle supported by your graphics hardware, maximizing eye-tracking smoothness and minimizing perceived blur.</p>
+                </div>
+                <div class="device-card">
+                    <h3>60 FPS Standard</h3>
+                    <p>The baseline standard for web browsing and modern user interfaces. Motion appears fluid, though slight trailing is visible at higher speeds.</p>
+                </div>
+                <div class="device-card">
+                    <h3>30 FPS Video Rate</h3>
+                    <p>Common in console gaming and video playback. You will observe noticeable jitter, edge doubling, and reduced responsiveness compared to 60 FPS.</p>
+                </div>
+                <div class="device-card">
+                    <h3>15 FPS Low-End</h3>
+                    <p>Substantial frame latency causing pronounced stutter. The dot noticeably jumps rather than gliding across the canvas track.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" aria-label="Frequently Asked Questions">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>What is the relationship between FPS and Hz?</h3>
+                <p><strong>Hz (Hertz)</strong> is the physical capability of your screen panel—how many times per second the physical hardware redraws the image. <strong>FPS (Frames Per Second)</strong> is how many new frames your GPU and browser actively generate. To experience true 120Hz or 144Hz smoothness, your browser must render at matching frame rates. Not sure what pixel grid you are pushing? Check your <a href="./" style="color: var(--p); font-weight: 600;">screen resolution</a> first, then come back here to measure how smoothly it renders.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why does my screen appear locked at 60 FPS on a 120Hz/144Hz monitor?</h3>
+                <p>Browsers automatically lock to your operating system's reported display frequency. If you possess a high-refresh display: verify your OS Display Advanced Settings are actively configured to 120Hz+, confirm browser hardware acceleration is turned on, and ensure your laptop is not in battery saver mode.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What causes frame drops and 1% Low stutters?</h3>
+                <p>Background tasks, CPU throttling, complex DOM repaints, or garbage collection spikes in your browser can cause individual frames to take longer than the 16.6ms budget. The "1% Low" metric isolates these momentary hitches.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does this tool transmit any system telemetry?</h3>
+                <p>No. All calculations, timing measurements, and canvas renders execute entirely client-side using JavaScript's native <code>requestAnimationFrame</code> and high-resolution timing APIs.</p>
+            </div>
+        </section>
+    </article>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>About This Tool</h3>
+                <p>An ultra-fast, serverless utility engineered for precision display benchmarks and visual stutter diagnosis. Designed with privacy and speed first—zero server pings, zero tracking scripts, zero stored cookies.</p>
+            </div>
+            <div>
+                <h3>Free Display Tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate &amp; Refresh Rate Tester</a></li>
+                    <li><a href="./how-to-check-phone-resolution.html">How to Check Phone Resolution</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>The Developer</h3>
+                <p>Built by <strong>Chetan Kumar</strong> &mdash; a digital tool architect specializing in high-performance web applications and SEO-first development.</p>
+                <div class="social-links" style="margin-top:1.2rem;">
+                    <a href="https://github.com/22066ayushkumar-jpg" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/askchetan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="copy-text">
+            &copy; <span id="yr"></span> whats-my-screen-resolution.netlify &bull; Designed &amp; Maintained by Chetan Kumar
+        </div>
+    </footer>
+
+</main>
+
+<script>
+    (function() {
+        document.getElementById('yr').innerText = new Date().getFullYear();
+
+        // -----------------------------------------------------------
+        // 1. Live Performance Telemetry Loop
+        // -----------------------------------------------------------
+        const currentFpsEl = document.getElementById('d-fps');
+        const avgFpsEl = document.getElementById('d-avg');
+        const maxFpsEl = document.getElementById('d-max');
+        const minFpsEl = document.getElementById('d-min');
+        const frametimeEl = document.getElementById('d-frametime');
+        const refreshEl = document.getElementById('d-refresh');
+
+        let frameCount = 0;
+        let lastTelemetryTime = performance.now();
+        let fpsHistory = [];
+        let maxFps = 0;
+        let minFps = 1000;
+        let isTabActive = true;
+        let detectedNativeFps = 60;
+
+        const commonRefreshRates = [60, 75, 90, 100, 120, 144, 165, 240, 360, 500];
+
+        function estimateRefreshRate(peak) {
+            if (peak === 0) return "Measuring...";
+            let closest = commonRefreshRates[0];
+            let smallestDiff = Math.abs(peak - commonRefreshRates[0]);
+            
+            for (let i = 1; i < commonRefreshRates.length; i++) {
+                let diff = Math.abs(peak - commonRefreshRates[i]);
+                if (diff < smallestDiff) {
+                    smallestDiff = diff;
+                    closest = commonRefreshRates[i];
+                }
+            }
+            return smallestDiff <= 12 ? closest + " Hz" : peak + " Hz";
+        }
+
+        // -----------------------------------------------------------
+        // 2. Visual Framerate Motion Canvas Test
+        // -----------------------------------------------------------
+        const canvas = document.getElementById('motionCanvas');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        let speedPixelsPerSec = 960;
+
+        // Tracks configuration: Rate 0 implies native uncapped
+        const tracks = [
+            { label: 'Native (Your Display)', rate: 0, color: '#10b981', lastUpdate: 0, lastX: 0 },
+            { label: '60 FPS Target', rate: 60, color: '#3b82f6', lastUpdate: 0, lastX: 0 },
+            { label: '30 FPS Video Rate', rate: 30, color: '#f59e0b', lastUpdate: 0, lastX: 0 },
+            { label: '15 FPS Low-End', rate: 15, color: '#ef4444', lastUpdate: 0, lastX: 0 }
+        ];
+
+        let dpr = window.devicePixelRatio || 1;
+        let canvasWidth = 0;
+        let canvasHeight = 0;
+
+        function resizeCanvas() {
+            dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvasWidth = rect.width;
+            canvasHeight = rect.height;
+            canvas.width = Math.floor(canvasWidth * dpr);
+            canvas.height = Math.floor(canvasHeight * dpr);
+            ctx.scale(dpr, dpr);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Speed buttons handler
+        document.querySelectorAll('.btn-speed').forEach(button => {
+            button.addEventListener('click', (e) => {
+                document.querySelectorAll('.btn-speed').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                speedPixelsPerSec = parseInt(e.target.dataset.speed, 10);
+            });
+        });
+
+        // -----------------------------------------------------------
+        // 3. Unified Animation & Measurement Loop
+        // -----------------------------------------------------------
+        let globalStartTime = performance.now();
+
+        function renderEngine(now) {
+            if (!isTabActive) return;
+
+            // --- A. Telemetry Calculations ---
+            frameCount++;
+            const elapsedTelemetry = now - lastTelemetryTime;
+
+            if (elapsedTelemetry >= 250) {
+                const currentFps = Math.round((frameCount * 1000) / elapsedTelemetry);
+                detectedNativeFps = currentFps;
+                
+                fpsHistory.push(currentFps);
+                if (fpsHistory.length > 12) fpsHistory.shift();
+
+                const avgFps = Math.round(fpsHistory.reduce((a, b) => a + b, 0) / fpsHistory.length);
+                if (currentFps > maxFps && currentFps < 1000) maxFps = currentFps;
+                if (fpsHistory.length > 4 && currentFps > 0 && currentFps < minFps) minFps = currentFps;
+
+                const frameTime = (1000 / (currentFps || 60)).toFixed(1);
+
+                currentFpsEl.innerText = currentFps;
+                avgFpsEl.innerText = avgFps;
+                maxFpsEl.innerText = maxFps;
+                minFpsEl.innerText = minFps === 1000 ? "-" : minFps;
+                frametimeEl.innerText = frameTime + " ms";
+
+                if (maxFps > 0) {
+                    refreshEl.innerText = estimateRefreshRate(maxFps);
+                }
+
+                frameCount = 0;
+                lastTelemetryTime = now;
+            }
+
+            // --- B. Motion Canvas Rendering ---
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+            const laneHeight = canvasHeight / tracks.length;
+            const totalElapsed = (now - globalStartTime) / 1000;
+            const pointRadius = 14;
+            const travelWidth = canvasWidth + (pointRadius * 4);
+            const continuousX = (totalElapsed * speedPixelsPerSec) % travelWidth - (pointRadius * 2);
+
+            tracks.forEach((track, i) => {
+                const yTop = i * laneHeight;
+                const yCenter = yTop + (laneHeight / 2);
+
+                // Alternating lane backgrounds
+                ctx.fillStyle = i % 2 === 0 ? 'rgba(30, 41, 59, 0.45)' : 'rgba(15, 23, 42, 0.7)';
+                ctx.fillRect(0, yTop, canvasWidth, laneHeight);
+
+                // Divider line
+                if (i > 0) {
+                    ctx.strokeStyle = 'rgba(51, 65, 85, 0.5)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(0, yTop);
+                    ctx.lineTo(canvasWidth, yTop);
+                    ctx.stroke();
+                }
+
+                // Stepping rate calculation
+                let renderX = continuousX;
+                if (track.rate > 0) {
+                    const interval = 1000 / track.rate;
+                    if (now - track.lastUpdate >= interval) {
+                        track.lastX = continuousX;
+                        track.lastUpdate = now;
+                    }
+                    renderX = track.lastX;
+                }
+
+                // Draw motion guide path
+                ctx.strokeStyle = 'rgba(51, 65, 85, 0.3)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([4, 4]);
+                ctx.beginPath();
+                ctx.moveTo(0, yCenter);
+                ctx.lineTo(canvasWidth, yCenter);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Draw moving point
+                ctx.save();
+                ctx.shadowColor = track.color;
+                ctx.shadowBlur = 10;
+                ctx.fillStyle = track.color;
+                ctx.beginPath();
+                ctx.arc(renderX, yCenter, pointRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Inner core
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(renderX, yCenter, pointRadius * 0.4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // Lane Labels
+                ctx.font = '600 12px system-ui, -apple-system, sans-serif';
+                ctx.fillStyle = '#94a3b8';
+                const dynamicLabel = track.rate === 0 
+                    ? `${track.label} [${detectedNativeFps} FPS]` 
+                    : track.label;
+                ctx.fillText(dynamicLabel, 16, yTop + 24);
+            });
+
+            requestAnimationFrame(renderEngine);
+        }
+
+        // Initialize Loop
+        requestAnimationFrame(renderEngine);
+
+        // Visibility handling to avoid skewing telemetry
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                isTabActive = false;
+            } else {
+                isTabActive = true;
+                lastTelemetryTime = performance.now();
+                globalStartTime = performance.now();
+                frameCount = 0;
+                requestAnimationFrame(renderEngine);
+            }
+        });
+
+    })();
+</script>
+
+</body>
+</html>

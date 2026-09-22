@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="TcvrmuUg9cLDXP7zy8pO8WuY_UHHsGjrlkCU_Wm4C0k" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What is My Screen Resolution? &ndash; Check for PC, Mac, Phone</title>
+    <meta name="description" content="Instantly check your screen resolution in pixels online &mdash; free tool. Detect viewport, DPR, aspect ratio &amp; device type on any PC, Mac, Android or iPhone.">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#2563eb">
+    <!-- Premium SVG Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563eb'/%3E%3Crect x='4' y='4' width='24' height='24' rx='3' fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='0.9'/%3E%3Cpath d='M8 16h3m10 0h3M16 8v3m0 10v3' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23ffffff'/%3E%3C/svg%3E">
+
+    <meta property="og:title" content="What is My Screen Resolution? &ndash; Check for PC, Mac, Phone">
+    <meta property="og:description" content="Instantly detect your screen resolution in pixels. Free, private, no install needed. Works on PC, Mac, Android and iPhone.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="What is My Screen Resolution? - Check For PC, Mac, Phone">
+    <meta name="twitter:description" content="Instantly detect your screen resolution in pixels. Free, private, no install needed. Works on any device.">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "What is My Screen Resolution - Free Checker",
+      "url": "https://whats-my-screen-resolution.netlify.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Chetan Kumar",
+        "url": "https://www.linkedin.com/in/askchetan/"
+      },
+      "description": "Free browser tool that instantly detects your screen resolution, viewport dimensions, pixel ratio, aspect ratio, color depth and device type.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "en",
+      "keywords": "screen resolution checker, what is my screen resolution, check screen resolution online, screen resolution in pixels, screen resolution windows 10, screen resolution mac, what is my screen resolution android, what is my screen resolution iphone",
+      "about": {
+        "@type": "Thing",
+        "name": "Screen Resolution",
+        "description": "Screen resolution is the number of pixels displayed on a screen, expressed as width x height (e.g., 1920x1080)."
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the most used screen resolution in 2025?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As of 2025-2026, 1920x1080 (Full HD) remains the most common desktop resolution with over 21% market share. On mobile, 360x800 is the leading logical resolution due to Android's widespread adoption."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find out what my screen resolution is?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The fastest way is to use this online tool - your resolution is detected automatically. On Windows 10/11: right-click desktop, Display Settings, Display Resolution. On Mac: System Settings, Displays. On Android: Settings, Display, Screen Resolution."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I check my screen resolution on Windows 10 or Windows 11?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Right-click any blank area on your desktop, select Display Settings, scroll to Display Resolution. The value marked Recommended is your native resolution. This works identically on both Windows 10 and Windows 11."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is my MacBook Pro screen resolution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Open System Settings then Displays. For MacBook Pro 13-inch it is 2560x1600; for MacBook Pro 14-inch it is 3024x1964; for MacBook Pro 16-inch it is 3456x2234. macOS shows a scaled resolution - this tool shows your actual CSS viewport resolution used by browsers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is my viewport different from my screen resolution?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Screen resolution refers to your display's physical pixel count. Viewport is the CSS pixel space browsers use after applying the Device Pixel Ratio (DPR) scaling. A phone with a 1080x2400 screen may show a 360x800 viewport because its DPR is 3."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Device Pixel Ratio (DPR)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Device Pixel Ratio (DPR) is the ratio of physical pixels to CSS pixels on your screen. A DPR of 2 means the display uses 2 physical pixels for every 1 CSS pixel, producing sharper images on Retina and high-density displays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is my screen resolution in DPI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DPI (dots per inch) equals physical resolution divided by screen size in inches. A 1920x1080 display on a 24-inch monitor is approximately 92 DPI. A smartphone with 1080x2400 on a 6.5-inch screen is approximately 400 DPI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best or recommended screen resolution for my monitor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best resolution is your monitor's native resolution listed as Recommended in Display Settings. For most users: 1920x1080 for 24-inch monitors, 2560x1440 for 27-inch, and 3840x2160 (4K) for 32-inch and larger displays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool store or share my screen data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This tool runs entirely in your browser using JavaScript. No data is ever sent to a server, and we do not use cookies or tracking of any kind."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "What is My Screen Resolution",
+      "url": "https://whats-my-screen-resolution.netlify.app/",
+      "description": "Free browser tools to check screen resolution, frame rate and refresh rate, plus guides for Android and iPhone display specs.",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Person",
+        "name": "Chetan Kumar",
+        "url": "https://www.linkedin.com/in/askchetan/"
+      },
+      "hasPart": [
+        {
+          "@type": "WebApplication",
+          "name": "What is My Frame Rate - Free FPS Checker",
+          "url": "https://whats-my-screen-resolution.netlify.app/frame-rate-tester.html"
+        },
+        {
+          "@type": "Article",
+          "name": "How to Check Phone Resolution",
+          "url": "https://whats-my-screen-resolution.netlify.app/how-to-check-phone-resolution.html"
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Screen Resolution Checker",
+          "item": "https://whats-my-screen-resolution.netlify.app/"
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root { --p: #2563eb; --bg: #f8fafc; --c: #fff; --t: #1e293b; --tm: #64748b; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--t); line-height: 1.6; padding: 1rem; }
+        main { max-width: 900px; margin: 0 auto; }
+
+        .hero { background: var(--c); padding: 3rem 1.5rem; border-radius: 1.5rem; text-align: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin-bottom: 2rem; border: 1px solid #e2e8f0; }
+        .hero-label { font-size: 1rem; text-transform: uppercase; color: var(--tm); margin-bottom: 0.75rem; letter-spacing: 0.1em; font-weight: 600; }
+        .h2an { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; color: var(--p); line-height: 1; margin-bottom: 0.5rem; letter-spacing: -2px; }
+        .hero-sub { font-size: 1rem; color: var(--tm); margin-bottom: 2rem; }
+        .device-class { font-weight: 700; color: var(--tm); margin-bottom: 2rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+        .stat { background: #f1f5f9; padding: 1.25rem; border-radius: 1rem; border: 1px solid #e2e8f0; }
+        .stat-l { font-size: 0.75rem; font-weight: 700; color: var(--tm); text-transform: uppercase; }
+        .stat-v { font-size: 1.25rem; font-weight: 700; margin-top: 0.25rem; }
+
+        .section { background: var(--c); padding: 2rem; border-radius: 1.5rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        h2 { font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 5px solid var(--p); padding-left: 1rem; color: var(--t); }
+        h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--t); font-weight: 700; }
+        p { margin-bottom: 1rem; color: #475569; }
+        a.inline-link { color: var(--p); text-decoration: none; font-weight: 600; }
+        a.inline-link:hover { text-decoration: underline; }
+
+        .rank-row { margin-bottom: 1.25rem; }
+        .rank-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 600; }
+        .bar-bg { background: #e2e8f0; height: 12px; border-radius: 6px; }
+        .bar-fill { background: var(--p); height: 100%; border-radius: 6px; transition: width 0.8s ease-in-out; }
+        .winner-tag { color: #059669; font-size: 0.7rem; background: #d1fae5; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; font-weight: 700; }
+
+        .faq-item { border-bottom: 1px solid #e2e8f0; padding: 1.25rem 0; }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+        .device-card { background: #f1f5f9; border-radius: 1rem; padding: 1.25rem; border: 1px solid #e2e8f0; }
+        .device-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--p); }
+        .device-card p { font-size: 0.875rem; color: #475569; margin: 0; }
+
+        .footer-dark { background: #0f172a; color: #f8fafc; padding: 3rem 2rem; border-radius: 1.5rem; margin-top: 3rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+        .footer-dark h3 { color: var(--p); margin-bottom: 1.2rem; font-size: 1.25rem; }
+        .footer-dark p { color: #94a3b8; font-size: 0.95rem; }
+        .social-links a { color: white; text-decoration: none; margin-right: 15px; font-weight: 600; font-size: 0.9rem; border-bottom: 2px solid var(--p); padding-bottom: 2px; transition: 0.2s; }
+        .social-links a:hover { color: var(--p); border-bottom-color: white; }
+        .footer-links { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a { color: #94a3b8; text-decoration: none; }
+        .footer-links a:hover { color: var(--p); }
+
+        #p-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
+        .p-modal { background: white; padding: 2.5rem; border-radius: 1.5rem; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; position: relative; color: #1e293b; }
+        .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; border: none; background: #f1f5f9; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1rem; }
+
+        .copy-text { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<main>
+
+    <section class="hero" aria-label="Screen Resolution Detector">
+        <h1>What's My Screen Resolution?</h1>
+        <p class="hero-sub">Instantly check your screen resolution in pixels online &mdash; free tool. Detect viewport, DPR, aspect ratio &amp; device type on any PC, Mac, Android or iPhone.</p>
+        <p class="h2an" id="d-res" aria-live="polite">Checking...</p>
+        <p class="hero-sub">Your current resolution detected instantly in pixels &mdash; free, private, no install needed.</p>
+        <p class="device-class" id="d-type" aria-live="polite">Identifying Display...</p>
+        <div class="grid" role="list" aria-label="Display metrics">
+            <div class="stat" role="listitem">
+                <div class="stat-l">Browser Viewport</div>
+                <div class="stat-v" id="d-vp">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Pixel Ratio (DPR)</div>
+                <div class="stat-v" id="d-pr">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Aspect Ratio</div>
+                <div class="stat-v" id="d-ar">-</div>
+            </div>
+            <div class="stat" role="listitem">
+                <div class="stat-l">Color Depth</div>
+                <div class="stat-v" id="d-cd">-</div>
+            </div>
+        </div>
+    </section>
+
+    <article>
+
+        <section class="section">
+            <h2>Most Used Screen Resolutions in 2025&ndash;2026</h2>
+            <p>Based on global browser usage statistics, these are the top resolutions across desktop and mobile devices worldwide. If you want to check my screen resolution, knowing the standard baselines helps design better web content.</p>
+            <div class="rank-row">
+                <div class="rank-info"><span>1. 1920 &times; 1080 &mdash; Full HD Desktop</span><span class="winner-tag">Most Popular</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info"><span>2. 1366 &times; 768 &mdash; Budget Laptops</span><span>14.2%</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info"><span>3. 360 &times; 800 &mdash; Android Smartphones</span><span>11.8%</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info"><span>4. 1536 &times; 864 &mdash; Mid-Range Laptops</span><span>8.5%</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div>
+            </div>
+            <div class="rank-row">
+                <div class="rank-info"><span>5. 390 &times; 844 &mdash; iPhone (Retina)</span><span>5.9%</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width:28%"></div></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How to Check Screen Resolution by Device</h2>
+            <p>Every device exposes screen resolution differently. Review our clear guide on how to check phone resolution to map out hardware properties manually, or read the structural card tips across multiple platforms below.</p>
+            <div class="device-grid">
+                <div class="device-card">
+                    <h3>Windows 10 &amp; 11</h3>
+                    <p>Right-click desktop &rarr; <strong>Display Settings</strong> &rarr; <strong>Display Resolution</strong>. The &ldquo;Recommended&rdquo; value is your native resolution. This is the quickest path to figure out my screen resolution or answer what is my pc resolution.</p>
+                </div>
+                <div class="device-card">
+                    <h3>Mac / MacBook Pro</h3>
+                    <p>Go to <strong>System Settings &rarr; Displays</strong>. Hover over the highlighted option to see actual pixel values. macOS uses HiDPI/Retina scaling by default, which changes what is my screen resolution mac outputs compared to physical pixels.</p>
+                </div>
+                <div class="device-card">
+                    <h3>Android Phones &amp; Tablets</h3>
+                    <p>Go to <strong>Settings &rarr; Display &rarr; Screen Resolution</strong>. To dive deeper into system modifications, read our explicit layout resource detailing <a href="/how-to-check-phone-resolution" class="inline-link">how to check screen resolution android</a> panels.</p>
+                </div>
+                <div class="device-card">
+                    <h3>iPhone &amp; iPad</h3>
+                    <p>iOS does not expose resolution in Settings. Your logical viewport is shown above. Physical pixels are always a DPR multiple (e.g., Retina = 2&times; or 3&times;), which dictates the unique phone screen resolution specifications.</p>
+                </div>
+                <div class="device-card">
+                    <h3>Chromebook / Linux</h3>
+                    <p>Go to <strong>Settings &rarr; Device &rarr; Displays</strong>. The resolution shown is the logical resolution; actual display output may be scaled for your DPI, affecting your current desktop size metrics.</p>
+                </div>
+                <div class="device-card">
+                    <h3>Any Device (Online)</h3>
+                    <p>Simply open this page in any browser &mdash; your full display metrics are detected instantly with no login or installation required. It is the easiest way to find my screen resolution on the go. Then verify motion smoothness with our <a href="./frame-rate-tester.html" class="inline-link">online frame rate (FPS) tester</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-label="Frequently Asked Questions">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h3>What is the most used screen resolution in 2025?</h3>
+                <p>As of 2025&ndash;2026, <strong>1920&times;1080 (Full HD)</strong> remains the most common desktop configuration. On mobile, <strong>360&times;800</strong> is the leading smartphone resolution due to Android&rsquo;s widespread adoption globally. Checking your phone screen resolutions helps verify if your layout matches global trends.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I find out what my screen resolution is?</h3>
+                <p>The fastest method to get my screen resolution is this online tool &mdash; your data appears automatically at the top of the page. If you are wondering what resolution is this or what is my resolution screen, our script instantly outputs the exact height and width variables.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How do I check my screen resolution on Windows 10 or Windows 11?</h3>
+                <p>Right-click any blank area on your desktop and select <strong>Display Settings</strong>. Scroll down to the <strong>Display Resolution</strong> dropdown. The value marked <em>Recommended</em> is your monitor&rsquo;s native resolution. Knowing what is my monitor resolution ensures you do not suffer from blurry text or stretched images.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is my MacBook Pro screen resolution?</h3>
+                <p>Go to <strong>System Settings &rarr; Displays</strong>. MacBook Pro native configurations vary by size. macOS shows a scaled &ldquo;looks like&rdquo; layout in the UI &mdash; this tool shows your actual CSS viewport resolution as used by browsers to help you find out what is my computer screen resolution.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Why is my viewport different from my screen resolution?</h3>
+                <p>Your physical screen resolution phone output is the full pixel grid. Your browser viewport is smaller because it excludes browser toolbars, the taskbar, and other system UI. This tool displays both values so you can easily check my monitor resolution parameters side-by-side.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is my phone or Android screen resolution?</h3>
+                <p>Open this page on your mobile browser &mdash; your screen resolution of my phone is shown instantly at the top. If you need step-by-step instructions for specific systems, read our comprehensive tutorial on <a href="/how-to-check-phone-resolution" class="inline-link">how to check phone resolution</a> hardware properties directly from device profiles.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is my screen resolution in DPI and inches?</h3>
+                <p>DPI (dots per inch) = physical resolution &divide; screen size in inches. A <strong>1920&times;1080 panel on a 24&Prime; monitor</strong> is approximately 92 DPI. If you ask what are my screen dimensions or what is the screen resolution of my phone in physical inches, you will need to check your device manufacturer spec sheet.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is my native, optimal, or recommended screen resolution?</h3>
+                <p>Your <strong>what is my native resolution</strong> query refers to the exact pixel array your display is physically built with. Running your OS at this level gives the sharpest crisp image. On Windows it is labeled &ldquo;Recommended&rdquo; under the dropdown menu determining what is my monitor's resolution.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is my browser screen resolution vs. my OS screen resolution?</h3>
+                <p>Your OS setup is the total workspace. Your browser viewport is the usable space inside the active window. This tool answers what is my screen resolution android queries alongside desktop ones, showing both the primary display resolution and the browser viewport numbers below it.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Does this tool store or share my screen data?</h3>
+                <p>No. This tool runs <strong>entirely in your browser</strong> using JavaScript&rsquo;s native API variables. No data is ever transmitted to a remote server. We use zero tracking cookies and store no personal information, meaning your data remains private when you get display resolution metrics.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is Device Pixel Ratio (DPR) and why does it matter?</h3>
+                <p><strong>Device Pixel Ratio (DPR)</strong> is the math behind high-density displays. If you want to know how to check my phone resolution or find my phone resolution layout details, DPR is key. A ratio of 2 or 3 means the screen packs multiple physical pixels into a single CSS pixel unit for ultra-sharp rendering.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What aspect ratio is my phone and how is it calculated?</h3>
+                <p>Aspect ratio is the proportional width-to-height relationship of your display. If you are wondering what aspect ratio is my phone or what is the screen ratio of my phone, it is calculated by dividing both resolution dimensions by their greatest common divisor. Modern mobile devices often sport widescreen shapes to accommodate movie playback.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>How can I check resolution details on older hardware?</h3>
+                <p>Whether you want to check screen resolution android parameters or figure out what's my resolution pc settings, the steps remain straightforward. For older monitors, discovering what ratio is my monitor involves dividing the width by the height. Common retro standards include a 4:3 boxy ratio, while modern displays favor widescreen layouts.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Can I find out my specific phone model's pixel setup here?</h3>
+                <p>Yes! If you are browsing using a modern device and need to verify your specific mobile device profile or native panel layouts, loading this responsive web helper instantly displays the exact active resolution profile on your screen.</p>
+            </div>
+
+        </section>
+
+    </article>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>About This Tool</h3>
+                <p>whats-my-screen-resolution.netlify is an ultra-fast, serverless utility designed to give developers and everyday users instant display metrics. Whether you need to run a quick whatismyresolution diagnostic, look up a smartphone resolution layout, or confirm your overall my resolutions archive, we prioritize privacy and speed &mdash; zero tracking, zero data collection, zero server requests.</p>
+                <button onclick="togglePrivacy(true)" style="background:none; border:none; color:var(--p); font-weight:bold; cursor:pointer; margin-top:1rem; padding:0;">View Privacy Policy</button>
+            </div>
+            <div>
+                <h3>Free Display Tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate &amp; Refresh Rate Tester</a></li>
+                    <li><a href="./how-to-check-phone-resolution.html">How to Check Phone Resolution</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>The Developer</h3>
+                <p>Built by <strong>Chetan Kumar</strong> &mdash; a digital tool architect specializing in high-performance web applications and SEO-first development.</p>
+                <div class="social-links" style="margin-top:1.2rem;">
+                    <a href="https://github.com/22066ayushkumar-jpg" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/askchetan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="copy-text">
+            &copy; <span id="yr"></span> whats-my-screen-resolution.netlify &bull; Designed &amp; Maintained by Chetan Kumar
+        </div>
+    </footer>
+
+</main>
+
+<noscript>
+    <p style="text-align:center; padding:2rem; background:#fef9c3; color:#854d0e; font-family:system-ui,sans-serif;">
+        JavaScript is required to detect your screen resolution. Please enable JavaScript in your browser settings.
+    </p>
+</noscript>
+
+<div id="p-overlay" role="dialog" aria-modal="true" aria-label="Privacy Policy">
+    <div class="p-modal">
+        <button class="close-btn" onclick="togglePrivacy(false)" aria-label="Close privacy policy">&times;</button>
+        <h2 style="border:none; padding:0; margin-bottom:1rem;">Privacy Policy</h2>
+        <p><strong>Last Updated: April 11, 2026</strong></p>
+        <p style="margin:1rem 0;">This tool operates entirely within your browser. No data is sent to any server. We do not use tracking cookies, and we do not store your IP address or screen specifications of any kind.</p>
+        <button onclick="togglePrivacy(false)" style="margin-top:1.5rem; width:100%; padding:0.8rem; background:var(--p); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">Close &amp; Continue</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+        function update() {
+            var sw = window.screen.width;
+            var sh = window.screen.height;
+            var vw = window.innerWidth;
+            var vh = window.innerHeight;
+            var dpr = window.devicePixelRatio || 1;
+            var comm = gcd(sw, sh);
+
+            document.getElementById('d-res').innerHTML = sw + ' &times; ' + sh;
+            document.getElementById('d-vp').innerHTML = vw + ' &times; ' + vh;
+            document.getElementById('d-pr').innerText = dpr.toFixed(2) + 'x';
+            document.getElementById('d-ar').innerText = (sw / comm) + ':' + (sh / comm);
+            document.getElementById('d-cd').innerText = window.screen.colorDepth + '-bit';
+
+            var type = 'Desktop Display';
+            if (sw < 600) type = 'Smartphone';
+            else if (sw < 1025) type = 'Tablet / Laptop';
+            document.getElementById('d-type').innerText = 'Device Class: ' + type;
+        }
+
+        document.getElementById('yr').innerText = new Date().getFullYear();
+        update();
+        window.addEventListener('resize', update);
+    })();
+
+    function togglePrivacy(show) {
+        var overlay = document.getElementById('p-overlay');
+        overlay.style.display = show ? 'flex' : 'none';
+        if (show) overlay.querySelector('.close-btn').focus();
+    }
+</script>
+
+</body>
+</html>
