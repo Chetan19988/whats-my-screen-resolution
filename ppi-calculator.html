@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPI Calculator - Pixels Per Inch Calculator</title>
+    <meta name="description" content="Calculate screen PPI from resolution and diagonal size. Pixel density, pixel pitch, comparisons, and examples. Free, no download.">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/ppi-calculator.html">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%232563eb%27/%3E%3Crect x=%274%27 y=%274%27 width=%2724%27 height=%2724%27 rx=%273%27 fill=%27none%27 stroke=%27%23ffffff%27 stroke-width=%272%27 stroke-opacity=%270.9%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%275%27 fill=%27none%27 stroke=%27%23ffffff%27 stroke-width=%272%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%272%27 fill=%27%23ffffff%27/%3E%3C/svg%3E">
+    <meta property="og:title" content="PPI Calculator - Calculate Pixels Per Inch Online">
+    <meta property="og:description" content="Calculate your screen pixel density (PPI) from resolution and physical diagonal size. Works for phone, tablet, monitor, laptop.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/ppi-calculator.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PPI Calculator - Calculate Pixels Per Inch Online">
+    <meta name="twitter:description" content="Calculate screen PPI from resolution and diagonal size. Free, private, no install needed.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"PPI Calculator","url":"https://whats-my-screen-resolution.netlify.app/ppi-calculator.html","author":{"@type":"Person","name":"Chetan Kumar","url":"https://www.linkedin.com/in/askchetan/"},"description":"Free browser tool that calculates PPI (pixels per inch) and pixel density from screen resolution and physical diagonal size.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Screen Resolution Checker","item":"https://whats-my-screen-resolution.netlify.app/"},{"@type":"ListItem","position":2,"name":"PPI Calculator","item":"https://whats-my-screen-resolution.netlify.app/ppi-calculator.html"}]}
+    </script>
+    <style>
+        :root{--p:#2563eb;--p-hover:#1d4ed8;--bg:#f8fafc;--c:#ffffff;--t:#1e293b;--tm:#64748b;--border:#e2e8f0}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;padding:1rem}
+        main{max-width:900px;margin:0 auto}
+        .hero{background:var(--c);padding:3rem 1.5rem;border-radius:1.5rem;text-align:center;box-shadow:0 10px 15px -3px rgba(0,0,0,0.06);margin-bottom:2rem;border:1px solid var(--border)}
+        .hero-label{font-size:0.9rem;text-transform:uppercase;color:var(--tm);margin-bottom:0.75rem;letter-spacing:0.1em;font-weight:700}
+        h1{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:900;color:var(--p);line-height:1.15;margin-bottom:0.75rem;letter-spacing:-1px}
+        .h2an{font-size:clamp(3rem,12vw,6rem);font-weight:900;color:var(--p);line-height:1;margin-bottom:0.5rem;letter-spacing:-2px}
+        .hero-sub{font-size:1.1rem;color:var(--tm);margin-bottom:1.5rem;font-weight:600}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
+        .stat{background:#f1f5f9;padding:1.25rem;border-radius:1rem;border:1px solid var(--border)}
+        .stat-l{font-size:0.75rem;font-weight:700;color:var(--tm);text-transform:uppercase}
+        .stat-v{font-size:1.4rem;font-weight:800;margin-top:0.25rem}
+        .section{background:var(--c);padding:2rem;border-radius:1.5rem;margin-bottom:2rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.04);border:1px solid var(--border)}
+        h2{font-size:1.4rem;margin-bottom:1.25rem;border-left:5px solid var(--p);padding-left:1rem;color:var(--t)}
+        h3{font-size:1.05rem;margin-bottom:0.5rem;color:var(--t);font-weight:700}
+        p{margin-bottom:1rem;color:#475569}
+        a.inline-link{color:var(--p);text-decoration:none;font-weight:600}
+        a.inline-link:hover{text-decoration:underline}
+        .input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+        .input-group{background:#f1f5f9;padding:1.25rem;border-radius:1rem;border:1px solid var(--border)}
+        .input-group label{display:block;font-size:0.75rem;font-weight:700;color:var(--tm);text-transform:uppercase;margin-bottom:0.5rem}
+        .input-group input{width:100%;padding:0.75rem;font-size:1.1rem;font-weight:700;border:2px solid var(--border);border-radius:0.5rem;font-family:inherit;color:var(--t);transition:border-color 0.2s}
+        .input-group input:focus{outline:none;border-color:var(--p)}
+        .input-group input::placeholder{color:#94a3b8;font-weight:400}
+        .btn-calc{display:inline-flex;align-items:center;gap:0.5rem;background:var(--p);color:white;border:none;padding:1rem 2rem;font-size:1rem;font-weight:700;border-radius:0.75rem;cursor:pointer;transition:0.2s;font-family:inherit}
+        .btn-calc:hover{background:var(--p-hover);transform:translateY(-1px)}
+        .btn-calc:active{transform:translateY(0)}
+        .result-card{background:linear-gradient(135deg,var(--p) 0%,#1d4ed8 100%);color:white;padding:2rem;border-radius:1.5rem;text-align:center;margin-top:1.5rem}
+        .result-card .stat-l{color:rgba(255,255,255,0.8)}
+        .result-card .stat-v{font-size:2.5rem;color:white}
+        .density-scale{margin-top:1.5rem}
+        .density-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:#e2e8f0}
+        .density-segment{flex:1;transition:opacity 0.3s}
+        .density-segment.low{background:#fef08a}
+        .density-segment.medium{background:#86efac}
+        .density-segment.high{background:#60a5fa}
+        .density-segment.very-high{background:#c084fc}
+        .density-segment.ultra{background:#f472b6}
+        .density-segment.inactive{opacity:0.2}
+        .density-labels{display:flex;justify-content:space-between;margin-top:0.5rem;font-size:0.7rem;color:var(--tm);font-weight:600}
+        .formula-box{background:#f1f5f9;border-radius:0.9rem;padding:1rem;text-align:center;font-family:ui-monospace,monospace;font-size:1rem;font-weight:700;margin:1rem 0;border:1px solid var(--border)}
+        .example-box{background:#eff6ff;border-radius:0.9rem;padding:1rem;margin:1rem 0;border-left:4px solid var(--p)}
+        table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem}
+        th,td{padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)}
+        th{background:#f1f5f9;font-size:0.75rem;text-transform:uppercase;color:var(--tm)}
+        .device-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:1rem}
+        .device-card{background:#f1f5f9;border-radius:1rem;padding:1.25rem;border:1px solid var(--border)}
+        .device-card h3{font-size:0.95rem;margin-bottom:0.5rem;color:var(--p)}
+        .device-card p{font-size:0.875rem;color:#475569;margin:0}
+        .faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0}
+        .faq-item:first-child{padding-top:0}
+        .faq-item:last-child{border-bottom:none;padding-bottom:0}
+        .footer-dark{background:#0f172a;color:#f8fafc;padding:3rem 2rem;border-radius:1.5rem;margin-top:3rem}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem}
+        .footer-dark h3{color:var(--p);margin-bottom:1.2rem;font-size:1.25rem}
+        .footer-dark p{color:#94a3b8;font-size:0.95rem}
+        .social-links a{color:white;text-decoration:none;margin-right:15px;font-weight:600;font-size:0.9rem;border-bottom:2px solid var(--p);padding-bottom:2px;transition:0.2s}
+        .social-links a:hover{color:var(--p);border-bottom-color:white}
+        .footer-links{list-style:none;padding:0;margin:0}
+        .footer-links li{margin-bottom:0.6rem}
+        .footer-links a{color:#94a3b8;text-decoration:none}
+        .footer-links a:hover{color:var(--p)}
+        .copy-text{text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid #1e293b;color:#64748b;font-size:0.8rem}
+    </style>
+</head>
+<body>
+<main>
+    <section class="hero" aria-label="PPI Calculator">
+        <div class="hero-label">Pixel Density Calculator</div>
+        <h1>PPI Calculator – Pixels Per Inch Calculator</h1>
+        <p class="hero-sub">Enter resolution and diagonal size to get pixel density</p>
+        <p class="h2an" id="result-ppi" aria-live="polite">--</p>
+        <p class="hero-sub">Pixels Per Inch (PPI)</p>
+    </section>
+
+    <section class="section">
+        <h2>PPI Calculator</h2>
+        <p>This calculator finds pixel density from resolution and physical size. Enter horizontal pixels, vertical pixels, and diagonal inches. The result is PPI, plus pixel pitch and density category.</p>
+        <h3>How to Use the PPI Calculator</h3>
+        <div class="input-grid">
+            <div class="input-group">
+                <label for="res-width">Horizontal Resolution (px)</label>
+                <input type="number" id="res-width" placeholder="1920" min="1">
+            </div>
+            <div class="input-group">
+                <label for="res-height">Vertical Resolution (px)</label>
+                <input type="number" id="res-height" placeholder="1080" min="1">
+            </div>
+            <div class="input-group">
+                <label for="diag-size">Diagonal Screen Size (inches)</label>
+                <input type="number" id="diag-size" placeholder="24" min="0.1" step="0.1">
+            </div>
+        </div>
+        <button class="btn-calc" id="calc-btn">Calculate PPI</button>
+        <div class="result-card" id="result-card" style="display:none">
+            <div class="stat-l">Your Display PPI</div>
+            <div class="stat-v" id="result-ppi-card">--</div>
+            <p style="color:rgba(255,255,255,0.8);margin:1rem 0 0;font-size:0.9rem">Estimated value based on the diagonal size you entered.</p>
+        </div>
+        <h3>Enter Your Screen Resolution</h3>
+        <p>Type horizontal and vertical pixels. Example: 1920 and 1080. Find it in display settings or maker specs.</p>
+        <h3>Enter Your Screen Size</h3>
+        <p>Type diagonal inches of the visible area only, not the bezel. Example: 24, 27, 15.6, 6.1.</p>
+        <h3>Get Your Pixel Density</h3>
+        <p>Press Calculate. You get PPI, diagonal pixels, aspect ratio, and category in the hero and details above.</p>
+        <h3>Compare Two Displays</h3>
+        <p>Run the calculator twice and note both PPI values. Same PPI means similar sharpness at same distance.</p>
+    </section>
+
+    <section class="section" id="details-section" style="display:none">
+        <h2>Detailed Results</h2>
+        <div class="grid">
+            <div class="stat"><div class="stat-l">Width (px)</div><div class="stat-v" id="d-width">-</div></div>
+            <div class="stat"><div class="stat-l">Height (px)</div><div class="stat-v" id="d-height">-</div></div>
+            <div class="stat"><div class="stat-l">Diagonal (px)</div><div class="stat-v" id="d-diag-px">-</div></div>
+            <div class="stat"><div class="stat-l">Screen Size</div><div class="stat-v" id="d-size">-</div></div>
+            <div class="stat"><div class="stat-l">Aspect Ratio</div><div class="stat-v" id="d-ar">-</div></div>
+            <div class="stat"><div class="stat-l">Density Category</div><div class="stat-v" id="d-category">-</div></div>
+        </div>
+        <div class="density-scale">
+            <p style="font-size:0.85rem;font-weight:600;color:var(--tm);margin-bottom:0.5rem">Pixel Density Scale</p>
+            <div class="density-bar">
+                <div class="density-segment low" id="seg-low"></div>
+                <div class="density-segment medium" id="seg-med"></div>
+                <div class="density-segment high" id="seg-high"></div>
+                <div class="density-segment very-high" id="seg-vhigh"></div>
+                <div class="density-segment ultra" id="seg-ultra"></div>
+            </div>
+            <div class="density-labels">
+                <span>Standard</span>
+                <span>Medium</span>
+                <span>High</span>
+                <span>Very High</span>
+                <span>Ultra</span>
+            </div>
+        </div>
+    </section>
+
+    <article>
+        <section class="section">
+            <h2>What Is PPI (Pixels Per Inch)?</h2>
+            <p>PPI is pixels per linear inch. It shows how tightly pixels are packed. Higher PPI means sharper text and less visible pixel structure at the same viewing distance.</p>
+            <p>Example: 27-inch 4K is about 163 PPI. A 6.1-inch phone at 1170x2532 is about 457 PPI. The phone has fewer total pixels but higher density because it is much smaller.</p>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate PPI</h2>
+            <p>Divide diagonal pixels by diagonal inches.</p>
+            <div class="formula-box">PPI = sqrt(w*w + h*h) / diagonal_inches</div>
+            <h3>PPI Calculation Example</h3>
+            <div class="example-box">
+            <p><strong>1920x1080 at 24in:</strong> sqrt(1920*1920+1080*1080)=2202.9. 2202.9/24=91.8 PPI.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate Pixels Per Square Inch (PPI2)</h2>
+            <p>PPI is linear. PPI squared estimates pixels per square inch for square pixels.</p>
+            <h3>PPI2 Formula</h3>
+            <div class="formula-box">PPI2 = PPI x PPI</div>
+            <h3>PPI2 Calculation Example</h3>
+            <div class="example-box">
+            <p><strong>109 PPI:</strong> 109x109=11881 pixels per sq inch.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate Screen Pixel Density</h2>
+            <p>Pixel density links resolution, size, and area. Use PPI for linear sharpness. Use total pixels divided by area for areal density. Both rise when resolution rises or size shrinks.</p>
+        </section>
+        <section class="section">
+            <h2>PPI vs Resolution: Whats the Difference?</h2>
+            <p>Resolution is total pixels. PPI is density. Same resolution on larger screen means lower PPI.</p>
+            <h3>What Does Higher PPI Mean?</h3>
+            <p>More detail per inch, smoother text edges, less visible pixel grid.</p>
+            <h3>Does Higher Resolution Always Mean Higher PPI?</h3>
+            <p>No. 1080p on 24in is 92 PPI. 1080p on 6in phone is higher PPI. Size matters.</p>
+            <h3>How Screen Size Affects PPI</h3>
+            <p>For fixed resolution, PPI falls as diagonal grows. For fixed size, PPI rises with resolution.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI vs DPI: Whats the Difference?</h2>
+            <p>PPI is display pixels per inch. DPI is printer dots per inch. They are not the same, though often mixed in casual use.</p>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate Aspect Ratio</h2>
+            <p>Divide width and height by their GCD.</p>
+            <h3>Aspect Ratio Formula</h3>
+            <div class="formula-box">AR = w/gcd : h/gcd</div>
+            <h3>Common Display Aspect Ratios</h3>
+            <p>16:9 for most monitors and TVs, 16:10 for some laptops, 21:9 for ultrawide, 4:3 for older panels. Check with our <a class="inline-link" href="./">screen resolution checker</a>.</p>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate Pixel Pitch</h2>
+            <p>Pixel pitch is mm per pixel, inverse of density.</p>
+            <h3>Pixel Pitch Formula</h3>
+            <div class="formula-box">pitch_mm = 25.4 / PPI</div>
+            <h3>PPI vs Pixel Pitch</h3>
+            <p>Higher PPI means smaller pitch. Example: 92 PPI = 0.276mm. 163 PPI = 0.156mm. 460 PPI = 0.055mm.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI and Retina Display Distance</h2>
+            <h3>What Is Retina Distance?</h3>
+            <p>Distance where pixels blend for normal vision. Closer screens need higher PPI.</p>
+            <h3>How Viewing Distance Affects Pixel Visibility</h3>
+            <p>Same PPI looks sharper from farther away. Phones need 300+ PPI. Monitors look fine at 90-160 PPI. TVs look fine at 40-80 PPI.</p>
+            <h3>PPI Required for a Retina-Like Display</h3>
+            <p>Rule of thumb: phone 300+, laptop 200+, desktop 100-160 at normal distance. This varies by eyesight.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI by Screen Resolution and Size</h2>
+            <table>
+            <tr><th>Format</th><th>Example</th><th>PPI range</th></tr>
+            <tr><td>1080p PPI</td><td>1920x1080</td><td>92 at 24in, 82 at 27in</td></tr>
+            <tr><td>1440p PPI</td><td>2560x1440</td><td>109 at 27in, 93 at 32in</td></tr>
+            <tr><td>4K PPI</td><td>3840x2160</td><td>163 at 27in, 138 at 32in</td></tr>
+            <tr><td>5K PPI</td><td>5120x2880</td><td>218 at 27in</td></tr>
+            <tr><td>8K PPI</td><td>7680x4320</td><td>275 at 32in, 158 at 55in TV</td></tr>
+            </table>
+            <h3>1080p PPI</h3><p>Common: 92 PPI at 24in.</p>
+            <h3>1440p PPI</h3><p>Common: 109 PPI at 27in.</p>
+            <h3>4K PPI</h3><p>Common: 163 PPI at 27in, 138 at 32in.</p>
+            <h3>5K PPI</h3><p>Common: 218 PPI at 27in.</p>
+            <h3>8K PPI</h3><p>Common: 275 PPI at 32in.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI Calculator Examples</h2>
+            <h3>1080p 24-Inch Monitor PPI</h3><p>1920x1080 at 24in = 91.8 PPI.</p>
+            <h3>1440p 27-Inch Monitor PPI</h3><p>2560x1440 at 27in = 108.8 PPI.</p>
+            <h3>4K 27-Inch Monitor PPI</h3><p>3840x2160 at 27in = 163.2 PPI.</p>
+            <h3>4K 32-Inch Monitor PPI</h3><p>3840x2160 at 32in = 137.7 PPI.</p>
+            <h3>4K 55-Inch TV PPI</h3><p>3840x2160 at 55in = 80.1 PPI. Low PPI is fine for TV distance.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI Comparison Between Displays</h2>
+            <p>Two screens with different resolutions can share similar PPI if sizes differ.</p>
+            <h3>Compare Two Monitors</h3><p>24in 1080p (92 PPI) vs 32in 1440p (93 PPI) look similar in sharpness.</p>
+            <h3>Compare Monitor and Laptop PPI</h3><p>15.6in laptop 1080p = 141 PPI, sharper than 24in 1080p at same resolution.</p>
+            <h3>Compare Phone and Tablet PPI</h3><p>Phones pack 400+ PPI. Tablets often 260-330 PPI. Both look sharp due to distance.</p>
+        </section>
+
+        <section class="section">
+            <h2>What Is a Good PPI?</h2>
+            <p>Good PPI depends on distance, not a single best number.</p>
+            <h3>PPI for Monitors</h3><p>90-110 is standard. 140-165 is sharp for 4K 27-32in.</p>
+            <h3>PPI for Laptops</h3><p>140-220 is common and looks crisp at arm length.</p>
+            <h3>PPI for Smartphones</h3><p>350-500 is typical. Above 400 differences are hard to see.</p>
+            <h3>PPI for TVs</h3><p>40-80 is normal because you sit far away.</p>
+        </section>
+
+        <section class="section">
+            <h2>Does PPI Affect Image Quality?</h2>
+            <h3>PPI and Image Sharpness</h3><p>Higher PPI gives finer detail if source resolution is high enough.</p>
+            <h3>PPI and Text Clarity</h3><p>Text benefits most. 100+ PPI desktop and 300+ PPI phone look clean.</p>
+            <h3>PPI and Pixelation</h3><p>Low PPI shows blocky edges. High PPI hides the grid.</p>
+        </section>
+
+        <section class="section">
+            <h2>PPI vs Screen Resolution</h2>
+            <p>Resolution is total pixels. PPI is pixels per inch. Use resolution for workload and screen space. Use PPI for sharpness. Verify actual pixels with our <a class="inline-link" href="./">screen resolution checker</a> and smoothness with <a class="inline-link" href="./frame-rate-tester.html">FPS test</a>.</p>
+        </section>
+
+        <section class="section" aria-label="Frequently Asked Questions">
+            <h2>Frequently Asked Questions About PPI</h2>
+            <div class="faq-item">
+                <h3>What does PPI mean?</h3>
+                <p>Pixels Per Inch. Pixels packed into one linear inch of display.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I calculate PPI?</h3>
+                <p>Use sqrt(w*w+h*h)/diagonal_inches. Enter values above for instant result.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a good PPI for a monitor?</h3>
+                <p>90-110 is standard. 140-165 is sharp for 4K. Choice depends on distance and eyesight.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is higher PPI always better?</h3>
+                <p>Not always. Beyond retina distance you see little gain, but GPU cost rises.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the PPI of a 1080p screen?</h3>
+                <p>Depends on size: 92 at 24in, 82 at 27in.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the PPI of a 1440p screen?</h3>
+                <p>109 at 27in, 93 at 32in.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the PPI of a 4K screen?</h3>
+                <p>163 at 27in, 138 at 32in, 80 at 55in TV.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is PPI the same as DPI?</h3>
+                <p>No. PPI is screen pixels. DPI is print dots.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does screen size affect PPI?</h3>
+                <p>Yes. Same resolution on larger screen lowers PPI.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does PPI affect viewing distance?</h3>
+                <p>Higher PPI lets you sit closer without seeing pixels. Lower PPI needs more distance.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Related Display Calculators and Tools</h2>
+            <p>Continue with closely related display checks:</p>
+            <h3>Screen Resolution Checker</h3>
+            <p>See live pixels, viewport, and DPR. <a class="inline-link" href="./">Open screen resolution checker</a></p>
+            <h3>Screen Size Calculator</h3>
+            <p>Planned. Will derive width, height, and area from diagonal and ratio.</p>
+            <h3>Aspect Ratio Calculator</h3>
+            <p>Planned. Will simplify w:h and match common ratios.</p>
+            <h3>Pixel Density Calculator</h3>
+            <p>You are here. This page is the pixel density calculator.</p>
+            <h3>Display Bandwidth Calculator</h3>
+            <p>Planned. Will estimate bandwidth from resolution, bit depth, and refresh.</p>
+            <h3>FPS Calculator</h3>
+            <p>Measure rendering smoothness. <a class="inline-link" href="./frame-rate-tester.html">Open FPS test</a></p>
+            <h3>Screen Size Visualizer</h3>
+            <p>Planned. Will show relative physical sizes side by side.</p>
+        </section>
+    </article>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>About This Tool</h3>
+                <p>A free browser-based PPI calculator that helps you understand your display pixel density. No data is sent to any server - all calculations happen locally in your browser.</p>
+            </div>
+            <div>
+                <h3>Free Display Tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li>
+                    <li><a href="./ppi-calculator.html">PPI Calculator</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>The Developer</h3>
+                <p>Built by <strong>Chetan Kumar</strong> - a digital tool architect specializing in high-performance web applications and SEO-first development.</p>
+                <div class="social-links" style="margin-top:1.2rem">
+                    <a href="https://github.com/22066ayushkumar-jpg" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/askchetan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="copy-text">
+            &copy; <span id="yr"></span> whats-my-screen-resolution.netlify
+        </div>
+    </footer>
+</main>
+<script>
+(function(){
+    document.getElementById("yr").innerText = new Date().getFullYear();
+    
+    var calcBtn = document.getElementById("calc-btn");
+    var widthInput = document.getElementById("res-width");
+    var heightInput = document.getElementById("res-height");
+    var diagInput = document.getElementById("diag-size");
+    var resultPpi = document.getElementById("result-ppi");
+    var resultCard = document.getElementById("result-card");
+    var resultPpiCard = document.getElementById("result-ppi-card");
+    var detailsSection = document.getElementById("details-section");
+    
+    var dWidth = document.getElementById("d-width");
+    var dHeight = document.getElementById("d-height");
+    var dDiagPx = document.getElementById("d-diag-px");
+    var dSize = document.getElementById("d-size");
+    var dAr = document.getElementById("d-ar");
+    var dCategory = document.getElementById("d-category");
+    
+    function gcd(a,b){return b===0?a:gcd(b,a%b);}
+    
+    function updateDensityBar(ppi){
+        var segs=["seg-low","seg-med","seg-high","seg-vhigh","seg-ultra"];
+        var thresholds=[150,250,400];
+        segs.forEach(function(id,i){
+            var el=document.getElementById(id);
+            el.classList.remove("inactive");
+        });
+        if(ppi<150){
+            document.getElementById("seg-low").classList.add("inactive");
+            document.getElementById("seg-med").classList.add("inactive");
+            document.getElementById("seg-high").classList.add("inactive");
+            document.getElementById("seg-vhigh").classList.add("inactive");
+        }else if(ppi<250){
+            document.getElementById("seg-med").classList.add("inactive");
+            document.getElementById("seg-high").classList.add("inactive");
+            document.getElementById("seg-vhigh").classList.add("inactive");
+        }else if(ppi<400){
+            document.getElementById("seg-high").classList.add("inactive");
+            document.getElementById("seg-vhigh").classList.add("inactive");
+        }else{
+            document.getElementById("seg-vhigh").classList.add("inactive");
+        }
+    }
+    
+    function calculate(){
+        var w=parseInt(widthInput.value);
+        var h=parseInt(heightInput.value);
+        var d=parseFloat(diagInput.value);
+        
+        if(!w||!h||!d||w<=0||h<=0||d<=0){
+            return;
+        }
+        
+        var diagPx=Math.sqrt(w*w+h*h);
+        var ppi=diagPx/d;
+        var comm=gcd(w,h);
+        var ar=(w/comm)+":"+(h/comm);
+        
+        var category="Standard";
+        if(ppi>=400)category="Ultra High";
+        else if(ppi>=250)category="Very High";
+        else if(ppi>=150)category="High";
+        
+        resultPpi.innerText=Math.round(ppi);
+        resultPpiCard.innerText=Math.round(ppi);
+        resultCard.style.display="block";
+        detailsSection.style.display="block";
+        
+        dWidth.innerText=w;
+        dHeight.innerText=h;
+        dDiagPx.innerText=Math.round(diagPx);
+        dSize.innerText=d.toFixed(1)+" inches";
+        dAr.innerText=ar;
+        dCategory.innerText=category;
+        
+        var segs=["seg-low","seg-med","seg-high","seg-vhigh","seg-ultra"];
+        segs.forEach(function(id){document.getElementById(id).classList.remove("inactive");});
+        if(ppi<150){
+            ["seg-low","seg-med","seg-high","seg-vhigh"].forEach(function(id){document.getElementById(id).classList.add("inactive");});
+        }else if(ppi<250){
+            ["seg-med","seg-high","seg-vhigh"].forEach(function(id){document.getElementById(id).classList.add("inactive");});
+        }else if(ppi<400){
+            ["seg-high","seg-vhigh"].forEach(function(id){document.getElementById(id).classList.add("inactive");});
+        }else{
+            document.getElementById("seg-vhigh").classList.add("inactive");
+        }
+    }
+    
+    calcBtn.addEventListener("click",calculate);
+    
+    [widthInput,heightInput,diagInput].forEach(function(input){
+        input.addEventListener("keypress",function(e){
+            if(e.key==="Enter")calculate();
+        });
+    });
+})();
+</script>
+</body>
+</html>

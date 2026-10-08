@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor Ghosting Test — Free Online Motion Trail &amp; Response Time Test</title>
+    <meta name="description" content="Free online monitor ghosting test with block tracking, text scroll and line tracking modes. Adjust speed and background to spot motion trails and overdrive issues in your browser.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/ghosting-test.html">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Crect x='5' y='7' width='22' height='15' rx='3' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Cpath d='M10 14h5M12 17h5M14 20h5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' opacity='0.85'/%3E%3Cpath d='M12 27h8M16 22v5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+
+    <meta property="og:title" content="Monitor Ghosting Test — Free Motion Trail &amp; Response Time Test">
+    <meta property="og:description" content="Run a free online ghosting test with block tracking, text scroll and line tracking. Spot motion trails, adjust speed and background, all in your browser.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/ghosting-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Monitor Ghosting Test — Free Motion Trail Test">
+    <meta name="twitter:description" content="Free browser-based ghosting test for monitors. Block, text and line modes with speed and background controls. No download, no account.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Monitor Ghosting Test — Free Motion Trail & Response Time Test",
+        "url": "https://whats-my-screen-resolution.netlify.app/ghosting-test.html",
+        "author": {
+            "@type": "Person",
+            "name": "Chetan Kumar",
+            "url": "https://www.linkedin.com/in/askchetan/"
+        },
+        "description": "Free browser-based monitor ghosting test with block tracking, text scroll and line tracking modes, adjustable speed and background.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Screen Resolution Checker",
+                "item": "https://whats-my-screen-resolution.netlify.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Monitor Ghosting Test",
+                "item": "https://whats-my-screen-resolution.netlify.app/ghosting-test.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is a monitor ghosting test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A monitor ghosting test moves a block, text or line across the screen so you can watch for a translucent trail behind it. A visible trail means slow pixel response; a bright halo ahead of the object suggests overdrive overshoot."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why does my 1ms display still show ghosting?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The advertised 1ms value is usually the single fastest grey-to-grey transition. Other color transitions can take 5–20ms or more, so real-world average response is often several times the advertised figure."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I max out overdrive on my monitor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Generally no. Maximum overdrive often creates severe inverse artifacts such as bright leading halos. The middle setting is usually the best balance between reduced ghosting and acceptable overshoot."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which panel type ghosts the most?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "VA panels typically show the most visible ghosting, especially on dark scenes, because dark transitions can take 15–40ms. IPS and TN are lighter, and OLED with sub-0.1ms response is virtually ghost-free."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the ghosting test measure my monitor hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The test is a visual reference only. Browsers cannot read panel response time or overdrive settings. Results depend on ambient light, viewing angle, browser rendering and your display settings."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is higher refresh rate always less ghosting?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not necessarily. Higher refresh reduces sample-and-hold motion blur, but if pixel response is too slow, more ghosting can actually be exposed because more color transitions must finish in the same time."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --p: #2563eb;
+            --p-hover: #1d4ed8;
+            --p-soft: #eff6ff;
+            --bg: #f8fafc;
+            --c: #ffffff;
+            --t: #1e293b;
+            --tm: #64748b;
+            --border: #e2e8f0;
+            --dark: #0f172a;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--t);
+            line-height: 1.6;
+            padding: 1rem;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 15% 5%, rgba(37, 99, 235, 0.06), transparent 28%), radial-gradient(circle at 90% 20%, rgba(14, 165, 233, 0.05), transparent 25%);
+            z-index: -1;
+        }
+        main { max-width: 1120px; margin: 0 auto; }
+        a { color: var(--p); }
+        button, input { font-family: inherit; }
+        button { cursor: pointer; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+        .hero {
+            background: var(--c);
+            padding: 3.5rem 1.5rem 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.08);
+            filter: blur(45px);
+            right: -100px;
+            top: -150px;
+        }
+        .hero > * { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--p-soft);
+            color: var(--p);
+            border: 1px solid #bfdbfe;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .eyebrow-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--p); }
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+        .hero-sub { max-width: 760px; margin: 0 auto 1.5rem; color: var(--tm); font-size: 1.08rem; }
+        .hero-actions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1.25rem; border-radius: 0.8rem; font-weight: 800; text-decoration: none; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--p); color: white; border: 1px solid var(--p); }
+        .btn-primary:hover { background: var(--p-hover); }
+        .btn-secondary { background: white; color: var(--t); border: 1px solid var(--border); }
+        .btn-secondary:hover { border-color: #bfdbfe; background: var(--p-soft); }
+        .hero-note { font-size: 0.82rem; color: var(--tm); }
+        .hero-note strong { color: var(--success); }
+
+        .breadcrumbs { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 0 auto 1.5rem; color: var(--tm); font-size: 0.85rem; }
+        .breadcrumbs a { text-decoration: none; font-weight: 700; }
+        .breadcrumbs a:hover { color: var(--p); text-decoration: underline; }
+        .breadcrumbs span { opacity: 0.6; }
+
+        .section {
+            background: var(--c);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04);
+            border: 1px solid var(--border);
+        }
+        .section-heading { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.25rem; }
+        .section-icon { width: 2.5rem; height: 2.5rem; border-radius: 0.8rem; background: var(--p-soft); color: var(--p); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .section-heading h2 { font-size: 1.5rem; line-height: 1.2; margin: 0; }
+        .section-heading p { color: var(--tm); font-size: 0.95rem; margin-top: 0.25rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; line-height: 1.25; }
+        h3 { font-size: 1.08rem; margin-bottom: 0.45rem; }
+        p { margin-bottom: 0.9rem; color: #475569; }
+        p:last-child { margin-bottom: 0; }
+        .muted { color: var(--tm); }
+        .small { font-size: 0.85rem; }
+        .code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; background: #f1f5f9; border: 1px solid var(--border); border-radius: 0.4rem; padding: 0.1rem 0.35rem; }
+
+        .tool-section { scroll-margin-top: 1rem; }
+        .tool-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr); gap: 1rem; align-items: start; }
+        .tool-column { min-width: 0; }
+        .panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.8rem; }
+        .panel-heading h2 { margin: 0; }
+        .panel-heading p { margin: 0.2rem 0 0; }
+        .mode-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+        .mode-tab { border: 1px solid var(--border); background: #f8fafc; color: var(--tm); border-radius: 0.65rem; padding: 0.55rem 0.85rem; font-size: 0.85rem; font-weight: 800; transition: 0.2s ease; }
+        .mode-tab:hover { border-color: #bfdbfe; color: var(--p); }
+        .mode-tab.active { background: var(--p); border-color: var(--p); color: white; }
+        .control-row { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; align-items: center; }
+        .control-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tm); margin-right: 0.25rem; }
+
+        .test-panel {
+            position: relative;
+            min-height: 480px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: var(--dark);
+            border: 1px solid #334155;
+            cursor: pointer;
+            outline: none;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .test-panel:focus-visible { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25); }
+        .test-panel.is-fullscreen { cursor: default; border-color: #334155; }
+        .ghost-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: #000000; transition: background-color 0.2s ease; }
+        .test-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.58); color: white; padding: 1rem; transition: opacity 0.25s ease; }
+        .test-panel.is-fullscreen .test-overlay,
+        .test-panel.is-fullscreen .test-toolbar { display: none; }
+        .overlay-card { max-width: 430px; text-align: center; background: rgba(15, 23, 42, 0.78); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 1rem; padding: 1.5rem; backdrop-filter: blur(10px); }
+        .overlay-icon { width: 3rem; height: 3rem; margin: 0 auto 0.8rem; border-radius: 0.85rem; background: rgba(255, 255, 255, 0.13); display: flex; align-items: center; justify-content: center; }
+        .overlay-card h2 { color: white; font-size: 1.35rem; margin-bottom: 0.4rem; }
+        .overlay-card p { color: #cbd5e1; font-size: 0.9rem; }
+        .overlay-card .btn { margin-top: 0.5rem; }
+        .test-toolbar { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.78); color: white; border-top: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); }
+        .toolbar-current { display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
+        .toolbar-swatch { width: 0.9rem; height: 0.9rem; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.55); flex-shrink: 0; background: #000; }
+        .toolbar-label { font-size: 0.85rem; font-weight: 800; white-space: nowrap; }
+        .toolbar-meta { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.78rem; color: #cbd5e1; }
+        .toolbar-shortcut { font-size: 0.75rem; color: #cbd5e1; white-space: nowrap; }
+
+        .info-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .info-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; }
+        .info-card h2 { font-size: 1.05rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+        .info-card h2 .section-icon { width: 2rem; height: 2rem; }
+        .response-bars { display: flex; flex-direction: column; gap: 0.55rem; }
+        .response-row { display: grid; grid-template-columns: 3.2rem 1fr auto; gap: 0.55rem; align-items: center; font-size: 0.82rem; }
+        .response-row strong { font-weight: 900; color: var(--t); }
+        .response-track { height: 0.65rem; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+        .response-fill { height: 100%; border-radius: 999px; background: var(--p); }
+        .response-row .ms { font-variant-numeric: tabular-nums; color: var(--tm); font-weight: 700; }
+        .info-note { margin-top: 0.8rem; padding: 0.7rem; background: white; border-left: 3px solid var(--p); border-radius: 0.4rem; font-size: 0.78rem; color: var(--tm); }
+        .od-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .od-item { background: white; border: 1px solid var(--border); border-radius: 0.7rem; padding: 0.65rem 0.75rem; display: flex; justify-content: space-between; gap: 0.5rem; align-items: center; font-size: 0.82rem; }
+        .od-item strong { color: var(--t); }
+        .od-tag { font-size: 0.68rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.2rem 0.45rem; border-radius: 0.35rem; white-space: nowrap; }
+        .od-tag.default { background: #f1f5f9; color: var(--tm); }
+        .od-tag.recommended { background: #ecfdf5; color: var(--success); }
+        .od-tag.caution { background: #fffbeb; color: var(--warning); }
+        .od-tag.avoid { background: #fef2f2; color: var(--danger); }
+        .od-item span.hint { display: block; color: var(--tm); font-size: 0.75rem; }
+        .assess-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; }
+        .assess-card { border-radius: 0.7rem; padding: 0.75rem; font-size: 0.78rem; border: 1px solid var(--border); background: white; }
+        .assess-card.clean { border-color: #a7f3d0; background: #ecfdf5; }
+        .assess-card.ghost { border-color: #fde68a; background: #fffbeb; }
+        .assess-card strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+        .assess-card.clean strong { color: var(--success); }
+        .assess-card.ghost strong { color: var(--warning); }
+        .privacy-pill { display: flex; align-items: flex-start; gap: 0.55rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 0.7rem; padding: 0.75rem; color: #065f46; font-size: 0.78rem; }
+        .privacy-pill svg { flex-shrink: 0; margin-top: 0.1rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .feature-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.2rem; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .feature-card:hover { transform: translateY(-3px); border-color: #bfdbfe; }
+        .feature-card .section-icon { width: 2.25rem; height: 2.25rem; margin-bottom: 0.8rem; }
+        .feature-card h3 { font-size: 1rem; }
+        .feature-card p { font-size: 0.88rem; margin: 0; }
+
+        .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .callout { background: var(--p-soft); border: 1px solid #bfdbfe; border-radius: 1rem; padding: 1.2rem; }
+        .callout h3 { color: var(--p); }
+        .callout p { font-size: 0.9rem; margin: 0; }
+        .example-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid var(--success); border-radius: 0.8rem; padding: 1rem; margin: 0.8rem 0; }
+
+        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+        .step-card { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: white; }
+        .step-num { background: var(--p); color: white; font-weight: 900; font-size: 0.8rem; letter-spacing: 0.08em; padding: 0.45rem 1rem; }
+        .step-body { padding: 1rem; }
+        .step-body h3 { font-size: 0.98rem; margin-bottom: 0.35rem; }
+        .step-body p { font-size: 0.85rem; margin: 0; }
+
+        .term-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+        .term-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; }
+        .term-card h3 { font-size: 0.98rem; }
+        .term-card p { font-size: 0.85rem; margin: 0; }
+
+        .panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+        .panel-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; }
+        .panel-card h3 { font-size: 1rem; }
+        .panel-stat { display: inline-block; background: var(--p-soft); color: var(--p); border: 1px solid #bfdbfe; border-radius: 0.4rem; font-size: 0.72rem; font-weight: 900; padding: 0.2rem 0.5rem; margin-bottom: 0.6rem; }
+        .panel-card ul { padding-left: 1.1rem; color: #475569; font-size: 0.85rem; }
+        .panel-card li { margin-bottom: 0.4rem; }
+
+        .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+        .faq-item { border: 1px solid var(--border); border-radius: 0.9rem; padding: 1rem; background: #f8fafc; }
+        .faq-item h3 { font-size: 0.95rem; color: var(--t); }
+        .faq-item p { font-size: 0.86rem; margin: 0; }
+        .faq-item .question-mark { color: var(--p); font-family: Georgia, serif; font-style: italic; font-weight: 900; margin-right: 0.25rem; }
+
+        .tips-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .tips-list li { background: #f8fafc; border: 1px solid var(--border); border-radius: 0.8rem; padding: 0.9rem 1rem; font-size: 0.9rem; color: #475569; }
+        .tips-list strong { color: var(--t); }
+
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.85rem; }
+        .related-card { display: flex; align-items: center; gap: 0.7rem; border: 1px solid var(--border); border-radius: 0.85rem; padding: 0.8rem; text-decoration: none; background: white; }
+        .related-card:hover { border-color: #bfdbfe; background: var(--p-soft); }
+        .related-card .section-icon { width: 2rem; height: 2rem; }
+        .related-card strong { display: block; font-size: 0.85rem; color: var(--t); }
+        .related-card span { display: block; font-size: 0.75rem; color: var(--tm); }
+
+        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .device-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; text-decoration: none; color: var(--t); transition: transform 0.2s ease, border-color 0.2s ease; }
+        .device-card:hover { transform: translateY(-3px); border-color: #bfdbfe; }
+        .device-card .device-icon { width: 2.25rem; height: 2.25rem; border-radius: 0.7rem; background: var(--p-soft); color: var(--p); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+        .device-card h3 { font-size: 0.98rem; margin-bottom: 0.25rem; }
+        .device-card p { font-size: 0.82rem; margin: 0; }
+        .device-card .arrow { color: var(--p); font-weight: 900; margin-top: 0.55rem; display: block; }
+
+        .cta-section { background: var(--dark); color: white; text-align: center; padding: 3rem 1.5rem; border-radius: 1.5rem; position: relative; overflow: hidden; }
+        .cta-section::before { content: ""; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(37, 99, 235, 0.25); filter: blur(50px); left: -80px; top: -120px; }
+        .cta-section > * { position: relative; z-index: 1; }
+        .cta-section h2 { color: white; font-size: 2rem; }
+        .cta-section p { color: #cbd5e1; max-width: 650px; margin: 0 auto 1.5rem; }
+        .cta-section .btn-primary { background: white; color: var(--dark); border-color: white; }
+        .cta-section .btn-primary:hover { background: #e0e7ff; }
+
+        .footer-dark { background: #0f172a; color: #cbd5e1; padding: 3rem 2rem; border-radius: 1.5rem; margin-top: 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; }
+        .footer-dark h3 { color: white; margin-bottom: 0.8rem; font-size: 1rem; }
+        .footer-dark p, .footer-dark a { font-size: 0.86rem; }
+        .footer-dark a { color: #cbd5e1; text-decoration: none; }
+        .footer-dark a:hover { color: white; text-decoration: underline; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.45rem; }
+        .footer-bottom { border-top: 1px solid #334155; margin-top: 2rem; padding-top: 1.25rem; font-size: 0.8rem; color: #94a3b8; }
+
+        @media (max-width: 850px) {
+            .tool-grid { grid-template-columns: 1fr; }
+            .test-panel { min-height: 420px; }
+            .two-col, .faq-grid { grid-template-columns: 1fr; }
+            .assess-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            body { padding: 0.75rem; }
+            .hero { padding: 2.5rem 1rem 2rem; }
+            .section { padding: 1.35rem 1rem; }
+            .test-panel { min-height: 340px; }
+            .toolbar-shortcut { display: none; }
+            .test-toolbar { justify-content: center; }
+            .panel-heading { flex-direction: column; }
+            .cta-section { padding: 2.5rem 1rem; }
+            .control-row { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="hero">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser ghosting test</div>
+            <h1>Monitor Ghosting Test</h1>
+            <p class="hero-sub">Move blocks, text and lines across the screen to spot motion trails and overdrive artifacts. Everything runs locally in your browser.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#test-tool">Start ghosting test</a>
+                <a class="btn btn-secondary" href="#how-to-test">How to test</a>
+            </div>
+            <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No data upload</strong></p>
+        </header>
+
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="./">Screen Resolution Checker</a>
+            <span aria-hidden="true">/</span>
+            <span>Monitor Ghosting Test</span>
+        </nav>
+
+        <section class="section tool-section" id="test-tool" aria-labelledby="test-tool-title">
+            <div class="tool-grid">
+                <div class="tool-column">
+                    <div class="panel-heading">
+                        <div>
+                            <h2 id="test-tool-title">Interactive Ghosting Test</h2>
+                            <p>Observe if there is trailing behind the moving object. Press <span class="code">F</span> or click the screen for fullscreen.</p>
+                        </div>
+                    </div>
+
+                    <div class="mode-tabs" role="tablist" aria-label="Test mode">
+                        <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="block">Block Tracking</button>
+                        <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="text">Text Scroll</button>
+                        <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="line">Line Tracking</button>
+                    </div>
+
+                    <div class="control-row" role="group" aria-label="Animation speed">
+                        <span class="control-label">Speed</span>
+                        <button class="mode-tab speed-tab" type="button" data-speed="slow">Slow</button>
+                        <button class="mode-tab speed-tab active" type="button" data-speed="medium">Medium</button>
+                        <button class="mode-tab speed-tab" type="button" data-speed="fast">Fast</button>
+                    </div>
+
+                    <div class="control-row" role="group" aria-label="Background color">
+                        <span class="control-label">Background</span>
+                        <button class="mode-tab bg-tab active" type="button" data-bg="black">Black BG</button>
+                        <button class="mode-tab bg-tab" type="button" data-bg="grey">Grey BG</button>
+                        <button class="mode-tab bg-tab" type="button" data-bg="white">White BG</button>
+                    </div>
+
+                    <div class="test-panel" id="testPanel" tabindex="0" role="button" aria-label="Fullscreen ghosting test. Activate to enter fullscreen.">
+                        <canvas class="ghost-canvas" id="ghostCanvas" aria-label="Moving ghosting test animation"></canvas>
+                        <div class="test-overlay" id="testOverlay">
+                            <div class="overlay-card">
+                                <div class="overlay-icon" aria-hidden="true">
+                                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                                </div>
+                                <h2 id="overlayTitle">Observe ghosting trails</h2>
+                                <p id="overlayText">Watch the area behind the moving block. A translucent trail means ghosting; a bright halo ahead suggests overdrive overshoot.</p>
+                                <button class="btn btn-primary" id="fullscreenButton" type="button">Enter fullscreen</button>
+                            </div>
+                        </div>
+                        <div class="test-toolbar" aria-hidden="true">
+                            <div class="toolbar-current">
+                                <span class="toolbar-swatch" id="toolbarSwatch"></span>
+                                <span class="toolbar-label" id="toolbarLabel">Block Tracking</span>
+                                <span class="toolbar-meta" id="toolbarMeta">Medium · Black BG</span>
+                            </div>
+                            <span class="toolbar-shortcut">Press F for fullscreen · Esc to exit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="info-panel" aria-label="Ghosting reference panels">
+                    <div class="info-card">
+                        <h2><span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span> Response Speed</h2>
+                        <div class="response-bars">
+                            <div class="response-row"><strong>OLED</strong><div class="response-track"><div class="response-fill" style="width:8%"></div></div><span class="ms">&lt;0.1ms</span></div>
+                            <div class="response-row"><strong>TN</strong><div class="response-track"><div class="response-fill" style="width:30%"></div></div><span class="ms">1–4ms</span></div>
+                            <div class="response-row"><strong>IPS</strong><div class="response-track"><div class="response-fill" style="width:55%"></div></div><span class="ms">3–8ms</span></div>
+                            <div class="response-row"><strong>VA</strong><div class="response-track"><div class="response-fill" style="width:90%"></div></div><span class="ms">5–40ms</span></div>
+                        </div>
+                        <div class="info-note">Shorter bar = faster response. Typical panel-class figures for reference only — your unit may differ.</div>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span> Overdrive Reference</h2>
+                        <div class="od-list">
+                            <div class="od-item"><div><strong>Off</strong><span class="hint">Most ghosting</span></div><span class="od-tag default">Default</span></div>
+                            <div class="od-item"><div><strong>Normal</strong><span class="hint">Recommended start</span></div><span class="od-tag recommended">Recommended</span></div>
+                            <div class="od-item"><div><strong>Fast</strong><span class="hint">May have slight inverse</span></div><span class="od-tag caution">Caution</span></div>
+                            <div class="od-item"><div><strong>Fastest</strong><span class="hint">Severe inverse artifacts</span></div><span class="od-tag avoid">Avoid</span></div>
+                        </div>
+                        <div class="info-note">Adjust overdrive in your monitor OSD while watching the test, then compare trails and leading halos.</div>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> Assessment Guide</h2>
+                        <div class="assess-grid">
+                            <div class="assess-card clean"><strong>No Ghosting</strong>Clean edges · no trail or halo → excellent</div>
+                            <div class="assess-card ghost"><strong>Has Ghosting</strong>Afterimage/halo · blurred edges → adjust OD</div>
+                        </div>
+                    </div>
+
+                    <div class="privacy-pill">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span>Tests run on your device. No test data is sent to a server.</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="overview" aria-labelledby="overview-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                <div><h2 id="overview-title">Professional Ghosting Test Tool</h2><p>Evaluate motion performance with moving-object tracking, overdrive artifact checks and response-time context.</p></div>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><path d="M14 8h7M14 12h7M14 16h7"/></svg></div>
+                    <h3>Motion ghosting detection</h3>
+                    <p>Color blocks slide across the screen so you can watch for a translucent trail. Longer trails suggest slower response. VA panels usually show the worst dark-tone smear; OLED is virtually ghost-free.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <h3>Overdrive artifact detection</h3>
+                    <p>Overdrive accelerates pixel response, but over-acceleration creates bright halos ahead of moving objects. Use the test to find the optimal overdrive setting on your monitor.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
+                    <h3>Multi-speed comparison</h3>
+                    <p>Slow suits office scrolling, medium fits video playback and fast approximates FPS gaming. Judge ghosting at the speed you use most for the most meaningful result.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="what-is-ghosting" aria-labelledby="ghosting-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+                <div><h2 id="ghosting-title">What Is Ghosting?</h2><p>How pixel response time affects motion image quality.</p></div>
+            </div>
+            <div class="term-grid">
+                <article class="term-card">
+                    <h3>Pixel response time</h3>
+                    <p>Time a pixel needs to change from one color to another, measured in milliseconds. Advertised 1ms is usually the fastest grey-to-grey transition. Real response varies by transition — dark-to-bright can be 3–5× slower than bright-to-dark.</p>
+                </article>
+                <article class="term-card">
+                    <h3>Ghosting vs motion blur</h3>
+                    <p>Ghosting is a shadow caused by slow pixel response — an object drags a semi-transparent trail. Motion blur is perceptual blur from eyes tracking sample-and-hold displays and needs black frame insertion or strobed backlighting to reduce.</p>
+                </article>
+                <article class="term-card">
+                    <h3>Overdrive &amp; inverse ghosting</h3>
+                    <p>Displays apply higher voltage to speed up pixel response. Moderate overdrive reduces ghosting; excessive overdrive makes pixels overshoot, creating bright reverse artifacts that can be more distracting than no overdrive at all.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="how-to-test" aria-labelledby="how-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/></svg></div>
+                <div><h2 id="how-title">How to Test for Ghosting</h2><p>Three steps to evaluate your display's motion performance.</p></div>
+            </div>
+            <div class="steps-grid">
+                <article class="step-card">
+                    <div class="step-num">STEP 01</div>
+                    <div class="step-body"><h3>Watch moving blocks</h3><p>Focus behind the moving blocks: is there a translucent trail? Trail visibility reflects response time. Black backgrounds reveal the most issues, especially VA dark-tone smear.</p></div>
+                </article>
+                <article class="step-card">
+                    <div class="step-num">STEP 02</div>
+                    <div class="step-body"><h3>Adjust overdrive</h3><p>In your monitor OSD, find Response Time or Overdrive and cycle Off/Normal/Fast/Fastest. At each level check: are trails reduced? Do white halos appear in front?</p></div>
+                </article>
+                <article class="step-card">
+                    <div class="step-num">STEP 03</div>
+                    <div class="step-body"><h3>Multi-speed verification</h3><p>Increase from slow to fast. Office users mainly need clean motion at lower speeds; FPS gamers need clean motion even at high speeds.</p></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="terminology" aria-labelledby="terms-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></div>
+                <div><h2 id="terms-title">Ghosting Terminology</h2><p>Key terms you will see in monitor specifications and reviews.</p></div>
+            </div>
+            <div class="term-grid">
+                <article class="term-card">
+                    <h3>GtG response time</h3>
+                    <p>Grey-to-grey — time for a pixel to switch between grey levels. The advertised value is typically the fastest single transition; real average GtG is often 2–4× the spec.</p>
+                </article>
+                <article class="term-card">
+                    <h3>MPRT</h3>
+                    <p>Moving Picture Response Time combines pixel response with sample-and-hold persistence blur. It better matches perceived motion clarity. At 60Hz the minimum MPRT is about 16.67ms.</p>
+                </article>
+                <article class="term-card">
+                    <h3>Overdrive / OD</h3>
+                    <p>Pixel acceleration that briefly applies higher voltage to speed liquid-crystal rotation. Built into virtually all LCDs, usually with Off/Low/Medium/High settings. Start with Medium.</p>
+                </article>
+                <article class="term-card">
+                    <h3>VRR &amp; ghosting</h3>
+                    <p>FreeSync/G-Sync solve screen tearing, not ghosting. At low frame rates, VRR can worsen overdrive behaviour on some displays and increase overshoot artifacts.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="panel-comparison" aria-labelledby="panel-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg></div>
+                <div><h2 id="panel-title">Ghosting Performance by Panel Type</h2><p>How panel technology affects motion quality.</p></div>
+            </div>
+            <div class="panel-grid">
+                <article class="panel-card">
+                    <h3>TN panel</h3>
+                    <span class="panel-stat">1–4ms GtG</span>
+                    <ul>
+                        <li>Fastest LCD type for average response.</li>
+                        <li>Dark transitions are also relatively fast.</li>
+                        <li>Minimal ghosting, easy to tune overdrive.</li>
+                        <li>Historical first choice for competitive esports.</li>
+                    </ul>
+                </article>
+                <article class="panel-card">
+                    <h3>IPS panel</h3>
+                    <span class="panel-stat">3–8ms GtG</span>
+                    <ul>
+                        <li>Fast IPS reaches 1–3ms average response.</li>
+                        <li>Dark transitions slightly slower than TN.</li>
+                        <li>Modern Fast IPS ghosting approaches TN.</li>
+                        <li>Overdrive Medium is usually recommended.</li>
+                    </ul>
+                </article>
+                <article class="panel-card">
+                    <h3>VA panel</h3>
+                    <span class="panel-stat">5–40ms dark GtG</span>
+                    <ul>
+                        <li>Bright transitions: 3–5ms, acceptable.</li>
+                        <li>Dark transitions: 15–40ms, severe ghosting.</li>
+                        <li>Most visible in dark scenes (“VA smear”).</li>
+                        <li>Overdrive has limited dark-tone improvement.</li>
+                    </ul>
+                </article>
+                <article class="panel-card">
+                    <h3>OLED</h3>
+                    <span class="panel-stat">&lt;0.1ms GtG</span>
+                    <ul>
+                        <li>All color transitions are extremely fast.</li>
+                        <li>Virtually no ghosting in the traditional sense.</li>
+                        <li>No overdrive setting is needed.</li>
+                        <li>Best motion performance of any panel type.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="optimization" aria-labelledby="opt-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
+                <div><h2 id="opt-title">Ghosting Optimization Tips</h2><p>Practical settings to reduce trails and inverse artifacts.</p></div>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="4"/></svg></div>
+                    <h3>Adjust overdrive</h3>
+                    <p>Start from the middle setting. White halos mean go down one level; heavy trails mean go up one level. Find the balance. OLED does not need this setting.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+                    <h3>Increase refresh rate</h3>
+                    <p>Higher refresh shortens inter-frame hold time and lowers perceived blur. Going from 60Hz to 144Hz greatly improves dynamic clarity — but slow pixels can expose more ghosting at higher rates.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="6" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01"/></svg></div>
+                    <h3>Black frame insertion</h3>
+                    <p>BFI inserts black frames between real frames to reduce sample-and-hold blur. It trades some brightness for significantly better motion clarity. Some displays brand this as ELMB or DyAc.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4M8 9v4"/><path d="M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div>
+                    <h3>Gaming optimization</h3>
+                    <p>VA dark-scene ghosting hits FPS games hardest. If you cannot switch panels, raise in-game brightness or gamma to reduce dark scenes, and disable in-game motion blur effects.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <div><h2 id="faq-title">Frequently Asked Questions</h2></div>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Why does my “1ms” display still show ghosting?</h3><p>The advertised 1ms is the single fastest transition among all colors. Other transitions may be 5–20ms, and VA panels advertising 1ms can still have dark transitions of 30ms+.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Can VA panel dark ghosting be fixed?</h3><p>Not fundamentally. VA dark transitions are inherently slow. Overdrive helps only a little, and pushing it too high creates inverse artifacts. Premium VAs have improved but still trail IPS/OLED.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Should I max out overdrive?</h3><p>Generally no. Maximum overdrive almost always creates severe overshoot — bright leading halos on moving objects. The middle setting is usually the best balance.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Is higher refresh rate always less ghosting?</h3><p>Not entirely. Higher refresh reduces hold-time blur, but if pixel response is too slow, more ghosting can be exposed because more color switches must finish in the same time.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Does OLED truly have zero ghosting?</h3><p>OLED response is around 0.03–0.1ms, so no traditional ghosting — but OLED still has sample-and-hold blur, which needs high refresh or BFI to reduce.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Is black frame insertion worth using?</h3><p>Very effective — it can cut MPRT from about 16ms to a few ms — but brightness drops 40–60% and low-frequency BFI can show perceptible flicker.</p></div>
+            </div>
+        </section>
+
+        <section class="section" id="testing-tips" aria-labelledby="tips-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/><path d="M7 11a4 4 0 0 1 4-4h1V3.5a1.5 1.5 0 0 1 3 0V7h2a2 2 0 0 1 2 2v2"/><path d="M15 21h6a1 1 0 0 0 1-1v-6a2 2 0 0 0-2-2h-5"/></svg></div>
+                <div><h2 id="tips-title">Ghosting Testing Tips</h2><p>Get the most reliable result from this visual test.</p></div>
+            </div>
+            <ul class="tips-list">
+                <li><strong>Background matters:</strong> light objects on a black background expose ghosting the most. Also test dark objects on a white background for the reverse case.</li>
+                <li><strong>Disable VRR:</strong> turn off FreeSync/G-Sync first — some displays change overdrive behaviour in VRR mode.</li>
+                <li><strong>Test step by step:</strong> don't jump straight to max overdrive. Start from Off and increase one level at a time, watching trails and inverse artifacts carefully.</li>
+                <li><strong>Real-world verification:</strong> after tool testing, confirm in your most-used games or videos. Real experience matters more than a single test pattern.</li>
+            </ul>
+            <div class="example-box"><strong>Important limitation:</strong> This page is a visual inspection aid. Browsers cannot read panel response time, overdrive level or hardware measurements. Use the patterns to compare settings, then rely on calibrated equipment or manufacturer policy for warranty decisions.</div>
+        </section>
+
+        <section class="section" id="related-tools" aria-labelledby="related-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                <div><h2 id="related-title">Related Display Tools</h2><p>Pair the ghosting test with motion, sharpness and resolution checks.</p></div>
+            </div>
+            <div class="related-grid">
+                <a class="related-card" href="./screen-test.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                    <div><strong>Online Screen Test</strong><span>Colors, text &amp; touch</span></div>
+                </a>
+                <a class="related-card" href="./frame-rate-tester.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+                    <div><strong>Frame Rate Tester</strong><span>Visual motion test</span></div>
+                </a>
+                <a class="related-card" href="./">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                    <div><strong>Screen Resolution Checker</strong><span>Viewport and DPR</span></div>
+                </a>
+                <a class="related-card" href="./ppi-calculator.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+                    <div><strong>PPI Calculator</strong><span>Pixel density</span></div>
+                </a>
+                <a class="related-card" href="./screen-size.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+                    <div><strong>Screen Size Calculator</strong><span>Physical dimensions</span></div>
+                </a>
+                <a class="related-card" href="./how-to-check-phone-resolution.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+                    <div><strong>Phone Resolution Guide</strong><span>How to check on mobile</span></div>
+                </a>
+                <a class="related-card" href="./mouse-test.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 3v6"/></svg></div>
+                    <div><strong>Mouse Test</strong><span>Buttons, movement &amp; scroll</span></div>
+                </a>
+                <a class="related-card" href="./screen-uniformity-test.html"><strong>Screen Uniformity Test</strong><span>Brightness and color consistency</span></a>
+            </div>
+        </section>
+
+        <section class="section" id="device-guides" aria-labelledby="device-guides-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+                <div><h2 id="device-guides-title">Device Testing Guides</h2><p>Companion tools for checking resolution, density and display dimensions.</p></div>
+            </div>
+            <div class="device-grid">
+                <a class="device-card" href="./">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                    <h3>Screen Resolution Checker</h3><p>Check browser viewport, DPR, aspect ratio and device type.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./frame-rate-tester.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+                    <h3>Frame Rate Tester</h3><p>Compare visual motion and measure the page's frame rate.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./ppi-calculator.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+                    <h3>PPI Calculator</h3><p>Calculate pixel density from resolution and diagonal size.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./screen-size.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+                    <h3>Screen Size Calculator</h3><p>Calculate physical width, height and area from a diagonal.</p><span class="arrow">Open tool →</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-labelledby="cta-title">
+            <h2 id="cta-title">Ready to check for ghosting?</h2>
+            <p>Start the moving-block test, cycle through overdrive settings in your monitor OSD, and find the cleanest motion for your panel.</p>
+            <a class="btn btn-primary" href="#test-tool">Start the ghosting test</a>
+        </section>
+    </main>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>What is My Screen Resolution</h3>
+                <p>Free browser tools for screen resolution, motion, pixel density and display inspection.</p>
+            </div>
+            <div>
+                <h3>Display tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li>
+                    <li><a href="./ppi-calculator.html">PPI Calculator</a></li>
+                    <li><a href="./screen-size.html">Screen Size Calculator</a></li>
+                    <li><a href="./screen-test.html">Online Screen Test</a></li>
+                    <li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li>
+                    <li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li>
+                    <li><a href="./mouse-test.html">Mouse Test</a></li>
+                    <li><a href="./screen-uniformity-test.html">Screen Uniformity Test</a></li>
+                    <li><a href="./keyboard-test.html">Keyboard Test</a></li>
+                    <li><a href="./touch-screen-tester.html">Touch Screen Tester</a></li>
+                    <li><a href="./camera-test.html">Camera Test</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>About this test</h3>
+                <p>The ghosting test is a visual inspection aid. It does not provide a certified hardware measurement or a warranty decision.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+    </footer>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById("ghostCanvas");
+            const ctx = canvas.getContext("2d");
+            const testPanel = document.getElementById("testPanel");
+            const overlay = document.getElementById("testOverlay");
+            const overlayTitle = document.getElementById("overlayTitle");
+            const overlayText = document.getElementById("overlayText");
+            const fullscreenButton = document.getElementById("fullscreenButton");
+            const toolbarSwatch = document.getElementById("toolbarSwatch");
+            const toolbarLabel = document.getElementById("toolbarLabel");
+            const toolbarMeta = document.getElementById("toolbarMeta");
+            const modeTabs = document.querySelectorAll(".mode-tabs .mode-tab");
+            const speedTabs = document.querySelectorAll(".speed-tab");
+            const bgTabs = document.querySelectorAll(".bg-tab");
+            const year = document.getElementById("year");
+
+            const state = {
+                mode: "block",
+                speed: "medium",
+                bg: "black",
+                x: 0,
+                dir: 1
+            };
+
+            const speeds = { slow: 90, medium: 220, fast: 460 };
+            const backgrounds = {
+                black: "#000000",
+                grey: "#808080",
+                white: "#ffffff"
+            };
+
+            const overlayCopy = {
+                block: {
+                    title: "Observe ghosting trails",
+                    text: "Watch the area behind the moving block. A translucent trail means ghosting; a bright halo ahead suggests overdrive overshoot."
+                },
+                text: {
+                    title: "Watch scrolling text edges",
+                    text: "Look for smearing on letter edges while text moves. Sharp edges with no trail indicate fast pixel response."
+                },
+                line: {
+                    title: "Track the vertical line",
+                    text: "Focus on the leading and trailing edges of the moving line. A doubled or fuzzy edge can indicate slow response or overshoot."
+                }
+            };
+
+            function objectColor() {
+                return state.bg === "white" ? "#111111" : "#ffffff";
+            }
+
+            function resizeCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                const ratio = window.devicePixelRatio || 1;
+                canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+                canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+                ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+                if (state.x === 0) state.x = rect.width * 0.08;
+            }
+
+            function updateToolbar() {
+                const labels = { block: "Block Tracking", text: "Text Scroll", line: "Line Tracking" };
+                const speedLabel = state.speed.charAt(0).toUpperCase() + state.speed.slice(1);
+                const bgLabel = state.bg.charAt(0).toUpperCase() + state.bg.slice(1) + " BG";
+                toolbarLabel.textContent = labels[state.mode];
+                toolbarMeta.textContent = speedLabel + " · " + bgLabel;
+                toolbarSwatch.style.background = backgrounds[state.bg];
+                const copy = overlayCopy[state.mode];
+                overlayTitle.textContent = copy.title;
+                overlayText.textContent = copy.text;
+            }
+
+            function setActive(list, attr, value) {
+                list.forEach(function (el) {
+                    const active = el.dataset[attr] === value;
+                    el.classList.toggle("active", active);
+                    if (el.hasAttribute("aria-selected")) el.setAttribute("aria-selected", String(active));
+                });
+            }
+
+            function setMode(mode) {
+                state.mode = mode;
+                setActive(modeTabs, "mode", mode);
+                updateToolbar();
+            }
+
+            function setSpeed(speed) {
+                state.speed = speed;
+                setActive(speedTabs, "speed", speed);
+                updateToolbar();
+            }
+
+            function setBg(bg) {
+                state.bg = bg;
+                setActive(bgTabs, "bg", bg);
+                canvas.style.background = backgrounds[bg];
+                updateToolbar();
+            }
+
+            function enterFullscreen() {
+                const element = document.documentElement;
+                if (!document.fullscreenElement) {
+                    if (element.requestFullscreen) element.requestFullscreen();
+                    else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+                }
+                resizeCanvas();
+            }
+
+            function exitFullscreen() {
+                if (document.fullscreenElement || document.webkitFullscreenElement) {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                }
+            }
+
+            function updateFullscreenClass() {
+                testPanel.classList.toggle("is-fullscreen", Boolean(document.fullscreenElement || document.webkitFullscreenElement));
+                resizeCanvas();
+            }
+
+            function drawBlock(w, h, color) {
+                const blockW = Math.max(48, w * 0.1);
+                const blockH = Math.max(48, h * 0.16);
+                const y = (h - blockH) / 2;
+                const gap = blockW * 0.35;
+
+                ctx.fillStyle = color;
+                ctx.fillRect(state.x, y, blockW, blockH);
+
+                ctx.globalAlpha = 0.55;
+                ctx.fillRect(state.x - gap, y + blockH * 0.2, blockW * 0.55, blockH * 0.6);
+                ctx.globalAlpha = 0.25;
+                ctx.fillRect(state.x - gap * 1.7, y + blockH * 0.3, blockW * 0.35, blockH * 0.4);
+                ctx.globalAlpha = 1;
+
+                ctx.fillStyle = state.bg === "white" ? "#e5e7eb" : "#334155";
+                ctx.fillRect(state.x + blockW, y, blockW * 0.2, blockH);
+            }
+
+            function drawText(w, h, color) {
+                const fontSize = Math.max(28, Math.min(64, h * 0.12));
+                ctx.font = "900 " + fontSize + "px system-ui, sans-serif";
+                ctx.fillStyle = color;
+                ctx.textBaseline = "middle";
+                ctx.fillText("MOVING TEXT 123 ABC", state.x, h / 2);
+
+                ctx.globalAlpha = 0.45;
+                ctx.fillText("MOVING TEXT 123 ABC", state.x - fontSize * 0.45, h / 2);
+                ctx.globalAlpha = 0.2;
+                ctx.fillText("MOVING TEXT 123 ABC", state.x - fontSize * 0.85, h / 2);
+                ctx.globalAlpha = 1;
+            }
+
+            function drawLine(w, h, color) {
+                const lineW = Math.max(6, w * 0.012);
+                const y = h * 0.2;
+                const lineH = h * 0.6;
+
+                ctx.globalAlpha = 0.3;
+                ctx.fillStyle = color;
+                ctx.fillRect(state.x - lineW * 2.2, y, lineW, lineH);
+                ctx.globalAlpha = 0.55;
+                ctx.fillRect(state.x - lineW * 1.2, y, lineW, lineH);
+                ctx.globalAlpha = 1;
+                ctx.fillRect(state.x, y, lineW, lineH);
+            }
+
+            let lastTime = performance.now();
+            function frame(now) {
+                const rect = canvas.getBoundingClientRect();
+                const w = rect.width;
+                const h = rect.height;
+                const dt = Math.min((now - lastTime) / 1000, 0.05);
+                lastTime = now;
+
+                const pxPerSec = speeds[state.speed];
+                const margin = w * 0.06;
+                const travel = w * 0.22;
+                state.x += state.dir * pxPerSec * dt;
+                if (state.x > w - margin) {
+                    state.x = w - margin;
+                    state.dir = -1;
+                } else if (state.x < margin - travel * 0.5) {
+                    state.x = margin - travel * 0.5;
+                    state.dir = 1;
+                }
+
+                ctx.clearRect(0, 0, w, h);
+                const color = objectColor();
+                if (state.mode === "block") drawBlock(w, h, color);
+                else if (state.mode === "text") drawText(w, h, color);
+                else drawLine(w, h, color);
+
+                requestAnimationFrame(frame);
+            }
+
+            modeTabs.forEach(function (tab) {
+                tab.addEventListener("click", function () { setMode(tab.dataset.mode); });
+            });
+            speedTabs.forEach(function (tab) {
+                tab.addEventListener("click", function () { setSpeed(tab.dataset.speed); });
+            });
+            bgTabs.forEach(function (tab) {
+                tab.addEventListener("click", function () { setBg(tab.dataset.bg); });
+            });
+
+            testPanel.addEventListener("click", function () {
+                if (document.fullscreenElement || document.webkitFullscreenElement) exitFullscreen();
+                else enterFullscreen();
+            });
+
+            fullscreenButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                enterFullscreen();
+            });
+
+            document.addEventListener("keydown", function (event) {
+                const tag = (event.target && event.target.tagName) || "";
+                if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+                if (event.key === "f" || event.key === "F") {
+                    event.preventDefault();
+                    enterFullscreen();
+                }
+            });
+
+            document.addEventListener("fullscreenchange", updateFullscreenClass);
+            document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
+            window.addEventListener("resize", resizeCanvas);
+
+            year.textContent = new Date().getFullYear();
+            setMode("block");
+            setSpeed("medium");
+            setBg("black");
+            resizeCanvas();
+            requestAnimationFrame(frame);
+        })();
+    </script>
+</body>
+</html>

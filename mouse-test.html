@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Test — Buttons, Scroll Wheel, CPS &amp; Event Rate</title>
+    <meta name="description" content="Test mouse buttons and scroll wheel, check double-click behavior, view browser pointer event rate, run a CPS test and inspect cursor smoothness.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/mouse-test.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Mouse Test — Buttons, Scroll Wheel, CPS &amp; Event Rate">
+    <meta property="og:description" content="Check mouse buttons and scroll wheel, double-click behavior, browser pointer event rate, CPS, and cursor smoothness.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/mouse-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mouse Test — Buttons, Scroll Wheel &amp; CPS">
+    <meta name="twitter:description" content="Test mouse buttons, double-clicks, scroll wheel, browser event rate, CPS and cursor smoothness.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Mouse Test — Buttons, Scroll Wheel, CPS & Event Rate",
+        "url": "https://whats-my-screen-resolution.netlify.app/mouse-test.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Free browser dashboard to check mouse buttons and wheel, double-click behavior, pointer event rate, CPS and cursor smoothness.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Mouse Test", "item": "https://whats-my-screen-resolution.netlify.app/mouse-test.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What can this mouse test check?", "acceptedAnswer": {"@type": "Answer", "text": "It can show browser-received pointer movement, button presses, click and double-click events, and scroll-wheel events. It cannot diagnose internal mouse hardware or guarantee that every device feature is supported by the browser."}},
+            {"@type": "Question", "name": "Can the test measure my mouse polling rate or DPI?", "acceptedAnswer": {"@type": "Answer", "text": "No. Browser event timing depends on the browser, operating system, workload and device. It is not a hardware polling-rate measurement. DPI or CPI requires physical movement and a known measurement scale; this page does not measure it."}},
+            {"@type": "Question", "name": "Why does my right-click open the browser menu?", "acceptedAnswer": {"@type": "Answer", "text": "The Buttons and Wheel panel suppresses the browser context menu so the right button can be registered there. Outside that panel, normal browser behavior remains unchanged."}},
+            {"@type": "Question", "name": "Does it work with a trackpad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, a trackpad can test pointer movement, clicks and scrolling. Its available buttons and gestures depend on the device and operating-system settings."}},
+            {"@type": "Question", "name": "Does this mouse test upload data?", "acceptedAnswer": {"@type": "Answer", "text": "No. Interaction events are processed locally in the browser and are not sent to a server by this tool."}},
+            {"@type": "Question", "name": "Are the gamer challenge scores a hardware benchmark?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aim, reaction and clicks-per-second results are measured by browser events and are affected by display refresh, browser scheduling, input devices and system load. They are practice estimates, not certified latency or polling-rate measurements."}},
+            {"@type": "Question", "name": "What does the polling-rate panel measure?", "acceptedAnswer": {"@type": "Answer", "text": "It counts pointer movement events delivered to the page during a rolling second. This browser event-rate estimate is not a direct reading of the mouse's hardware polling frequency."}},
+            {"@type": "Question", "name": "How does the CPS test work?", "acceptedAnswer": {"@type": "Answer", "text": "The CPS panel counts click events during a five-second round and divides the total by the round duration to show an approximate clicks-per-second score."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button { font:inherit; cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.5rem 1.5rem 3rem; margin-bottom:1.5rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.2rem,6vw,4rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:1rem; }
+        .hero-sub { max-width:760px; margin:0 auto 1.5rem; color:var(--tm); font-size:1.08rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.8rem 1.25rem; border-radius:.8rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .2s ease,background .2s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .hero-note { color:var(--tm); font-size:.82rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1.5rem; color:var(--tm); font-size:.85rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:2rem; border:1px solid var(--border); border-radius:1.5rem; margin-bottom:1.5rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.8rem; margin-bottom:1.25rem; }
+        .section-icon { width:2.5rem; height:2.5rem; border-radius:.8rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .section-heading h2 { font-size:1.5rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.95rem; margin-top:.25rem; }
+        h2 { font-size:1.5rem; line-height:1.25; margin-bottom:1rem; }
+        h3 { font-size:1.08rem; margin-bottom:.45rem; }
+        p { color:#475569; margin-bottom:.9rem; }
+        p:last-child { margin-bottom:0; }
+        .dashboard-heading { display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; margin-bottom:1rem; }
+        .dashboard-heading h2 { margin:0; }
+        .dashboard-heading p { margin:.2rem 0 0; }
+        .dashboard-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .dash-panel { min-width:0; padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; box-shadow:0 4px 10px rgba(15,23,42,.035); }
+        .dash-panel h3 { margin:0; font-size:1rem; }
+        .dash-title { display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.9rem; }
+        .dash-reset { width:2rem; height:2rem; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:.6rem; color:var(--tm); background:#fff; }
+        .dash-reset:hover { color:var(--p); border-color:#bfdbfe; background:var(--p-soft); }
+        .buttons-panel { grid-row:span 2; }
+        .mouse-graphic { display:block; width:min(100%,270px); height:255px; margin:.2rem auto .8rem; overflow:visible; }
+        .mouse-shell { fill:#fff; stroke:#94a3b8; stroke-width:3; }
+        .mouse-button-shape { fill:#eaf1fb; stroke:#94a3b8; stroke-width:2; transition:fill .12s,stroke .12s; }
+        .mouse-button-shape.is-active { fill:#60a5fa; stroke:#2563eb; }
+        .mouse-detail { fill:none; stroke:#94a3b8; stroke-width:2; }
+        .button-counters { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; }
+        .button-counter { display:flex; justify-content:space-between; gap:.5rem; padding:.55rem .65rem; border:1px solid var(--border); border-radius:.65rem; background:#fff; font-size:.8rem; }
+        .button-counter strong { font-variant-numeric:tabular-nums; }
+        .button-counter.is-active { border-color:#93c5fd; background:var(--p-soft); }
+        .button-counter.is-active strong { color:var(--p); }
+        .wheel-count { display:flex; justify-content:space-between; align-items:center; margin:.65rem 0; color:var(--tm); font-size:.8rem; }
+        .wheel-count strong { color:var(--t); font-size:1rem; font-variant-numeric:tabular-nums; }
+        .wheel-meter { height:.55rem; overflow:hidden; background:#e2e8f0; border-radius:999px; }
+        .wheel-meter span { display:block; width:0; height:100%; border-radius:inherit; background:var(--p); transition:width .12s; }
+        .readout { text-align:center; padding:.6rem 0 .75rem; }
+        .readout-value { display:block; color:var(--t); font-size:clamp(2.4rem,5vw,3.5rem); font-weight:900; line-height:1.05; font-variant-numeric:tabular-nums; letter-spacing:-.04em; }
+        .readout-unit { color:var(--tm); font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+        .readout-caption { color:var(--tm); font-size:.78rem; margin-top:.5rem; }
+        .peak-line { text-align:center; padding:.5rem; margin-bottom:.7rem; color:#475569; background:#fff; border:1px solid var(--border); border-radius:.65rem; font-size:.82rem; }
+        .peak-line strong { color:var(--t); font-variant-numeric:tabular-nums; }
+        .dash-actions { display:flex; justify-content:center; gap:.5rem; }
+        .double-stats { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin:.3rem 0 .8rem; }
+        .double-stat { padding:.55rem; text-align:center; background:#fff; border:1px solid var(--border); border-radius:.65rem; }
+        .double-stat span { display:block; color:var(--tm); font-size:.68rem; font-weight:800; text-transform:uppercase; }
+        .double-stat strong { display:block; margin-top:.18rem; font-size:1.2rem; font-variant-numeric:tabular-nums; }
+        .double-click-pad { min-height:128px; width:100%; border:1px dashed #93c5fd; border-radius:.75rem; color:var(--p); background:#fff; font-weight:800; touch-action:manipulation; }
+        .double-click-pad:hover { background:var(--p-soft); }
+        .cps-panel { min-height:260px; }
+        .smooth-panel { grid-column:span 1; }
+        .smooth-pad { position:relative; height:190px; overflow:hidden; border:1px solid #334155; border-radius:.75rem; background:linear-gradient(145deg,#fff,#eff6ff); touch-action:none; cursor:crosshair; }
+        .smooth-canvas { position:absolute; inset:0; width:100%; height:100%; }
+        .smooth-hint { position:absolute; inset:0; display:flex; justify-content:center; align-items:center; padding:1rem; text-align:center; color:#94a3b8; font-size:.85rem; font-weight:700; pointer-events:none; }
+        .smooth-pad.has-movement .smooth-hint { opacity:0; }
+        .panel-note { margin:.75rem 0 0; color:var(--tm); font-size:.74rem; }
+        .dashboard-note { margin-top:1rem; padding:.75rem .9rem; border-left:3px solid var(--p); border-radius:.45rem; color:var(--tm); background:#f8fafc; font-size:.8rem; }
+        .privacy-pill { display:flex; align-items:flex-start; gap:.55rem; padding:.75rem; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.7rem; font-size:.78rem; }
+        .privacy-pill svg { flex-shrink:0; }
+        .small-button { padding:.55rem .8rem; border:1px solid var(--border); border-radius:.65rem; background:#fff; color:var(--t); font-size:.8rem; font-weight:800; }
+        .small-button:hover { background:var(--p-soft); border-color:#bfdbfe; color:var(--p); }
+        .feature-grid,.term-grid,.steps-grid,.related-grid,.device-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card,.term-card { background:#f8fafc; border:1px solid var(--border); border-radius:1rem; padding:1.1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3,.term-card h3 { font-size:1rem; }
+        .feature-card p,.term-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; border:1px solid var(--border); border-radius:1rem; background:#fff; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; border:1px solid #bfdbfe; border-radius:1rem; background:var(--p-soft); }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; border:1px solid var(--border); border-radius:.9rem; background:#f8fafc; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card,.device-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover,.device-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span,.device-card p { color:var(--tm); font-size:.82rem; margin:.2rem 0 0; }
+        .device-card h3 { font-size:.98rem; }
+        .device-card .arrow { display:block; margin-top:.55rem; color:var(--p); font-size:.82rem; font-weight:900; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:650px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:950px) { .dashboard-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .buttons-panel { grid-row:span 2; } }
+        @media(max-width:700px) { .dashboard-grid { grid-template-columns:1fr; } .buttons-panel { grid-row:auto; } .smooth-panel { grid-column:auto; } .two-col,.faq-grid { grid-template-columns:1fr; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.35rem 1rem; } .dashboard-heading { align-items:flex-start; flex-direction:column; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser mouse test</div>
+        <h1>Mouse Test</h1>
+        <p class="hero-sub">Test mouse buttons, scroll wheel, browser event rate, double-click behavior, clicks per second and pointer smoothness in one live dashboard.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#mouse-tool">Open mouse dashboard</a>
+            <a class="btn btn-secondary" href="#how-to-test">How it works</a>
+        </div>
+        <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No data upload</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Mouse Test</span>
+    </nav>
+
+    <section class="section" id="mouse-tool" aria-labelledby="mouse-tool-title">
+        <div class="dashboard-heading">
+            <div><h2 id="mouse-tool-title">Mouse Test Dashboard</h2><p>Run each diagnostic live. Use your mouse directly over the dashboard panels.</p></div>
+            <button class="small-button" id="resetButton" type="button">Reset dashboard</button>
+        </div>
+        <div class="dashboard-grid">
+            <article class="dash-panel buttons-panel" aria-labelledby="buttons-title">
+                <div class="dash-title"><h3 id="buttons-title">Buttons &amp; Wheel</h3><button class="dash-reset" id="buttonsReset" type="button" aria-label="Reset button and wheel counts">↻</button></div>
+                <svg class="mouse-graphic" viewBox="0 0 240 280" role="img" aria-label="Mouse diagram showing left, middle and right button states">
+                    <path class="mouse-shell" d="M120 12C65 12 40 53 40 111v73c0 51 34 84 80 84s80-33 80-84v-73c0-58-25-99-80-99Z"/>
+                    <path id="mouseLeftShape" class="mouse-button-shape" d="M120 22C75 22 50 55 50 111h70V22Z"/>
+                    <path id="mouseRightShape" class="mouse-button-shape" d="M120 22c45 0 70 33 70 89h-70V22Z"/>
+                    <path class="mouse-detail" d="M120 22v105M40 112h160"/>
+                    <rect id="mouseMiddleShape" class="mouse-button-shape" x="108" y="49" width="24" height="49" rx="12"/>
+                    <path class="mouse-detail" d="M120 55v16"/>
+                    <text x="120" y="154" text-anchor="middle" fill="#64748b" font-size="11" font-weight="700">BACK / FORWARD</text>
+                    <path id="mouseBackShape" class="mouse-button-shape" d="M49 163h22v34H49z"/>
+                    <path id="mouseForwardShape" class="mouse-button-shape" d="M169 163h22v34h-22z"/>
+                    <text x="120" y="228" text-anchor="middle" fill="#94a3b8" font-size="10">Press each mouse button</text>
+                </svg>
+                <div class="button-counters">
+                    <div class="button-counter" data-counter="0"><span>Left</span><strong id="leftCount">0</strong></div>
+                    <div class="button-counter" data-counter="2"><span>Right</span><strong id="rightCount">0</strong></div>
+                    <div class="button-counter" data-counter="1"><span>Middle</span><strong id="middleCount">0</strong></div>
+                    <div class="button-counter" data-counter="3"><span>Back</span><strong id="backCount">0</strong></div>
+                    <div class="button-counter" data-counter="4"><span>Forward</span><strong id="forwardCount">0</strong></div>
+                </div>
+                <div class="wheel-count"><span>Scroll wheel events</span><strong id="wheelCount">0</strong></div>
+                <div class="wheel-meter" aria-hidden="true"><span id="wheelMeter"></span></div>
+            <p class="panel-note">Scroll over this panel to test the wheel. Press a mouse button over the illustration or its panel to increment that button's count.</p>
+            </article>
+
+            <article class="dash-panel" aria-labelledby="polling-title">
+                <div class="dash-title"><h3 id="polling-title">Polling Rate / Hz Test</h3><button class="dash-reset" id="pollingReset" type="button" aria-label="Reset pointer event rate test">↻</button></div>
+                <div class="readout"><strong class="readout-value" id="pollingCurrent">0</strong><span class="readout-unit">Observed pointer events / sec</span><p class="readout-caption">Move mouse in circles quickly</p></div>
+                <div class="peak-line">Peak observed: <strong id="pollingPeak">0 Hz</strong></div>
+                <div class="dash-actions"><button class="small-button" id="pollingStart" type="button">Start Test</button><button class="small-button" id="pollingStop" type="button" disabled>Stop Test</button></div>
+            <p class="panel-note">Browser event-rate estimate only; it does not read the mouse's hardware polling frequency. Keep moving inside this card while testing.</p>
+            </article>
+
+            <article class="dash-panel" aria-labelledby="double-title">
+                <div class="dash-title"><h3 id="double-title">Double Click Test</h3><button class="dash-reset" id="doubleReset" type="button" aria-label="Reset double-click results">↻</button></div>
+                <div class="double-stats"><div class="double-stat"><span>Count</span><strong id="doubleCount">0</strong></div><div class="double-stat"><span>Interval</span><strong id="doubleInterval">— ms</strong></div></div>
+                <button class="double-click-pad" id="doubleClickPad" type="button">Click here repeatedly</button>
+                <p class="panel-note">Counts browser-recognized double-click events and the gap between the two clicks.</p>
+            </article>
+
+            <article class="dash-panel cps-panel" aria-labelledby="cps-title">
+                <div class="dash-title"><h3 id="cps-title">CPS Test</h3><button class="dash-reset" id="cpsReset" type="button" aria-label="Reset clicks-per-second round">↻</button></div>
+                <div class="readout"><strong class="readout-value" id="cpsResult">0.0</strong><span class="readout-unit">Clicks per second</span></div>
+                <div class="peak-line">Total: <strong id="cpsTotal">0</strong><span id="cpsCountdown"></span></div>
+                <button class="cps-pad" id="cpsPad" type="button">Start clicking</button>
+                <div class="dash-actions" style="margin-top:.6rem"><button class="small-button" id="cpsStart" type="button">Start / Reset</button></div>
+            </article>
+
+            <article class="dash-panel smooth-panel" aria-labelledby="smooth-title">
+                <div class="dash-title"><h3 id="smooth-title">Smoothness Test</h3><button class="dash-reset" id="smoothReset" type="button" aria-label="Clear movement trail">↻</button></div>
+                <div class="smooth-pad" id="smoothPad" aria-label="Move your mouse in this area to draw a tracking trail">
+                    <canvas class="smooth-canvas" id="smoothCanvas" aria-hidden="true"></canvas>
+                    <div class="smooth-hint" id="smoothHint">Move the mouse here to draw a movement trail</div>
+                </div>
+                <p class="panel-note">Draw circles and diagonals; look for visible breaks or jumps. This visual trace is not a sensor calibration.</p>
+            </article>
+        </div>
+        <div class="dashboard-note">Polling rate and reaction-related timing in a browser are event-based estimates, not direct hardware measurements. Browser scheduling, display refresh and system load can affect readings. No mouse data is uploaded.</div>
+    </section>
+
+    <section class="section" id="what-it-tests" aria-labelledby="features-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="features-title">Mouse Test Panels</h2><p>A separate dashboard card for each mouse diagnostic.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">▣</div><h3>Buttons &amp; Wheel</h3><p>See left, middle, right, back and forward button presses light up the mouse illustration and increase their counters. Scroll over the panel to test the wheel.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">Hz</div><h3>Polling Rate / Hz</h3><p>Move within the panel during a test round to count browser-delivered pointer events per second and track the peak estimate.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">2×</div><h3>Double Click</h3><p>Click the test area quickly. The panel counts browser-recognized double-clicks and shows the interval between their clicks.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">↻</div><h3>CPS &amp; Smoothness</h3><p>Run a five-second clicks-per-second round, then draw continuous paths in the smoothness panel to inspect pointer tracking visually.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="how-to-test" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">1</div><div><h2 id="how-title">How to Use the Mouse Dashboard</h2><p>Run each diagnostic directly in its own panel.</p></div></div>
+        <div class="steps-grid">
+            <article class="step-card"><div class="step-num">STEP 01</div><div class="step-body"><h3>Test buttons and wheel</h3><p>Press each mouse button over its panel and scroll there to update the wheel counter. The mouse diagram highlights the active button.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 02</div><div class="step-body"><h3>Run the rate and double-click checks</h3><p>Start the pointer event-rate estimate and move rapidly inside its panel. Make quick click pairs in the double-click card and watch its count and interval.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 03</div><div class="step-body"><h3>Try CPS and smoothness</h3><p>Start the CPS round and click repeatedly until it ends. Draw circles and diagonals in the smoothness area, then reset a card to repeat.</p></div></article>
+        </div>
+    </section>
+
+    <section class="section" id="understanding-results" aria-labelledby="results-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="results-title">Understanding the Readings</h2><p>Dashboard numbers reflect events delivered to this page, not certified hardware measurements.</p></div></div>
+        <div class="two-col">
+            <div><h3>Movement and speed</h3><p>Coordinates and distance are calculated from pointer events delivered to the test area. Peak speed uses the distance and time between observed movement events. Browser scheduling, acceleration, display scaling and event coalescing can affect these values.</p><h3>Click rate and double-clicks</h3><p>Clicks per second is the recent count of click events per one-second window. Double-clicks count the browser's <span class="code">dblclick</span> event; operating-system double-click settings and browser behavior influence recognition.</p></div>
+            <div class="callout"><h3>Not a polling-rate or DPI meter</h3><p>This page cannot read a mouse's internal polling rate, sensor resolution, DPI/CPI, latency, switches or firmware. Event intervals in a browser are not hardware polling-rate measurements. Use manufacturer utilities or suitable measurement equipment when you need those specifications.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">⌕</div><div><h2 id="troubleshooting-title">If a Mouse Input Does Not Register</h2><p>Try these basic checks before concluding a button or sensor has failed.</p></div></div>
+        <div class="term-grid">
+            <article class="term-card"><h3>Reconnect the mouse</h3><p>For a wired mouse, reconnect the cable or use a different USB port. For wireless models, check battery charge, receiver placement and Bluetooth connection.</p></article>
+            <article class="term-card"><h3>Check device settings</h3><p>Confirm buttons have not been remapped or disabled in the operating system or vendor software. Test another browser or computer if available.</p></article>
+            <article class="term-card"><h3>Clean and inspect</h3><p>Check the sensor window and scroll wheel for dust or obstruction. Use a suitable clean surface and follow the manufacturer's cleaning instructions.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Frequently Asked Questions</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>What can this mouse test check?</h3><p>It shows browser-received movement, button presses, click and double-click events, and scroll-wheel events. It cannot diagnose internal mouse hardware or guarantee that each feature is supported.</p></article>
+            <article class="faq-item"><h3>Can it measure polling rate or DPI?</h3><p>No. Browser event timing is affected by the browser, operating system and workload; it is not a hardware polling-rate measurement. This page does not measure DPI/CPI.</p></article>
+            <article class="faq-item"><h3>Why does right-click not open a menu in the pad?</h3><p>The test area suppresses the context menu so the right button can be tested. Normal browser context menus still work outside the test area.</p></article>
+            <article class="faq-item"><h3>Does it work with a trackpad?</h3><p>Yes. A trackpad can test pointer movement, clicks and scrolling. Available buttons and gestures depend on the device and operating-system settings.</p></article>
+            <article class="faq-item"><h3>Why are the back and forward buttons not detected?</h3><p>Side buttons are optional, and some mice or browsers do not expose them as standard pointer buttons. Device software may also remap them.</p></article>
+            <article class="faq-item"><h3>What does the polling-rate panel measure?</h3><p>It counts pointer movement events delivered to the page during a rolling second. This browser event-rate estimate is not a direct reading of the mouse's hardware polling frequency.</p></article>
+            <article class="faq-item"><h3>How is the CPS score calculated?</h3><p>The CPS panel counts click events during a five-second round and divides the total by the round duration for an approximate clicks-per-second score.</p></article>
+            <article class="faq-item"><h3>Does this mouse test upload data?</h3><p>No. The test processes interactions locally in your browser and does not send mouse events to a server.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Device Tools</h2><p>More free browser-based display and input checks.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display details</span></a>
+            <a class="related-card" href="./frame-rate-tester.html"><strong>Frame Rate Tester</strong><span>Visual motion and frame timing</span></a>
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Colors, text and touch</span></a>
+            <a class="related-card" href="./ghosting-test.html"><strong>Monitor Ghosting Test</strong><span>Motion trails and overdrive</span></a>
+            <a class="related-card" href="./dead-pixel-test.html"><strong>Dead Pixel Test</strong><span>Fullscreen color inspection</span></a>
+            <a class="related-card" href="./ppi-calculator.html"><strong>PPI Calculator</strong><span>Calculate pixel density</span></a>
+            <a class="related-card" href="./keyboard-test.html"><strong>Keyboard Test</strong><span>Check keys and rollover</span></a>
+            <a class="related-card" href="./camera-test.html"><strong>Camera Test</strong><span>Live webcam preview</span></a>
+            <a class="related-card" href="./touch-screen-tester.html"><strong>Touch Screen Tester</strong><span>Touch input diagnostics</span></a>
+        </div>
+    </section>
+
+    <section class="section" id="device-guides" aria-labelledby="device-guides-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">▣</div><div><h2 id="device-guides-title">More Display Tools</h2><p>Companion tools for resolution, density and physical screen size.</p></div></div>
+        <div class="device-grid">
+            <a class="device-card" href="./screen-size.html"><h3>Screen Size Calculator</h3><p>Calculate physical width, height and area.</p><span class="arrow">Open tool →</span></a>
+            <a class="device-card" href="./how-to-check-phone-resolution.html"><h3>Phone Resolution Guide</h3><p>Learn how to check a phone's screen resolution.</p><span class="arrow">Read guide →</span></a>
+            <a class="device-card" href="./screen-test.html"><h3>Online Screen Test</h3><p>Inspect colors, text sharpness and touch response.</p><span class="arrow">Open tool →</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to check your mouse?</h2>
+        <p>Test all five mouse buttons, scroll, double-click timing, click speed and cursor tracking in one dashboard. Readings stay in this browser session.</p>
+        <a class="btn btn-primary" href="#mouse-tool">Start the mouse test</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./how-to-check-phone-resolution.html">Phone Resolution Guide</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li><li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li><li><a href="./keyboard-test.html">Keyboard Test</a></li><li><a href="./camera-test.html">Camera Test</a></li></ul></div>
+        <div><h3>About this test</h3><p>Mouse Test checks browser events only. It does not certify device hardware or directly measure mouse DPI, hardware polling rate or latency.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var buttonPanel=document.querySelector(".buttons-panel");
+    var buttonCounts={0:0,1:0,2:0,3:0,4:0};
+    var buttonLabels={0:"Left",1:"Middle",2:"Right",3:"Back",4:"Forward"};
+    var buttonShapes={0:"mouseLeftShape",1:"mouseMiddleShape",2:"mouseRightShape",3:"mouseBackShape",4:"mouseForwardShape"};
+    buttonPanel.addEventListener("pointerdown",function(event){
+        if(event.target.closest("button"))return;
+        if(buttonLabels[event.button]===undefined)return;
+        buttonCounts[event.button]+=1;
+        document.getElementById(["leftCount","middleCount","rightCount","backCount","forwardCount"][event.button]).textContent=String(buttonCounts[event.button]);
+        document.querySelector('[data-counter="'+event.button+'"]').classList.add("is-active");
+        document.getElementById(buttonShapes[event.button]).classList.add("is-active");
+        if(event.button>=2)event.preventDefault();
+    });
+    function releaseMouseButtons(){
+        document.querySelectorAll(".button-counter").forEach(function(el){el.classList.remove("is-active");});
+        Object.keys(buttonShapes).forEach(function(key){document.getElementById(buttonShapes[key]).classList.remove("is-active");});
+    }
+    window.addEventListener("pointerup",releaseMouseButtons);
+    window.addEventListener("pointercancel",releaseMouseButtons);
+    buttonPanel.addEventListener("contextmenu",function(event){event.preventDefault();});
+    document.getElementById("buttonsReset").addEventListener("click",function(){
+        Object.keys(buttonCounts).forEach(function(key){buttonCounts[key]=0;});
+        ["leftCount","middleCount","rightCount","backCount","forwardCount"].forEach(function(id){document.getElementById(id).textContent="0";});
+        document.getElementById("wheelCount").textContent="0";
+        document.getElementById("wheelMeter").style.width="0";
+    });
+    buttonPanel.addEventListener("wheel",function(event){
+        document.getElementById("wheelCount").textContent=String(Number(document.getElementById("wheelCount").textContent)+1);
+        document.getElementById("wheelMeter").style.width=Math.min(100,Math.max(12,Math.abs(event.deltaY||event.deltaX)*2))+"%";
+        event.preventDefault();
+    },{passive:false});
+
+    var pollingPanel=document.getElementById("polling-title").closest(".dash-panel");
+    var polling={active:false,times:[],peak:0,current:0,timer:0};
+    function updatePolling(){
+        var now=performance.now();
+        polling.times=polling.times.filter(function(time){return now-time<1000;});
+        polling.current=polling.times.length;
+        polling.peak=Math.max(polling.peak,polling.current);
+        document.getElementById("pollingCurrent").textContent=String(polling.current);
+        document.getElementById("pollingPeak").textContent=polling.peak+" Hz";
+    }
+    pollingPanel.addEventListener("pointermove",function(){if(polling.active){polling.times.push(performance.now());}});
+    document.getElementById("pollingStart").addEventListener("click",function(){
+        polling.active=true;polling.times=[];polling.current=0;polling.peak=0;
+        document.getElementById("pollingCurrent").textContent="0";
+        document.getElementById("pollingPeak").textContent="0 Hz";
+        document.getElementById("pollingStart").disabled=true;
+        document.getElementById("pollingStop").disabled=false;
+        window.clearInterval(polling.timer);polling.timer=window.setInterval(updatePolling,100);
+    });
+    function stopPolling(){
+        polling.active=false;window.clearInterval(polling.timer);polling.timer=0;
+        document.getElementById("pollingStart").disabled=false;
+        document.getElementById("pollingStop").disabled=true;
+        updatePolling();
+    }
+    document.getElementById("pollingStop").addEventListener("click",stopPolling);
+    document.getElementById("pollingReset").addEventListener("click",function(){
+        stopPolling();polling.times=[];polling.current=0;polling.peak=0;
+        document.getElementById("pollingCurrent").textContent="0";
+        document.getElementById("pollingPeak").textContent="0 Hz";
+    });
+
+    var doubleState={count:0,lastClick:0,lastInterval:null};
+    var doublePad=document.getElementById("doubleClickPad");
+    doublePad.addEventListener("click",function(){
+        var now=performance.now();
+        doubleState.lastInterval=doubleState.lastClick?Math.max(0,Math.round(now-doubleState.lastClick)):null;
+        doubleState.lastClick=now;
+    });
+    doublePad.addEventListener("dblclick",function(){
+        doubleState.count+=1;
+        document.getElementById("doubleCount").textContent=String(doubleState.count);
+        document.getElementById("doubleInterval").textContent=(doubleState.lastInterval===null?"—":doubleState.lastInterval+" ms");
+    });
+    document.getElementById("doubleReset").addEventListener("click",function(){
+        doubleState.count=0;doubleState.lastClick=0;doubleState.lastInterval=null;
+        document.getElementById("doubleCount").textContent="0";
+        document.getElementById("doubleInterval").textContent="— ms";
+    });
+
+    var cpsState={active:false,count:0,startedAt:0,endsAt:0,timer:0,duration:5};
+    var cpsPadDashboard=document.getElementById("cpsPad");
+    var cpsOutput=document.getElementById("cpsResult");
+    function finishCpsDashboard(){
+        if(!cpsState.active)return;
+        cpsState.active=false;window.clearInterval(cpsState.timer);cpsState.timer=0;
+        cpsOutput.textContent=(cpsState.count/cpsState.duration).toFixed(1);
+        cpsPadDashboard.textContent="Round complete · press Start / Reset to try again";
+        document.getElementById("cpsCountdown").textContent=" · Complete";
+    }
+    document.getElementById("cpsStart").addEventListener("click",function(){
+        window.clearInterval(cpsState.timer);cpsState.duration=5;cpsState.count=0;cpsState.startedAt=performance.now();cpsState.endsAt=cpsState.startedAt+cpsState.duration*1000;cpsState.active=true;
+        document.getElementById("cpsTotal").textContent="0";cpsOutput.textContent="0.0";document.getElementById("cpsCountdown").textContent=" · 5.0s";cpsPadDashboard.textContent="Click as fast as you can!";
+        cpsState.timer=window.setInterval(function(){var left=Math.max(0,(cpsState.endsAt-performance.now())/1000);document.getElementById("cpsCountdown").textContent=" · "+left.toFixed(1)+"s";if(left<=0)finishCpsDashboard();},50);
+    });
+    cpsPadDashboard.addEventListener("click",function(){
+        if(!cpsState.active)return;
+        if(performance.now()>=cpsState.endsAt){finishCpsDashboard();return;}
+        cpsState.count+=1;document.getElementById("cpsTotal").textContent=String(cpsState.count);
+        var elapsed=Math.max(0.1,(performance.now()-cpsState.startedAt)/1000);cpsOutput.textContent=(cpsState.count/elapsed).toFixed(1);
+    });
+    document.getElementById("cpsReset").addEventListener("click",function(){
+        window.clearInterval(cpsState.timer);cpsState.timer=0;cpsState.active=false;cpsState.count=0;
+        cpsOutput.textContent="0.0";document.getElementById("cpsTotal").textContent="0";document.getElementById("cpsCountdown").textContent="";cpsPadDashboard.textContent="Start clicking";
+    });
+
+    var smoothPad=document.getElementById("smoothPad");
+    var smoothCanvas=document.getElementById("smoothCanvas");
+    var smoothContext=smoothCanvas.getContext("2d");
+    var lastSmoothPoint=null;
+    function resizeSmoothCanvas(){
+        var rect=smoothPad.getBoundingClientRect();var ratio=window.devicePixelRatio||1;
+        smoothCanvas.width=Math.max(1,Math.floor(rect.width*ratio));smoothCanvas.height=Math.max(1,Math.floor(rect.height*ratio));smoothContext.setTransform(ratio,0,0,ratio,0,0);
+        smoothContext.lineWidth=2.5;smoothContext.lineCap="round";smoothContext.lineJoin="round";smoothContext.strokeStyle="#2563eb";
+    }
+    smoothPad.addEventListener("pointermove",function(event){
+        var rect=smoothPad.getBoundingClientRect();var point={x:event.clientX-rect.left,y:event.clientY-rect.top};
+        smoothPad.classList.add("has-movement");
+        if(lastSmoothPoint){smoothContext.beginPath();smoothContext.moveTo(lastSmoothPoint.x,lastSmoothPoint.y);smoothContext.lineTo(point.x,point.y);smoothContext.stroke();}
+        lastSmoothPoint=point;
+    });
+    smoothPad.addEventListener("pointerleave",function(){lastSmoothPoint=null;});
+    document.getElementById("smoothReset").addEventListener("click",function(){smoothContext.clearRect(0,0,smoothCanvas.width,smoothCanvas.height);lastSmoothPoint=null;smoothPad.classList.remove("has-movement");});
+    window.addEventListener("resize",resizeSmoothCanvas);
+    document.getElementById("resetButton").addEventListener("click",function(){
+        document.getElementById("buttonsReset").click();document.getElementById("pollingReset").click();document.getElementById("doubleReset").click();document.getElementById("cpsReset").click();document.getElementById("smoothReset").click();
+    });
+    resizeSmoothCanvas();
+})();
+</script>
+</body>
+</html>

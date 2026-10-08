@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch Screen Tester — Free Online Touchscreen Test</title>
+    <meta name="description" content="Test your touchscreen online for dead zones, multi-touch, ghost touches, accuracy and touch response. Free browser-based tester with no download.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/touch-screen-tester.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Touch Screen Tester — Free Online Touchscreen Test">
+    <meta property="og:description" content="Run a guided touchscreen diagnostic for touch detection, multi-touch, coverage, dead zones, gestures and browser response. No app or upload required.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/touch-screen-tester.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Touch Screen Tester — Free Online Touchscreen Test">
+    <meta name="twitter:description" content="Check touch detection, multi-touch, screen coverage, dead zones, gestures and ghost touch with one private browser-based tester.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Touch Screen Tester — Free Online Touchscreen Test",
+        "url": "https://whats-my-screen-resolution.netlify.app/touch-screen-tester.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Unified in-browser touchscreen diagnostic for touch events, multi-touch, accuracy, coverage, dead-zone verification, edges, gestures, unexpected touch events and browser event timing.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Touch Screen Tester", "item": "https://whats-my-screen-resolution.netlify.app/touch-screen-tester.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What is a touchscreen dead zone?", "acceptedAnswer": {"@type": "Answer", "text": "A touchscreen dead zone is an area where touch input is not consistently detected. This test can identify regions where the browser did not receive expected touch events, but repeated misses do not by themselves prove physical hardware damage."}},
+            {"@type": "Question", "name": "How can I test multi-touch?", "acceptedAnswer": {"@type": "Answer", "text": "Start the multi-touch step and place several fingers on the test surface at the same time. The tester shows the active pointer contacts it receives and the maximum simultaneously observed during the session."}},
+            {"@type": "Question", "name": "How do I check for ghost touch?", "acceptedAnswer": {"@type": "Answer", "text": "Run the ghost-touch observation step and keep your hands away from the screen during the countdown and observation interval. The page reports unexpected browser touch or pen pointer events received during that interval."}},
+            {"@type": "Question", "name": "Can I test an iPhone, Android, iPad or touchscreen laptop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Open the page on the device with touch input and run the same guided diagnostic. Available pointer information and gesture behavior depend on the browser, operating system and device."}},
+            {"@type": "Question", "name": "Can an online touchscreen test diagnose hardware damage?", "acceptedAnswer": {"@type": "Answer", "text": "No. It reports touch and pointer events delivered to the browser. It cannot definitively diagnose a digitizer, connector, controller, calibration or physical component fault."}},
+            {"@type": "Question", "name": "Does the touchscreen test upload touch data?", "acceptedAnswer": {"@type": "Answer", "text": "No. Touch coordinates and results are processed in the current browser page and are not uploaded by this tester."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button { font:inherit; cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.2rem 1.5rem 2.8rem; margin-bottom:1.1rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.1rem,6vw,3.5rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:.8rem; }
+        .hero-sub { max-width:800px; margin:0 auto 1.2rem; color:var(--tm); font-size:1.04rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.65rem; flex-wrap:wrap; margin-bottom:1rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.76rem 1.15rem; border-radius:.75rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .18s ease,background .18s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .btn:disabled { cursor:not-allowed; opacity:.5; transform:none; }
+        .hero-note { color:var(--tm); font-size:.8rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1rem; color:var(--tm); font-size:.83rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:1.6rem; border:1px solid var(--border); border-radius:1.35rem; margin-bottom:1.1rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:1rem; }
+        .section-icon { width:2.35rem; height:2.35rem; border-radius:.75rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:900; }
+        .section-heading h2 { font-size:1.4rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.9rem; margin-top:.2rem; }
+        h2 { font-size:1.45rem; line-height:1.25; margin-bottom:.8rem; }
+        h3 { font-size:1.04rem; margin-bottom:.4rem; }
+        p { color:#475569; margin-bottom:.75rem; }
+        p:last-child { margin-bottom:0; }
+        .device-strip { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.55rem; margin-bottom:1rem; }
+        .device-stat { min-width:0; padding:.55rem .65rem; background:#f8fafc; border:1px solid var(--border); border-radius:.65rem; }
+        .device-stat span { display:block; color:var(--tm); font-size:.63rem; font-weight:800; text-transform:uppercase; letter-spacing:.035em; }
+        .device-stat strong { display:block; margin-top:.1rem; color:var(--t); font-size:.82rem; overflow-wrap:anywhere; }
+        .start-row { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding:.9rem 1rem; margin-bottom:1rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:.9rem; }
+        .start-row p { margin:.12rem 0 0; font-size:.82rem; }
+        .start-actions { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+        .start-actions .btn { padding:.64rem .85rem; font-size:.82rem; }
+        .progress-wrap { margin-bottom:.85rem; }
+        .progress-top { display:flex; justify-content:space-between; align-items:center; gap:.5rem; margin-bottom:.35rem; color:var(--tm); font-size:.76rem; font-weight:800; }
+        .progress-track { height:.55rem; overflow:hidden; background:#e2e8f0; border-radius:999px; }
+        .progress-track span { display:block; width:0; height:100%; background:var(--p); border-radius:inherit; transition:width .2s ease; }
+        .test-header { display:flex; align-items:center; justify-content:space-between; gap:.7rem; flex-wrap:wrap; margin-bottom:.75rem; }
+        .test-header h3 { margin:0; font-size:1.05rem; }
+        .test-badge { padding:.22rem .55rem; color:var(--tm); background:#f1f5f9; border:1px solid var(--border); border-radius:999px; font-size:.7rem; font-weight:900; text-transform:uppercase; }
+        .test-instructions { margin-bottom:.7rem; color:#475569; font-size:.9rem; }
+        .test-surface { position:relative; min-height:360px; overflow:hidden; touch-action:none; user-select:none; -webkit-user-select:none; background:#f8fafc; border:1px solid #cbd5e1; border-radius:.9rem; outline:none; }
+        .test-surface:focus-visible { box-shadow:0 0 0 4px rgba(37,99,235,.22); }
+        .surface-touch { position:absolute; z-index:2; width:42px; height:42px; margin:-21px 0 0 -21px; display:flex; align-items:center; justify-content:center; pointer-events:none; color:#fff; background:rgba(37,99,235,.8); border:2px solid #fff; border-radius:50%; box-shadow:0 2px 12px rgba(15,23,42,.2); font-size:.7rem; font-weight:900; }
+        .surface-touch.pen { background:rgba(124,58,237,.85); }
+        .surface-grid { position:absolute; inset:0; display:grid; grid-template-columns:repeat(16,1fr); grid-template-rows:repeat(8,1fr); pointer-events:none; }
+        .surface-grid[hidden] { display:none; }
+        .coverage-cell { border-right:1px solid rgba(100,116,139,.13); border-bottom:1px solid rgba(100,116,139,.13); }
+        .coverage-cell.visited { background:rgba(37,99,235,.2); }
+        .coverage-cell.attention { background:rgba(217,119,6,.2); outline:1px solid rgba(217,119,6,.55); }
+        .target-marker { position:absolute; z-index:3; width:42px; height:42px; margin:-21px 0 0 -21px; border:4px solid #fff; border-radius:50%; background:var(--p); box-shadow:0 0 0 3px var(--p),0 3px 12px rgba(15,23,42,.25); pointer-events:none; }
+        .target-marker.edge { width:36px; height:36px; margin:-18px 0 0 -18px; background:var(--warning); box-shadow:0 0 0 3px var(--warning),0 3px 12px rgba(15,23,42,.25); }
+        .gesture-target { position:absolute; z-index:3; left:50%; top:50%; width:min(42vw,150px); aspect-ratio:1; display:flex; align-items:center; justify-content:center; transform:translate(-50%,-50%); color:#fff; background:linear-gradient(145deg,#60a5fa,#2563eb); border:4px solid #fff; border-radius:50%; box-shadow:0 8px 30px rgba(37,99,235,.3); font-size:.85rem; font-weight:900; pointer-events:none; }
+        .ghost-countdown { position:absolute; z-index:4; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(15,23,42,.74); color:#fff; font-size:clamp(2.5rem,12vw,5rem); font-weight:900; }
+        .ghost-countdown[hidden] { display:none; }
+        .surface-empty { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:1rem; color:#94a3b8; text-align:center; font-size:.9rem; font-weight:800; pointer-events:none; }
+        .surface-empty[hidden] { display:none; }
+        .test-footer { display:flex; justify-content:space-between; gap:.6rem; align-items:center; flex-wrap:wrap; margin-top:.75rem; }
+        .test-footer .btn { padding:.6rem .85rem; font-size:.82rem; }
+        .test-readouts { display:flex; gap:.45rem; flex-wrap:wrap; }
+        .readout-chip { padding:.32rem .55rem; color:#475569; background:#fff; border:1px solid var(--border); border-radius:.55rem; font-size:.75rem; font-variant-numeric:tabular-nums; }
+        .readout-chip strong { color:var(--t); }
+        .step-status { min-height:1.6em; margin:.6rem 0 0!important; color:var(--tm); font-size:.82rem!important; }
+        .report { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .report[hidden] { display:none; }
+        .report-top { display:flex; justify-content:space-between; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:.8rem; }
+        .report-top h3 { margin:0; font-size:1.1rem; }
+        .result-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.45rem; list-style:none; }
+        .result-row { display:flex; justify-content:space-between; align-items:center; gap:.5rem; padding:.5rem .6rem; background:#fff; border:1px solid var(--border); border-radius:.6rem; font-size:.78rem; }
+        .result-main { min-width:0; }
+        .result-state { font-weight:900; }
+        .result-state.passed { color:var(--success); }
+        .result-state.attention { color:var(--warning); }
+        .result-state.not-tested { color:var(--tm); }
+        .result-detail { display:block; margin-top:.1rem; color:var(--tm); font-size:.7rem; }
+        .report-actions { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.8rem; }
+        .report-actions .btn { padding:.6rem .85rem; font-size:.82rem; }
+        .status-banner { padding:.7rem .8rem; margin:.75rem 0; color:#475569; background:#fff; border-left:3px solid var(--p); border-radius:.45rem; font-size:.8rem; }
+        .status-banner.warning { border-color:var(--warning); background:#fffbeb; }
+        .feature-grid,.steps-grid,.related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card { padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3 { font-size:1rem; }
+        .feature-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:1rem; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:1rem; }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span { margin:.2rem 0 0; color:var(--tm); font-size:.82rem; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:650px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:850px) { .audio-grid { grid-template-columns:1fr; } .two-col,.faq-grid { grid-template-columns:1fr; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.3rem 1rem; } .test-surface { min-height:320px; } .device-strip { grid-template-columns:repeat(2,minmax(0,1fr)); } .result-list { grid-template-columns:1fr; } .test-footer .btn { flex:1 1 auto; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser touchscreen test</div>
+        <h1>Touch Screen Tester</h1>
+        <p class="hero-sub">Test your touchscreen for touch detection, multi-touch, accuracy, dead zones, ghost touches, gestures, edge response and browser touch response.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#touch-tool">Start Full Diagnostic</a>
+            <a class="btn btn-secondary" href="#touch-tool" id="heroQuickStart">Quick Test</a>
+        </div>
+        <p class="hero-note"><strong>No download</strong> · <strong>No login</strong> · <strong>Touch data stays in your browser</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Touch Screen Tester</span></nav>
+
+    <section class="section" id="touch-tool" aria-labelledby="tool-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">⌁</div><div><h2 id="tool-title">Touch Screen Tester</h2><p>One guided diagnostic for phones, tablets and touchscreen computers.</p></div></div>
+        <div class="device-strip" aria-label="Browser-reported device information">
+            <div class="device-stat"><span>Reported touch points</span><strong id="maxTouchPoints">—</strong></div>
+            <div class="device-stat"><span>Viewport</span><strong id="viewportInfo">—</strong></div>
+            <div class="device-stat"><span>Pixel ratio / orientation</span><strong id="displayInfo">—</strong></div>
+            <div class="device-stat"><span>Browser (reported)</span><strong id="browserInfo">—</strong></div>
+            <div class="device-stat"><span>Platform (reported)</span><strong id="platformInfo">—</strong></div>
+        </div>
+        <div class="start-row">
+            <div><strong id="modeTitle">Choose a test</strong><p id="modeDescription">Quick Test takes about 30–60 seconds. Full Diagnostic checks every available module.</p></div>
+            <div class="start-actions"><button class="btn btn-secondary" id="quickStart" type="button">Quick Test</button><button class="btn btn-primary" id="fullStart" type="button">Full Diagnostic</button></div>
+        </div>
+        <div class="status-banner" id="deviceNotice" role="status" aria-live="polite"></div>
+        <div class="progress-wrap" id="progressWrap" hidden>
+            <div class="progress-top"><span id="progressLabel">Diagnostic progress</span><span id="progressCount">0 / 0</span></div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+        <div class="test-header"><h3 id="currentTestTitle">Ready when you are</h3><span class="test-badge" id="testModeBadge">Idle</span></div>
+        <p class="test-instructions" id="testInstructions">Choose Quick Test or Full Diagnostic to begin. Focused test instructions will appear here.</p>
+        <div class="test-surface" id="testSurface" tabindex="0" role="application" aria-label="Interactive touchscreen diagnostic surface">
+            <div class="surface-grid" id="surfaceGrid" hidden></div>
+            <div class="surface-empty" id="surfaceEmpty">Touch or use a pen inside this area during a test.</div>
+            <div class="ghost-countdown" id="ghostCountdown" hidden></div>
+        </div>
+        <div class="test-footer">
+            <div class="test-readouts">
+                <span class="readout-chip">Active touches <strong id="activeTouches">0</strong></span>
+                <span class="readout-chip">Max observed <strong id="maxObservedTouches">0</strong></span>
+                <span class="readout-chip">Last position <strong id="lastPosition">—</strong></span>
+            </div>
+            <div><button class="btn btn-secondary" id="unavailableTest" type="button" disabled>Not available</button> <button class="btn btn-secondary" id="skipTest" type="button" disabled>Skip test</button> <button class="btn btn-primary" id="continueTest" type="button" disabled>Continue</button> <button class="btn btn-secondary" id="exitTest" type="button" disabled>Exit test</button></div>
+        </div>
+        <p class="step-status" id="stepStatus" aria-live="polite">No diagnostic is running.</p>
+        <section class="report" id="finalReport" aria-labelledby="reportTitle" hidden>
+            <div class="report-top"><h3 id="reportTitle">Touchscreen Diagnostic Report</h3><span class="test-badge" id="reportMode">—</span></div>
+            <p id="reportTimestamp"></p>
+            <ul class="result-list" id="resultList"></ul>
+            <div class="report-actions"><button class="btn btn-primary" id="copyReport" type="button">Copy Results</button><button class="btn btn-secondary" id="downloadReport" type="button">Download Report</button><button class="btn btn-secondary" id="retestButton" type="button">Test Again</button><button class="btn btn-secondary" id="retestAttention" type="button">Retest Attention Areas</button></div>
+        </section>
+        <div class="info-note">This tester reports touch and pointer events received by your browser. Results are not uploaded and cannot conclusively diagnose physical digitizer damage.</div>
+    </section>
+
+    <section class="section" id="what-it-checks" aria-labelledby="features-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="features-title">What Does This Touchscreen Tester Check?</h2><p>Multiple touchscreen diagnostics live together in one guided tool.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">●</div><h3>Touch detection and multi-touch</h3><p>See received touch points, their positions, active count and the maximum contacts observed at once.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">▦</div><h3>Coverage and dead-zone verification</h3><p>Sweep the whole test surface, revisit untouched grid regions and identify areas that failed to register in repeated passes.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◎</div><h3>Accuracy, edges and gestures</h3><p>Tap targets, trace directional swipes, test edges and corners, and try supported double-tap, long-press and multi-touch gestures.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">⏱</div><h3>Ghost-touch and browser response</h3><p>Observe unexpected touch input hands-off and review browser-observed event timing without treating it as hardware latency.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">1</div><div><h2 id="how-title">How to Test Your Touch Screen</h2><p>Start quickly, follow each instruction, and retest any area that needs attention.</p></div></div>
+        <div class="steps-grid">
+            <article class="step-card"><div class="step-num">STEP 01</div><div class="step-body"><h3>Choose a diagnostic</h3><p>Quick Test covers touch detection, multi-touch, screen coverage and ghost-touch observation. Full Diagnostic adds accuracy, dead-zone verification, edges, gestures and browser response.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 02</div><div class="step-body"><h3>Follow the active prompt</h3><p>Touch, hold, tap or trace only inside the large test surface. Progress and instructions update for the active module; unsupported browser information is marked unavailable.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 03</div><div class="step-body"><h3>Review and retest</h3><p>The report lists each test as passed, attention needed, not tested or unavailable. Retest marked areas before drawing conclusions about the device.</p></div></article>
+        </div>
+    </section>
+
+    <section class="section" id="problems" aria-labelledby="problems-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">⌕</div><div><h2 id="problems-title">Common Touchscreen Problems</h2><p>Run the related diagnostic first when troubleshooting a symptom.</p></div></div>
+        <div class="two-col">
+            <div><h3>Part of screen not responding</h3><p>Run Screen Coverage, then Dead-Zone Verification and Edge &amp; Corner Response. Repeat missed areas; one missed event alone is inconclusive.</p><h3>Phone touching itself or random touches</h3><p>Run the hands-off Ghost Touch Observation and keep your hands away throughout. Unexpected browser input warrants more investigation, but does not by itself confirm a hardware fault.</p><h3>Missed taps or inaccurate touch</h3><p>Use Touch Accuracy and Swipe Tracking. Browser coordinates can reveal inconsistent events during this test, but are not OEM calibration values.</p></div>
+            <div><h3>Multi-finger gestures fail</h3><p>Try Multi-Touch and the Gesture Test. The observed contact count may be lower than a device's advertised capability because of browser, system or test conditions.</p><h3>Testing a repaired or used device</h3><p>Run Full Diagnostic after a screen replacement or before buying a used phone. Include edges, corners, repeated coverage and gestures; compare behavior across multiple attempts.</p><h3>Device examples</h3><p>The same touch screen test can be used on iPhone, Android, Samsung, iPad, Surface, Chromebook and other touchscreen laptops when opened on the device being checked.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="limitations" aria-labelledby="limits-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="limits-title">What an Online Touchscreen Test Can and Cannot Detect</h2><p>Transparent results are browser observations, not a hardware health certificate.</p></div></div>
+        <div class="two-col">
+            <div><h3>The browser can report</h3><p>Pointer/touch events, coordinates, active pointer IDs, observed coverage, target deviation, certain gestures and event timing visible to the page. The tester may also show browser-exposed touch capability and screen viewport information.</p></div>
+            <div class="callout"><h3>The browser cannot definitively diagnose</h3><p>Physical digitizer damage, internal connectors, touch-controller faults, OEM calibration, exact touch-to-photon latency or system behavior outside this webpage. Browser response samples are not laboratory measurements.</p></div>
+        </div>
+        <div class="status-banner">Your touch coordinates and test results are processed on this page and are not uploaded by the tester. A “passed” result means events were observed in the test, not that the hardware is certified defect-free.</div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Touch Screen Tester FAQ</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>What is a touch screen tester?</h3><p>It is a tool that displays touch and pointer events received by a device's browser to help inspect detection, coverage, multi-touch, gestures and response.</p></article>
+            <article class="faq-item"><h3>How do I check whether every part of my screen responds?</h3><p>Start Full Diagnostic and complete Screen Coverage. Revisit highlighted untested regions in Dead-Zone Verification.</p></article>
+            <article class="faq-item"><h3>How can I test multi-touch?</h3><p>Place multiple fingers on the test area at the same time. The active marker count shows contacts delivered to the browser.</p></article>
+            <article class="faq-item"><h3>How do I check for ghost touch?</h3><p>Run Ghost Touch Observation, then keep your hands away during its countdown and listening period. The page reports unexpected touch or pen events it receives.</p></article>
+            <article class="faq-item"><h3>Can I use it as an iPhone or Android touch screen test?</h3><p>Yes. Open the page in a browser on the touchscreen device. Available tests depend on the browser and operating system.</p></article>
+            <article class="faq-item"><h3>Can it prove hardware damage?</h3><p>No. Missed or unexpected browser events can guide troubleshooting, but only device diagnostics or qualified inspection can establish a hardware fault.</p></article>
+            <article class="faq-item"><h3>Does the test work after a screen replacement?</h3><p>Yes. Run the full sequence, especially coverage, dead-zone verification, edges, corners and multi-touch, then repeat any areas that need attention.</p></article>
+            <article class="faq-item"><h3>Does it work on a touchscreen laptop?</h3><p>Yes, if the browser receives touch input from that display. Mouse input is not treated as touch for touch-specific results.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Display &amp; Device Tools</h2><p>Other browser tools for checking your display and input devices.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Colors, text and display inspection</span></a>
+            <a class="related-card" href="./device-information.html"><strong>Device Information</strong><span>Browser, system and screen details</span></a>
+            <a class="related-card" href="./mouse-test.html"><strong>Mouse Test</strong><span>Buttons, wheel and movement</span></a>
+            <a class="related-card" href="./keyboard-test.html"><strong>Keyboard Test</strong><span>Key presses and rollover events</span></a>
+            <a class="related-card" href="./camera-test.html"><strong>Camera Test</strong><span>Webcam preview and settings</span></a>
+            <a class="related-card" href="./microphone-audio-test.html"><strong>Microphone &amp; Audio Test</strong><span>Mic input and speaker output</span></a>
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display details</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to test your touchscreen?</h2>
+        <p>Choose Quick Test for a fast check or Full Diagnostic for guided coverage, accuracy, gesture and response tests.</p>
+        <a class="btn btn-primary" href="#touch-tool">Start the touch screen tester</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./how-to-check-phone-resolution.html">Phone Resolution Guide</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li><li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li><li><a href="./mouse-test.html">Mouse Test</a></li><li><a href="./keyboard-test.html">Keyboard Test</a></li><li><a href="./camera-test.html">Camera Test</a></li><li><a href="./microphone-audio-test.html">Microphone &amp; Audio Test</a></li><li><a href="./touch-screen-tester.html">Touch Screen Tester</a></li><li><a href="./device-information.html">Device Information</a></li></ul></div>
+        <div><h3>About this test</h3><p>Touch diagnostics report browser-received events only. Touch data is processed locally and is not uploaded by this tester.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var surface=document.getElementById("testSurface");
+    var grid=document.getElementById("surfaceGrid");
+    var pointerMap=new Map();
+    var sequence=[];
+    var quickSequence=["detect","multi","coverage","ghost"];
+    var fullSequence=["detect","multi","accuracy","coverage","deadzone","edges","swipe","gestures","ghost","response"];
+    var mode="";
+    var currentIndex=0;
+    var currentTest="";
+    var results={};
+    var maxObserved=0;
+    var accuracyTargets=[];
+    var accuracyTrials=[];
+    var currentAccuracyTarget=null;
+    var deadTargets=[];
+    var deadVerified=new Set();
+    var edgeTargets=[];
+    var edgePassed=new Set();
+    var swipePhase=0;
+    var swipePath=[];
+    var gestureIndex=0;
+    var gestureState={start:0,points:new Map(),initialDistance:0,initialAngle:0,checks:{},tapTimes:[],tapHit:false,swipeStart:null,longTimer:0,longDone:false};
+    var ghostTimer=0;
+    var ghostCountdownTimer=0;
+    var ghostPhase="";
+    var responseTimes=[];
+    var lastPointerAt=0;
+    var testStartTime=0;
+    var copiedReport="";
+    var touchDetected=false;
+    var lastPointerType="";
+    var gridCells=[];
+    var gridWidth=16;
+    var gridHeight=8;
+    var modeNames={quick:"Quick Test",full:"Full Diagnostic"};
+    var testNames={detect:"Touch Detection",multi:"Multi-Touch",accuracy:"Touch Accuracy",coverage:"Screen Coverage",deadzone:"Dead-Zone Verification",edges:"Edge & Corner Response",swipe:"Swipe Tracking",gestures:"Gesture Test",ghost:"Ghost Touch Observation",response:"Browser Touch Response"};
+    var instructions={
+        detect:"Touch anywhere in this area. Use your finger or a touchscreen pen; mouse clicks are not counted as touch.",
+        multi:"Place as many fingers as comfortable on the surface at the same time. Hold them briefly, then press Continue.",
+        accuracy:"Tap each target that appears. Eight targets are placed at different positions; tap near the center of each one.",
+        coverage:"Slowly sweep a finger over the entire surface, including edges and corners. Fill as many grid cells as you can, then Continue.",
+        deadzone:"Retest the highlighted regions that were not touched in the coverage sweep. Touch each marked region you can reach, then Continue.",
+        edges:"Touch each highlighted edge and corner target. Targets register individually when touched.",
+        swipe:"Swipe horizontally, vertically, then diagonally across the surface. Complete each direction and continue.",
+        gestures:"Follow each prompt: single tap, double tap, long press, swipe, pinch/spread, and rotate where multi-touch is available.",
+        ghost:"Keep your hands away from the screen. Wait through the countdown and observation period while unexpected touch input is monitored.",
+        response:"Tap the surface several times. The page records browser-observed intervals from pointer events; this is not total hardware latency."
+    };
+    var labelsByTest={detect:"Touch detection received",multi:"Multi-touch sample recorded",accuracy:"Target touched",coverage:"Coverage sweep updated",deadzone:"Verification touch received",edges:"Edge/corner target registered",swipe:"Swipe direction recorded",gestures:"Gesture event recorded",ghost:"Unexpected touch observed",response:"Browser response sample added"};
+
+    function capabilityText(){
+        var touchPoints=Number(navigator.maxTouchPoints||0);
+        var touchApi=touchPoints>0||("ontouchstart" in window);
+        document.getElementById("maxTouchPoints").textContent=touchPoints?String(touchPoints):"Not reported";
+        document.getElementById("viewportInfo").textContent=window.innerWidth+" × "+window.innerHeight;
+        document.getElementById("displayInfo").textContent=(window.devicePixelRatio||1)+"x · "+(window.innerWidth>=window.innerHeight?"Landscape":"Portrait");
+        var agent=navigator.userAgent||"";
+        var browser=/Edg\//.test(agent)?"Edge":/Firefox\//.test(agent)?"Firefox":/Chrome\//.test(agent)?"Chrome":/Safari\//.test(agent)?"Safari":"Browser";
+        var platform=navigator.userAgentData&&navigator.userAgentData.platform?navigator.userAgentData.platform:(/Android/.test(agent)?"Android":/iPhone|iPad|iPod/.test(agent)?"iOS":/Windows/.test(agent)?"Windows":/Mac OS/.test(agent)?"macOS":/Linux/.test(agent)?"Linux":"Unknown");
+        document.getElementById("browserInfo").textContent=browser;
+        document.getElementById("platformInfo").textContent=platform+(navigator.userAgentData?"":" (approx.)");
+        document.getElementById("deviceNotice").textContent="Device details are based on information exposed by your browser. Choose Quick Test or Full Diagnostic when ready.";
+        document.getElementById("deviceNotice").classList.remove("warning");
+        touchDetected=touchApi;
+    }
+    capabilityText();window.addEventListener("resize",capabilityText);window.addEventListener("orientationchange",capabilityText);
+
+    for(var i=0;i<gridWidth*gridHeight;i++){var cell=document.createElement("span");cell.className="coverage-cell";cell.dataset.index=String(i);grid.appendChild(cell);gridCells.push(cell);}
+    function setGridVisible(value){grid.hidden=!value;}
+    function clearSurface(){
+        pointerMap.forEach(function(pointer){if(pointer.marker&&pointer.marker.parentNode)pointer.marker.remove();});
+        pointerMap.clear();
+        surface.querySelectorAll(".target-marker,.gesture-target").forEach(function(node){node.remove();});
+        document.getElementById("ghostCountdown").hidden=true;
+        document.getElementById("surfaceEmpty").hidden=false;
+        setGridVisible(false);
+        surface.style.background="#f8fafc";
+        updateLiveReadouts();
+    }
+    function updateLiveReadouts(){
+        document.getElementById("activeTouches").textContent=String(pointerMap.size);
+        document.getElementById("maxObservedTouches").textContent=String(maxObserved);
+        var first=pointerMap.values().next().value;
+        document.getElementById("lastPosition").textContent=first?Math.round(first.x)+" × "+Math.round(first.y):"—";
+    }
+    function setStatus(message){document.getElementById("stepStatus").textContent=message;}
+    function positionOf(event){var rect=surface.getBoundingClientRect();return {x:event.clientX-rect.left,y:event.clientY-rect.top,clientX:event.clientX,clientY:event.clientY};}
+    function isTouchPointer(event){return event.pointerType==="touch"||event.pointerType==="pen";}
+    function gridIndex(x,y){var rect=surface.getBoundingClientRect();var col=Math.max(0,Math.min(gridWidth-1,Math.floor(x/rect.width*gridWidth)));var row=Math.max(0,Math.min(gridHeight-1,Math.floor(y/rect.height*gridHeight)));return row*gridWidth+col;}
+    function markCoverage(index){if(gridCells[index])gridCells[index].classList.add("visited");}
+    function addMarker(event,label){
+        var point=positionOf(event);var marker=document.createElement("span");marker.className="surface-touch"+(event.pointerType==="pen"?" pen":"");marker.textContent=label||String(pointerMap.size+1);marker.style.left=point.x+"px";marker.style.top=point.y+"px";surface.appendChild(marker);return marker;
+    }
+    function addResult(key,state,detail){results[key]={name:testNames[key]||key,state:state,detail:detail||""};}
+    function progress(){
+        var wrap=document.getElementById("progressWrap");wrap.hidden=!sequence.length;
+        var done=currentTest?currentIndex+1:currentIndex;
+        document.getElementById("progressCount").textContent=Math.min(done,sequence.length)+" / "+sequence.length;
+        document.getElementById("progressLabel").textContent=(modeNames[mode]||"Diagnostic")+" · "+Math.round(Math.min(done,sequence.length)/Math.max(1,sequence.length)*100)+"%";
+        document.getElementById("progressBar").style.width=(Math.min(done,sequence.length)/Math.max(1,sequence.length)*100)+"%";
+    }
+    function setControls(running,canContinue,canSkip){
+        document.getElementById("continueTest").disabled=!canContinue;
+        document.getElementById("skipTest").disabled=!running||!canSkip;
+        document.getElementById("exitTest").disabled=!running;
+        document.getElementById("unavailableTest").disabled=!running||(currentTest!=="gestures"&&currentTest!=="response");
+    }
+    function begin(modeName){
+        clearTimeout(ghostTimer);clearInterval(ghostTimer);clearInterval(ghostCountdownTimer);ghostTimer=0;ghostCountdownTimer=0;
+        mode=modeName;sequence=modeName==="quick"?quickSequence.slice():fullSequence.slice();currentIndex=0;currentTest="";results={};maxObserved=0;responseTimes=[];testStartTime=Date.now();
+        document.getElementById("finalReport").hidden=true;
+        document.getElementById("modeTitle").textContent=modeNames[modeName];
+        document.getElementById("modeDescription").textContent=modeName==="quick"?"Quick diagnostic started. Follow each instruction on the test surface.":"Full diagnostic started. Complete or skip each module; you can retest attention areas from the final report.";
+        nextStep();
+    }
+    function nextStep(){
+        clearTimeout(ghostTimer);clearInterval(ghostTimer);clearInterval(ghostCountdownTimer);ghostTimer=0;ghostCountdownTimer=0;pointerMap.forEach(function(item){if(item.marker)item.marker.remove();});pointerMap.clear();updateLiveReadouts();clearSurface();
+        if(currentIndex>=sequence.length){currentTest="";showReport();return;}
+        currentTest=sequence[currentIndex];
+        document.getElementById("currentTestTitle").textContent=testNames[currentTest];
+        document.getElementById("testInstructions").textContent=instructions[currentTest];
+        document.getElementById("testModeBadge").textContent=(modeNames[mode]||"")+" · "+(currentIndex+1)+" of "+sequence.length;
+        document.getElementById("surfaceEmpty").hidden=true;
+        setControls(true,false,true);
+        document.getElementById("continueTest").disabled=currentTest==="detect"||currentTest==="accuracy"||currentTest==="edges"||currentTest==="swipe"||currentTest==="ghost";
+        document.getElementById("unavailableTest").disabled=currentTest!=="gestures"&&currentTest!=="response";
+        progress();
+        if(currentTest==="multi"){maxObserved=0;updateLiveReadouts();setStatus("Place several fingers together. Current and maximum contacts update live; Continue when finished.");document.getElementById("continueTest").disabled=false;}
+        if(currentTest==="coverage"){setGridVisible(true);gridCells.forEach(function(cell){cell.classList.remove("visited","attention");});setStatus("Sweep every area of the panel. Continue when your coverage pass is complete.");document.getElementById("continueTest").disabled=false;}
+        if(currentTest==="deadzone"){prepareDeadzone();setStatus(deadTargets.length?"Touch the highlighted regions again to verify them.":"No untouched grid cells were left from the coverage pass. Continue to finish this check.");document.getElementById("continueTest").disabled=deadTargets.length===0;}
+        if(currentTest==="accuracy"){prepareAccuracy();document.getElementById("continueTest").disabled=true;}
+        if(currentTest==="edges")prepareEdges();
+        if(currentTest==="swipe"){swipePhase=0;swipePath=[];setStatus("Start a horizontal swipe on the left side and finish on the right.");}
+        if(currentTest==="gestures"){prepareGesture();document.getElementById("continueTest").disabled=false;document.getElementById("unavailableTest").disabled=false;}
+        if(currentTest==="ghost")startGhostObservation();
+        if(currentTest==="response"){responseTimes=[];setStatus("Tap the surface several times to collect browser event intervals.");document.getElementById("continueTest").disabled=false;}
+    }
+    function countCoverage(){return gridCells.filter(function(cell){return cell.classList.contains("visited");}).length;}
+    function prepareDeadzone(){
+        setGridVisible(true);deadTargets=[];deadVerified=new Set();
+        gridCells.forEach(function(cell,index){cell.classList.remove("attention");if(!cell.classList.contains("visited")){cell.classList.add("attention");deadTargets.push(index);}});
+        if(!deadTargets.length)addResult("deadzone","passed","No unvisited regions remained after coverage.");
+    }
+    function prepareAccuracy(){
+        accuracyTargets=[];accuracyTrials=[];
+        for(var i=0;i<8;i++)accuracyTargets.push({x:.12+Math.random()*.76,y:.14+Math.random()*.72});
+        showAccuracyTarget();
+    }
+    function showAccuracyTarget(){
+        surface.querySelectorAll(".target-marker").forEach(function(node){node.remove();});
+        if(accuracyTrials.length>=accuracyTargets.length){
+            var hits=accuracyTrials.filter(function(trial){return trial.hit;});
+            var average=hits.length?hits.reduce(function(sum,trial){return sum+trial.distance;},0)/hits.length:0;
+            var worst=hits.length?Math.max.apply(null,hits.map(function(trial){return trial.distance;})):0;
+            addResult("accuracy",hits.length===accuracyTargets.length?"passed":hits.length?"attention":"inconclusive",hits.length+"/"+accuracyTargets.length+" targets hit; average center offset "+average.toFixed(1)+" CSS px, max "+worst.toFixed(1)+" px (browser-relative).");
+            setStatus("Accuracy test complete: "+hits.length+" of "+accuracyTargets.length+" targets hit; average offset "+average.toFixed(1)+" CSS px. This is not hardware calibration.");document.getElementById("continueTest").disabled=false;return;
+        }
+        currentAccuracyTarget=accuracyTargets[accuracyTrials.length];var marker=document.createElement("span");marker.className="target-marker";marker.style.left=(currentAccuracyTarget.x*100)+"%";marker.style.top=(currentAccuracyTarget.y*100)+"%";surface.appendChild(marker);
+        setStatus("Target "+(accuracyTrials.length+1)+" of "+accuracyTargets.length+". Tap as close to its center as possible.");
+    }
+    function prepareEdges(){
+        edgeTargets=[{name:"Top edge",x:.5,y:.035},{name:"Bottom edge",x:.5,y:.965},{name:"Left edge",x:.035,y:.5},{name:"Right edge",x:.965,y:.5},{name:"Top-left corner",x:.04,y:.04},{name:"Top-right corner",x:.96,y:.04},{name:"Bottom-left corner",x:.04,y:.96},{name:"Bottom-right corner",x:.96,y:.96}];edgePassed=new Set();showEdgeTarget();
+    }
+    function showEdgeTarget(){
+        surface.querySelectorAll(".target-marker").forEach(function(node){node.remove();});
+        var next=edgeTargets.findIndex(function(target){return !edgePassed.has(target.name);});
+        if(next<0){addResult("edges","passed","All 8 edge and corner targets registered.");setStatus("Edge and corner test complete: 8 of 8 targets registered.");document.getElementById("continueTest").disabled=false;return;}
+        var target=edgeTargets[next];var marker=document.createElement("span");marker.className="target-marker edge";marker.style.left=(target.x*100)+"%";marker.style.top=(target.y*100)+"%";surface.appendChild(marker);
+        setStatus("Touch target "+(next+1)+" of "+edgeTargets.length+": "+target.name+".");
+    }
+    var gesturePrompts=["Tap the target once","Double-tap the target","Press and hold the target for one second","Swipe across the surface","Place two fingers and pinch or spread","With two fingers down, rotate them if possible"];
+    function prepareGesture(){gestureIndex=0;gestureState.checks={};gestureState.tapTimes=[];gestureState.tapHit=false;gestureState.swipeStart=null;gestureState.longDone=false;showGesturePrompt();}
+    function showGesturePrompt(){
+        surface.querySelectorAll(".gesture-target").forEach(function(node){node.remove();});
+        if(gestureIndex>=gesturePrompts.length){
+            var checkNames=Object.keys(gestureState.checks);
+            var supported=checkNames.filter(function(name){return name.indexOf("unavailable")<0;}).length;
+            var unavailable=checkNames.length-supported;
+            addResult("gestures",supported>=4?"passed":supported?"attention":unavailable===gesturePrompts.length?"unavailable":"inconclusive",supported+" gesture types observed; "+unavailable+" marked unavailable in this browser or device.");
+            setStatus("Gesture checks complete. Recognized: "+(Object.keys(gestureState.checks).join(", ")||"none")+".");document.getElementById("continueTest").disabled=false;return;
+        }
+        var text=gesturePrompts[gestureIndex];document.getElementById("testInstructions").textContent=instructions.gestures+" Current gesture: "+text+".";
+        var target=document.createElement("div");target.className="gesture-target";target.textContent=text;surface.appendChild(target);
+        setStatus("Gesture "+(gestureIndex+1)+" of "+gesturePrompts.length+": "+text+".");
+    }
+    function completeGesture(name){if(gestureState.checks[name])return;gestureState.checks[name]=true;gestureIndex+=1;showGesturePrompt();}
+    function startGhostObservation(){
+        ghostPhase="countdown";var countdown=document.getElementById("ghostCountdown");countdown.hidden=false;var ticks=3;countdown.textContent=String(ticks);setStatus("Hands off the screen. Observation begins after the countdown.");
+        ghostCountdownTimer=setInterval(function(){ticks-=1;if(ticks>0){countdown.textContent=String(ticks);return;}clearInterval(ghostCountdownTimer);ghostCountdownTimer=0;ghostPhase="observe";countdown.hidden=true;setStatus("Observing for unexpected touch or pen input. Keep hands away.");var remaining=5;ghostTimer=setInterval(function(){remaining-=1;if(remaining<=0){clearInterval(ghostTimer);ghostTimer=0;ghostPhase="";var found=results.ghostUnexpected||0;addResult("ghost",found===0?"passed":"attention",found+" unexpected touch/pen events observed in 5 seconds.");setStatus(found===0?"No unexpected browser touch events were detected during the observation window.":found+" unexpected touch/pen event(s) were detected. This does not confirm a hardware fault.");document.getElementById("continueTest").disabled=false;}else{setStatus("Hands off: observing · "+remaining+" seconds remaining.");}},1000);},1000);
+    }
+    function completeDetection(){
+        if(results.detect)return;
+        addResult("detect","passed","Browser received a "+(lastPointerType||"touch/pen")+" pointer event.");
+        setStatus("Touch input detected. Active points are shown as markers.");document.getElementById("continueTest").disabled=false;
+    }
+    function processPointerDown(event){
+        if(!isTouchPointer(event))return;
+        event.preventDefault();
+        surface.focus({preventScroll:true});
+        touchDetected=true;lastPointerType=event.pointerType;
+        var point=positionOf(event);var marker=addMarker(event,pointerMap.size+1);
+        pointerMap.set(event.pointerId,{x:point.x,y:point.y,clientX:point.clientX,clientY:point.clientY,marker:marker,start:performance.now(),startX:point.x,startY:point.y});
+        maxObserved=Math.max(maxObserved,pointerMap.size);updateLiveReadouts();
+        var now=performance.now();
+        if(currentTest==="detect")completeDetection();
+        if(currentTest==="multi"){document.getElementById("surfaceEmpty").hidden=true;setStatus(pointerMap.size+" active touch point(s). Maximum observed: "+maxObserved+".");}
+        if(currentTest==="coverage"){markCoverage(gridIndex(point.x,point.y));document.getElementById("surfaceEmpty").hidden=true;}
+        if(currentTest==="deadzone"){
+            var index=gridIndex(point.x,point.y);deadVerified.add(index);markCoverage(index);if(gridCells[index])gridCells[index].classList.remove("attention");
+            if(deadTargets.every(function(id){return deadVerified.has(id);})){deadTargets.forEach(function(id){gridCells[id].classList.remove("attention");});addResult("deadzone","passed","All "+deadTargets.length+" previously untouched regions were contacted on verification.");setStatus("All previously untested regions were touched during verification.");document.getElementById("continueTest").disabled=false;}
+        }
+        if(currentTest==="accuracy"){
+            if(currentAccuracyTarget){var cx=currentAccuracyTarget.x*surface.clientWidth;var cy=currentAccuracyTarget.y*surface.clientHeight;var distance=Math.hypot(point.x-cx,point.y-cy);var hit=distance<=38;accuracyTrials.push({hit:hit,distance:distance});setStatus(hit?"Target hit at "+distance.toFixed(1)+" CSS px from center.":"Target missed at "+distance.toFixed(1)+" CSS px from center. Moving to the next target.");showAccuracyTarget();}
+        }
+        if(currentTest==="edges"){
+            var edgeIndex=edgeTargets.findIndex(function(target){return !edgePassed.has(target.name);});
+            if(edgeIndex>=0){var edge=edgeTargets[edgeIndex];var ex=edge.x*surface.clientWidth;var ey=edge.y*surface.clientHeight;if(Math.hypot(point.x-ex,point.y-ey)<Math.max(55,surface.clientWidth*.13)){edgePassed.add(edge.name);showEdgeTarget();}}
+        }
+        if(currentTest==="swipe"){
+            swipePath=[point];
+        }
+        if(currentTest==="gestures"){
+            gestureState.points.set(event.pointerId,{x:point.x,y:point.y,initial:point});
+            if(gestureIndex<=1){var gestureTarget=surface.querySelector(".gesture-target");if(gestureTarget){var targetBox=gestureTarget.getBoundingClientRect();var onTarget=point.clientX>=targetBox.left&&point.clientX<=targetBox.right&&point.clientY>=targetBox.top&&point.clientY<=targetBox.bottom;if(gestureIndex===0)gestureState.tapHit=onTarget;else if(onTarget)gestureState.tapTimes.push(now);}}
+            if(gestureIndex===2){gestureState.longDone=false;gestureState.longTimer=setTimeout(function(){if(pointerMap.has(event.pointerId)){gestureState.longDone=true;completeGesture("long press");}},850);}
+            if(gestureIndex===3){gestureState.swipeStart=point;}
+            if(gestureState.points.size===2){var pair=Array.from(gestureState.points.values());gestureState.initialDistance=Math.hypot(pair[1].x-pair[0].x,pair[1].y-pair[0].y);gestureState.initialAngle=Math.atan2(pair[1].y-pair[0].y,pair[1].x-pair[0].x);}
+        }
+        if(currentTest==="ghost"&&ghostPhase==="observe"){results.ghostUnexpected=(results.ghostUnexpected||0)+1;setStatus("Unexpected touch/pen event observed at "+Math.round(point.x)+" × "+Math.round(point.y)+". This alone does not confirm a fault.");}
+        if(currentTest==="response"){
+            if(lastPointerAt)responseTimes.push(now-lastPointerAt);lastPointerAt=now;
+            setStatus("Browser touch response samples: "+responseTimes.length+". Observed event interval recorded.");
+        }
+        if(surface.setPointerCapture){try{surface.setPointerCapture(event.pointerId);}catch(error){}}
+    }
+    function processPointerMove(event){
+        if(!pointerMap.has(event.pointerId))return;
+        var point=positionOf(event);var item=pointerMap.get(event.pointerId);item.x=point.x;item.y=point.y;item.clientX=point.clientX;item.clientY=point.clientY;
+        if(item.marker){item.marker.style.left=point.x+"px";item.marker.style.top=point.y+"px";}
+        updateLiveReadouts();
+        if(currentTest==="coverage")markCoverage(gridIndex(point.x,point.y));
+        if(currentTest==="swipe"&&swipePath.length<800)swipePath.push(point);
+        if(currentTest==="gestures"){
+            var gesturePoint=gestureState.points.get(event.pointerId);if(gesturePoint){gesturePoint.x=point.x;gesturePoint.y=point.y;}
+            if(gestureState.points.size>=2&&gestureIndex===4){var ps=Array.from(gestureState.points.values());var distance=Math.hypot(ps[1].x-ps[0].x,ps[1].y-ps[0].y);if(Math.abs(distance-gestureState.initialDistance)>35)completeGesture("pinch/spread");}
+            if(gestureState.points.size>=2&&gestureIndex===5){var ps2=Array.from(gestureState.points.values());var angle=Math.atan2(ps2[1].y-ps2[0].y,ps2[1].x-ps2[0].x);var delta=Math.atan2(Math.sin(angle-gestureState.initialAngle),Math.cos(angle-gestureState.initialAngle));if(Math.abs(delta)>.35)completeGesture("rotation");}
+        }
+    }
+    function processPointerUp(event){
+        if(!pointerMap.has(event.pointerId))return;
+        var item=pointerMap.get(event.pointerId);var point=positionOf(event);
+        if(item.marker)item.marker.remove();pointerMap.delete(event.pointerId);updateLiveReadouts();
+        if(currentTest==="swipe"&&swipePath.length>1){var a=swipePath[0],b=swipePath[swipePath.length-1];var dx=b.x-a.x,dy=b.y-a.y;if(Math.hypot(dx,dy)>Math.min(55,surface.clientWidth*.15)){var direction=Math.abs(dx)>Math.abs(dy)?"horizontal":"vertical";if(swipePhase===0&&direction==="horizontal"&&dx>0){swipePhase=1;setStatus("Horizontal swipe passed. Now swipe vertically.");}else if(swipePhase===1&&direction==="vertical"&&Math.abs(dy)>0){swipePhase=2;setStatus("Vertical swipe passed. Now swipe diagonally.");}else if(swipePhase===2&&Math.abs(dx)>25&&Math.abs(dy)>25){swipePhase=3;addResult("swipe","passed","Horizontal, vertical and diagonal touch paths recorded.");setStatus("All three swipe directions were observed.");document.getElementById("continueTest").disabled=false;}else{setStatus("That swipe did not match the requested direction. Try again.");}}}
+        if(currentTest==="gestures"){
+            clearTimeout(gestureState.longTimer);gestureState.points.delete(event.pointerId);
+            if(gestureIndex===0&&gestureState.tapHit)completeGesture("single tap");
+            if(gestureIndex===1&&gestureState.tapTimes.length>=2&&gestureState.tapTimes[gestureState.tapTimes.length-1]-gestureState.tapTimes[gestureState.tapTimes.length-2]<550)completeGesture("double tap");
+            if(gestureIndex===2&&gestureState.longDone)completeGesture("long press");
+            if(gestureIndex===3&&gestureState.swipeStart){var endPoint=positionOf(event);if(Math.hypot(endPoint.x-gestureState.swipeStart.x,endPoint.y-gestureState.swipeStart.y)>Math.min(55,surface.clientWidth*.15))completeGesture("swipe");gestureState.swipeStart=null;}
+        }
+        if(currentTest==="response"){
+            if(responseTimes.length>=5){var avg=responseTimes.reduce(function(sum,value){return sum+value;},0)/responseTimes.length;var sorted=responseTimes.slice().sort(function(x,y){return x-y;});addResult("response","passed",""+responseTimes.length+" browser-observed intervals; average "+avg.toFixed(1)+" ms, min "+sorted[0].toFixed(1)+" ms, max "+sorted[sorted.length-1].toFixed(1)+" ms. Not hardware latency.");setStatus("Samples: "+responseTimes.length+" · average "+avg.toFixed(1)+" ms · minimum "+sorted[0].toFixed(1)+" ms · maximum "+sorted[sorted.length-1].toFixed(1)+" ms. Browser timing only.");document.getElementById("continueTest").disabled=false;}
+        }
+        if(currentTest==="detect"&&results.detect)setStatus("Touch event received at "+Math.round(point.x)+" × "+Math.round(point.y)+".");
+    }
+    surface.addEventListener("pointerdown",processPointerDown);
+    surface.addEventListener("pointermove",processPointerMove);
+    surface.addEventListener("pointerup",processPointerUp);
+    surface.addEventListener("pointercancel",function(event){
+        if(!pointerMap.has(event.pointerId))return;
+        var active=pointerMap.get(event.pointerId);
+        if(active.marker)active.marker.remove();
+        pointerMap.delete(event.pointerId);
+        clearTimeout(gestureState.longTimer);
+        gestureState.points.delete(event.pointerId);
+        gestureState.swipeStart=null;
+        swipePath=[];
+        updateLiveReadouts();
+        setStatus("Pointer sequence was cancelled by the browser or operating system; it was not counted as a completed gesture.");
+    });
+    surface.addEventListener("contextmenu",function(event){event.preventDefault();});
+    function continueCurrent(){
+        if(!currentTest)return;
+        if(currentTest==="multi")addResult("multi",maxObserved>1?"passed":maxObserved===1?"attention":"inconclusive","Maximum simultaneous touch/pen contacts observed: "+maxObserved+". Browser reports "+(navigator.maxTouchPoints||0)+" maximum touch points; capability is not physical verification.");
+        if(currentTest==="coverage"){
+            var visited=countCoverage();var total=gridCells.length;gridCells.forEach(function(cell){if(!cell.classList.contains("visited"))cell.classList.add("attention");});
+            addResult("coverage",visited===total?"passed":visited>0?"attention":"inconclusive",visited+" of "+total+" grid regions touched ("+(visited/total*100).toFixed(1)+"%). Untouched cells need verification.");
+        }
+        if(currentTest==="deadzone"&&!results.deadzone){var unresolved=deadTargets.filter(function(index){return !deadVerified.has(index);});var verified=deadTargets.length-unresolved.length;addResult("deadzone",unresolved.length===0?"passed":verified?"attention":"inconclusive",verified+" of "+deadTargets.length+" highlighted regions contacted; "+unresolved.length+" did not register during verification.");}
+        if(currentTest==="accuracy"&&!results.accuracy)addResult("accuracy",accuracyTrials.filter(function(trial){return trial.hit;}).length?"attention":"inconclusive",accuracyTrials.filter(function(trial){return trial.hit;}).length+" of "+accuracyTargets.length+" targets hit before exit. Browser coordinate comparison only.");
+        if(currentTest==="edges"&&!results.edges)addResult("edges",edgePassed.size?"attention":"inconclusive",edgePassed.size+" of "+edgeTargets.length+" edge/corner targets registered.");
+        if(currentTest==="swipe"&&!results.swipe)addResult("swipe",swipePhase?"attention":"inconclusive",swipePhase+" of 3 requested swipe directions recorded.");
+        if(currentTest==="gestures"&&!results.gestures){var count=Object.keys(gestureState.checks).filter(function(name){return name.indexOf("unavailable")<0;}).length;addResult("gestures",count>=4?"passed":count?"attention":"inconclusive",count+" gesture types observed.");}
+        if(currentTest==="response"&&!results.response){if(responseTimes.length){var avg=responseTimes.reduce(function(sum,value){return sum+value;},0)/responseTimes.length;addResult("response","attention",responseTimes.length+" browser intervals; average "+avg.toFixed(1)+" ms. Incomplete sample set; not hardware latency.");}else addResult("response","inconclusive","No touch interval samples collected.");}
+        if(currentTest==="ghost"&&!results.ghost){clearInterval(ghostTimer);ghostTimer=0;var hits=results.ghostUnexpected||0;addResult("ghost",hits===0?"passed":"attention",hits+" unexpected touch/pen events observed before the observation was ended.");}
+        currentIndex+=1;nextStep();
+    }
+    function skipCurrent(){if(!currentTest)return;addResult(currentTest,"not-tested","Skipped by user.");clearTimeout(ghostTimer);clearInterval(ghostTimer);clearInterval(ghostCountdownTimer);ghostTimer=0;ghostCountdownTimer=0;currentIndex+=1;nextStep();}
+    function exitDiagnostic(){clearTimeout(ghostTimer);clearInterval(ghostTimer);clearInterval(ghostCountdownTimer);ghostTimer=0;ghostCountdownTimer=0;sequence=[];currentTest="";mode="";clearSurface();document.getElementById("progressWrap").hidden=true;document.getElementById("currentTestTitle").textContent="Diagnostic paused";document.getElementById("testInstructions").textContent="Choose Quick Test or Full Diagnostic to start again.";document.getElementById("testModeBadge").textContent="Idle";document.getElementById("modeTitle").textContent="Choose a test";document.getElementById("modeDescription").textContent="Quick Test takes about 30–60 seconds. Full Diagnostic checks every available module.";document.getElementById("finalReport").hidden=true;setStatus("Diagnostic exited. Your results remain only in this page session.");setControls(false,false,false);}
+    function showReport(){
+        clearSurface();document.getElementById("progressWrap").hidden=false;document.getElementById("progressCount").textContent=sequence.length+" / "+sequence.length;document.getElementById("progressBar").style.width="100%";document.getElementById("progressLabel").textContent="Diagnostic complete";
+        document.getElementById("currentTestTitle").textContent="Diagnostic complete";document.getElementById("testInstructions").textContent="Review each module. Attention needed means an event was missed or an area should be retested; it does not establish a hardware fault.";document.getElementById("testModeBadge").textContent=modeNames[mode]||"Complete";
+        setControls(false,false,false);
+        var report=document.getElementById("finalReport");report.hidden=false;document.getElementById("reportMode").textContent=modeNames[mode]||"Diagnostic";document.getElementById("reportTimestamp").textContent="Completed "+new Date().toLocaleString()+" · "+Object.keys(results).length+" test modules reported.";
+        var list=document.getElementById("resultList");list.replaceChildren();
+        sequence.forEach(function(key){var result=results[key]||{name:testNames[key],state:"not-tested",detail:"Not completed."};var li=document.createElement("li");li.className="result-row";var main=document.createElement("span");main.className="result-main";var left=document.createElement("span");left.textContent=result.name;var detail=document.createElement("span");detail.className="result-detail";detail.textContent=result.detail;main.appendChild(left);main.appendChild(detail);var state=document.createElement("strong");state.className="result-state "+result.state;state.textContent=result.state==="passed"?"Passed":result.state==="attention"?"Attention needed":result.state==="unavailable"?"Not available":result.state==="not-tested"?"Not tested":"Inconclusive";li.appendChild(main);li.appendChild(state);list.appendChild(li);});
+        copiedReport=buildReport();
+    }
+    function buildReport(){var lines=["TOUCH SCREEN TESTER REPORT",new Date().toLocaleString(),"Mode: "+(modeNames[mode]||"Diagnostic"),"Viewport: "+window.innerWidth+" × "+window.innerHeight,"Device pixel ratio: "+(window.devicePixelRatio||1),"Reported max touch points: "+(navigator.maxTouchPoints||0),""];sequence.forEach(function(key){var result=results[key]||{name:testNames[key],state:"not-tested",detail:"Not completed."};var status=result.state==="passed"?"Passed":result.state==="attention"?"Attention needed":result.state==="unavailable"?"Not available":result.state==="not-tested"?"Not tested":"Inconclusive";lines.push(result.name+": "+status+(result.detail?" — "+result.detail:""));});lines.push("\nBrowser events only; not a hardware certification or diagnosis.");return lines.join("\n");}
+    function startMode(name){begin(name);document.getElementById("touch-tool").scrollIntoView({behavior:"smooth",block:"start"});}
+    document.getElementById("quickStart").addEventListener("click",function(){startMode("quick");});
+    document.getElementById("fullStart").addEventListener("click",function(){startMode("full");});
+    document.getElementById("heroQuickStart").addEventListener("click",function(event){event.preventDefault();startMode("quick");});
+    document.getElementById("continueTest").addEventListener("click",continueCurrent);
+    document.getElementById("skipTest").addEventListener("click",skipCurrent);
+    document.getElementById("exitTest").addEventListener("click",exitDiagnostic);
+    document.getElementById("unavailableTest").addEventListener("click",function(){
+        if(currentTest==="gestures"){
+            gestureState.checks[gesturePrompts[gestureIndex]+" unavailable"]=true;
+            gestureIndex+=1;
+            showGesturePrompt();
+        }else if(currentTest==="response"){
+            addResult("response","unavailable","Browser did not provide enough touch event samples for this check.");
+            document.getElementById("continueTest").disabled=false;
+            document.getElementById("unavailableTest").disabled=true;
+            setStatus("Browser response check marked unavailable.");
+        }
+    });
+    document.getElementById("copyReport").addEventListener("click",async function(){try{await navigator.clipboard.writeText(copiedReport);setStatus("Report copied to clipboard.");}catch(error){setStatus("Clipboard access is unavailable. You can still download the report.");}});
+    document.getElementById("downloadReport").addEventListener("click",function(){var blob=new Blob([copiedReport],{type:"text/plain"});var url=URL.createObjectURL(blob);var link=document.createElement("a");link.href=url;link.download="touch-screen-test-report.txt";link.click();setTimeout(function(){URL.revokeObjectURL(url);},1000);});
+    document.getElementById("retestButton").addEventListener("click",function(){var oldMode=mode||"full";startMode(oldMode);});
+    document.getElementById("retestAttention").addEventListener("click",function(){var keys=sequence.filter(function(key){return results[key]&&(results[key].state==="attention"||results[key].state==="inconclusive");});if(!keys.length){setStatus("No attention or inconclusive tests to retest.");return;}sequence=keys;currentIndex=0;mode="full";results={};document.getElementById("finalReport").hidden=true;nextStep();});
+    document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

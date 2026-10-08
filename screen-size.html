@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Size Calculator - Calculate Physical Display Dimensions</title>
+    <meta name="description" content="Calculate physical screen width, height, and area in inches and cm from diagonal size and aspect ratio. Free, private, no download.">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/screen-size.html">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563eb'/%3E%3Crect x='4' y='4' width='24' height='24' rx='3' fill='none' stroke='%23ffffff' stroke-width='2' stroke-opacity='0.9'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23ffffff'/%3E%3C/svg%3E">
+    <meta property="og:title" content="Screen Size Calculator - Calculate Physical Display Dimensions">
+    <meta property="og:description" content="Calculate physical screen width, height, and area from diagonal size and aspect ratio. Free, private, no install needed.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/screen-size.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Screen Size Calculator - Physical Display Dimensions">
+    <meta name="twitter:description" content="Calculate screen width, height, and area in inches and cm. Free, private, no install needed.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Screen Size Calculator","url":"https://whats-my-screen-resolution.netlify.app/screen-size.html","author":{"@type":"Person","name":"Chetan Kumar","url":"https://www.linkedin.com/in/askchetan/"},"description":"Free browser tool that calculates physical display width, height, and area from diagonal size and aspect ratio.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Screen Resolution Checker","item":"https://whats-my-screen-resolution.netlify.app/"},{"@type":"ListItem","position":2,"name":"Screen Size Calculator","item":"https://whats-my-screen-resolution.netlify.app/screen-size.html"}]}
+    </script>
+    <style>
+        :root{--p:#2563eb;--p-hover:#1d4ed8;--bg:#f8fafc;--c:#ffffff;--t:#1e293b;--tm:#64748b;--border:#e2e8f0}
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;padding:1rem}
+        main{max-width:900px;margin:0 auto}
+        .hero{background:var(--c);padding:3rem 1.5rem;border-radius:1.5rem;text-align:center;box-shadow:0 10px 15px -3px rgba(0,0,0,0.06);margin-bottom:2rem;border:1px solid var(--border)}
+        .hero-label{font-size:0.9rem;text-transform:uppercase;color:var(--tm);margin-bottom:0.75rem;letter-spacing:0.1em;font-weight:700}
+        h1{font-size:clamp(1.6rem,5vw,2.5rem);font-weight:900;color:var(--p);line-height:1.15;margin-bottom:0.75rem;letter-spacing:-1px}
+        .hero-sub{font-size:1.05rem;color:var(--tm);margin-bottom:0.5rem;font-weight:500}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
+        .stat{background:#f1f5f9;padding:1.25rem;border-radius:1rem;border:1px solid var(--border)}
+        .stat-l{font-size:0.7rem;font-weight:700;color:var(--tm);text-transform:uppercase}
+        .stat-v{font-size:1.25rem;font-weight:800;margin-top:0.25rem}
+        .section{background:var(--c);padding:2rem;border-radius:1.5rem;margin-bottom:1.5rem;box-shadow:0 4px 6px -1px rgba(0,0,0,0.04);border:1px solid var(--border)}
+        h2{font-size:1.3rem;margin-bottom:1rem;border-left:5px solid var(--p);padding-left:0.875rem;color:var(--t);margin-top:1.75rem}
+        h2:first-of-type{margin-top:0}
+        h3{font-size:1.1rem;margin-bottom:0.6rem;color:var(--t);font-weight:700}
+        p{margin-bottom:0.875rem;color:#475569;font-size:0.95rem}
+        p:last-child{margin-bottom:0}
+        a.inline-link{color:var(--p);text-decoration:none;font-weight:600}
+        a.inline-link:hover{text-decoration:underline}
+        .intro-text{margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+        .input-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.25rem}
+        .input-group{background:#f1f5f9;padding:1rem;border-radius:0.875rem;border:1px solid var(--border)}
+        .input-group label{display:block;font-size:0.7rem;font-weight:700;color:var(--tm);text-transform:uppercase;margin-bottom:0.4rem}
+        .input-group input,.input-group select{width:100%;padding:0.6rem;font-size:1rem;font-weight:700;border:2px solid var(--border);border-radius:0.5rem;font-family:inherit;color:var(--t);transition:border-color 0.2s;background:white}
+        .input-group input:focus,.input-group select:focus{outline:none;border-color:var(--p)}
+        .input-group input::placeholder{color:#94a3b8;font-weight:400}
+        .btn-calc{display:inline-flex;align-items:center;gap:0.5rem;background:var(--p);color:white;border:none;padding:0.875rem 1.75rem;font-size:0.95rem;font-weight:700;border-radius:0.75rem;cursor:pointer;transition:0.2s;font-family:inherit}
+        .btn-calc:hover{background:var(--p-hover);transform:translateY(-1px)}
+        .btn-calc:active{transform:translateY(0)}
+        .result-card{background:linear-gradient(135deg,var(--p) 0%,#1d4ed8 100%);color:white;padding:1.75rem;border-radius:1.5rem;text-align:center;margin-top:1.25rem}
+        .result-card .stat-l{color:rgba(255,255,255,0.8)}
+        .result-card .stat-v{font-size:2.25rem;color:white}
+        .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1rem}
+        .formula-box{background:#f1f5f9;border-radius:0.9rem;padding:1rem;text-align:center;font-family:ui-monospace,monospace;font-size:1rem;font-weight:700;margin:1rem 0;border:1px solid var(--border)}
+        .example-box{background:#eff6ff;border-radius:0.9rem;padding:1rem;margin:1rem 0;border-left:4px solid var(--p)}
+        .device-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:1rem}
+        .device-card{background:#f1f5f9;border-radius:0.875rem;padding:1rem;border:1px solid var(--border)}
+        .device-card h4{font-size:0.9rem;margin-bottom:0.4rem;color:var(--p)}
+        .device-card p{font-size:0.85rem;color:#475569;margin:0}
+        .faq-item{border-bottom:1px solid var(--border);padding:1rem 0}
+        .faq-item:first-child{padding-top:0}
+        .faq-item:last-child{border-bottom:none;padding-bottom:0}
+        .faq-item h4{font-size:0.95rem;margin-bottom:0.4rem}
+        .footer-dark{background:#0f172a;color:#f8fafc;padding:2.5rem 2rem;border-radius:1.5rem;margin-top:3rem}
+        .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+        .footer-dark h3{color:var(--p);margin-bottom:1rem;font-size:1.15rem}
+        .footer-dark p{color:#94a3b8;font-size:0.9rem}
+        .social-links a{color:white;text-decoration:none;margin-right:12px;font-weight:600;font-size:0.85rem;border-bottom:2px solid var(--p);padding-bottom:2px}
+        .footer-links{list-style:none;padding:0;margin:0}
+        .footer-links li{margin-bottom:0.5rem}
+        .footer-links a{color:#94a3b8;text-decoration:none}
+        .footer-links a:hover{color:var(--p)}
+        .copy-text{text-align:center;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #1e293b;color:#64748b;font-size:0.75rem}
+        .vis-area{display:flex;justify-content:center;margin:1rem 0}
+        .vis-rect{border:3px solid var(--p);background:rgba(37,99,235,0.05);position:relative}
+    </style>
+</head>
+<body>
+<main>
+    <section class="hero" aria-label="Screen Size Calculator">
+        <div class="hero-label">Physical Display Calculator</div>
+        <h1>Screen Size Calculator</h1>
+        <p class="hero-sub">Get physical width, height, and area from diagonal and aspect ratio</p>
+        <p class="h2an" id="result-diag">--</p>
+        <p class="hero-sub">Diagonal (inches)</p>
+    </section>
+
+    <section class="section">
+        <h2>Screen Size Calculator</h2>
+        <p class="intro-text">Find physical screen dimensions from diagonal size and aspect ratio. Enter diagonal in inches and your aspect ratio to get width, height, area in cm and inches.</p>
+        <div class="input-grid">
+            <div class="input-group">
+                <label for="diag">Diagonal Size (inches)</label>
+                <input type="number" id="diag" placeholder="24" min="1" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="aspect">Aspect Ratio</label>
+                <select id="aspect">
+                    <option value="16:9">16:9 (Standard)</option>
+                    <option value="16:10">16:10 (Laptop)</option>
+                    <option value="21:9">21:9 (Ultrawide)</option>
+                    <option value="4:3">4:3 (Older)</option>
+                    <option value="3:2">3:2 (Some laptops)</option>
+                    <option value="5:4">5:4 (Older monitor)</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group" style="margin-bottom:1.25rem">
+            <label for="diag-cm">Or Diagonal in cm</label>
+            <input type="number" id="diag-cm" placeholder="60.96" min="1" step="0.1" style="margin-top:0.4rem">
+        </div>
+        <button class="btn-calc" id="calc-btn">Calculate Dimensions</button>
+        <div class="result-card" id="result-card" style="display:none">
+            <div class="stat-l">Physical Screen Dimensions</div>
+            <div class="result-grid">
+                <div><div class="stat-l">Width</div><div class="stat-v" id="res-w">-</div></div>
+                <div><div class="stat-l">Height</div><div class="stat-v" id="res-h">-</div></div>
+                <div><div class="stat-l">Area</div><div class="stat-v" id="res-area">-</div></div>
+            </div>
+        </div>
+        <h3>Enter Your Screen Diagonal</h3>
+        <p>Type the diagonal size of your visible screen area in inches or cm. Measure corner to corner, not including bezels. Find it on the manufacturer spec sheet.</p>
+        <h3>Select Your Aspect Ratio</h3>
+        <p>Choose the native aspect ratio of your display. Most modern monitors are 16:9. Ultrawides are 21:9. Older screens may be 4:3 or 5:4.</p>
+        <h3>Get Physical Dimensions</h3>
+        <p>Press Calculate to get width and height in inches and cm, plus total visible area.</p>
+    </section>
+
+    <section class="section" id="details-section" style="display:none">
+        <h2>Detailed Results</h2>
+        <div class="grid">
+            <div class="stat"><div class="stat-l">Width (in)</div><div class="stat-v" id="d-w-in">-</div></div>
+            <div class="stat"><div class="stat-l">Width (cm)</div><div class="stat-v" id="d-w-cm">-</div></div>
+            <div class="stat"><div class="stat-l">Height (in)</div><div class="stat-v" id="d-h-in">-</div></div>
+            <div class="stat"><div class="stat-l">Height (cm)</div><div class="stat-v" id="d-h-cm">-</div></div>
+            <div class="stat"><div class="stat-l">Area (sq in)</div><div class="stat-v" id="d-area">-</div></div>
+            <div class="stat"><div class="stat-l">Area (sq cm)</div><div class="stat-v" id="d-area-cm">-</div></div>
+        </div>
+        <div class="vis-area">
+            <div class="vis-rect" id="vis-rect" style="width:200px;height:112px;border-radius:8px"></div>
+        </div>
+        <h3>Aspect Ratio Details</h3>
+        <p>Width and height are derived from the diagonal and ratio. Wider ratios mean shorter height for same diagonal.</p>
+    </section>
+
+    <article>
+        <section class="section">
+            <h2>What Is Screen Size?</h2>
+            <p>Screen size refers to the diagonal measurement of the visible display area in inches. This is the standard way TVs, monitors, and laptops are sized. It is NOT the width or height directly.</p>
+            <p>The diagonal determines physical footprint. A 27-inch 16:9 monitor is about 23.5 wide and 13.2 tall. A 27-inch ultrawide 21:9 is about 23.5 wide but only 10.6 tall, spanning more horizontal space.</p>
+        </section>
+
+        <section class="section">
+            <h2>How to Calculate Screen Size</h2>
+            <p>Use the Pythagorean theorem. For a diagonal d and aspect ratio a:b:</p>
+            <div class="formula-box">width = d * a / sqrt(a^2 + b^2)</div>
+            <div class="formula-box">height = d * b / sqrt(a^2 + b^2)</div>
+            <h3>Example: 24-inch 16:9</h3>
+            <div class="example-box">
+            <p>sqrt(16^2+9^2)=18.358. Width = 24*16/18.358 = 20.9 in. Height = 24*9/18.358 = 11.8 in. In cm: 53.1 x 29.9.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>PPI vs Screen Size</h2>
+            <p>PPI uses screen size in the denominator. For a fixed resolution, larger physical screens have lower PPI. Check our <a class="inline-link" href="./ppi-calculator.html">PPI calculator</a> for density, and our <a class="inline-link" href="./">screen resolution checker</a> for pixel dimensions.</p>
+        </section>
+
+        <section class="section" aria-label="Frequently Asked Questions">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>How do I measure my screen size?</h4>
+                <p>Measure diagonally from one corner of the visible area to the opposite corner. Do not include bezels. Most manufacturers list the size in inches.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What does screen size mean exactly?</h4>
+                <p>It is the diagonal length of the viewable display area, measured in inches. A 24-inch monitor means the diagonal of the visible screen is 24 inches.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is screen size the same as resolution?</h4>
+                <p>No. Screen size is physical inches. Resolution is pixel count. A 24-inch 1080p monitor has 92 PPI. A 24-inch 4K monitor has 184 PPI.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What is the most common screen size?</h4>
+                <p>For desktop monitors: 24 and 27 inches. For laptops: 15.6 inches. For TVs: 55 inches. For phones: 6.1 to 6.7 inches.</p>
+            </div>
+            <div class="faq-item">
+                <h4>How do I convert inches to cm?</h4>
+                <p>Multiply inches by 2.54. For example, 24 inches = 60.96 cm. Our calculator does this automatically.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I calculate screen size without a ruler?</h4>
+                <p>Yes. If you know the resolution and pixel pitch, you can derive size. Or if you know the diagonal from the manufacturer spec, just enter it above.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Common Screen Sizes Reference</h2>
+            <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem">
+            <tr style="background:#f1f5f9"><th style="padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)">Diagonal</th><th style="padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)">Aspect</th><th style="padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)">Width</th><th style="padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)">Height</th><th style="padding:0.6rem;text-align:left;border-bottom:1px solid var(--border)">Area (sq in)</th></tr>
+            <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border)">15.6 in</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">16:9</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">13.6 in (34.6 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">7.66 in (19.5 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">104</td></tr>
+            <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border)">24 in</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">16:9</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">20.9 in (53.1 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">11.8 in (29.9 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">247</td></tr>
+            <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border)">27 in</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">16:9</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">23.5 in (59.7 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">13.2 in (33.6 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">310</td></tr>
+            <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border)">27 in</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">21:9</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">23.5 in (59.7 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">10.6 in (27.0 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">250</td></tr>
+            <tr><td style="padding:0.6rem;border-bottom:1px solid var(--border)">32 in</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">16:9</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">27.9 in (70.9 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">15.7 in (39.9 cm)</td><td style="padding:0.6rem;border-bottom:1px solid var(--border)">437</td></tr>
+            <tr><td style="padding:0.6rem">55 in</td><td style="padding:0.6rem">16:9</td><td style="padding:0.6rem">47.9 in (121.7 cm)</td><td style="padding:0.6rem">27.0 in (68.5 cm)</td><td style="padding:0.6rem">1292</td></tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Related Display Tools</h2>
+            <div class="device-grid">
+                <div class="device-card">
+                    <h4>Screen Resolution Checker</h4>
+                    <p>Get pixel dimensions, viewport, and DPR. <a class="inline-link" href="./">Open screen resolution checker</a></p>
+                </div>
+                <div class="device-card">
+                    <h4>PPI Calculator</h4>
+                    <p>Calculate pixel density from resolution and diagonal. <a class="inline-link" href="./ppi-calculator.html">Open PPI calculator</a></p>
+                </div>
+                <div class="device-card">
+                    <h4>Aspect Ratio Calculator</h4>
+                    <p>Simplify ratios and match common formats. <a class="inline-link" href="./aspect-ratio.html">Coming Soon</a></p>
+                </div>
+                <div class="device-card">
+                    <h4>Monitor Size Calculator</h4>
+                    <p>Similar to this tool with advanced outputs. <a class="inline-link" href="./monitor-size.html">Coming Soon</a></p>
+                </div>
+            </div>
+        </section>
+    </article>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>About This Tool</h3>
+                <p>A free browser-based screen size calculator. Enter diagonal and aspect ratio to get physical dimensions in inches and cm. No data is sent to any server.</p>
+            </div>
+            <div>
+                <h3>Free Display Tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./ppi-calculator.html">PPI Calculator</a></li>
+                    <li><a href="./screen-size.html">Screen Size Calculator</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>The Developer</h3>
+                <p>Built by <strong>Chetan Kumar</strong> - a digital tool architect specializing in high-performance web applications and SEO-first development.</p>
+                <div class="social-links" style="margin-top:1.2rem">
+                    <a href="https://github.com/22066ayushkumar-jpg" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/askchetan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="copy-text">
+            &copy; <span id="yr"></span> whats-my-screen-resolution.netlify
+        </div>
+    </footer>
+</main>
+<script>
+(function(){
+    document.getElementById("yr").innerText = new Date().getFullYear();
+    
+    var diagInput = document.getElementById("diag");
+    var aspectSelect = document.getElementById("aspect");
+    var diagCmInput = document.getElementById("diag-cm");
+    var calcBtn = document.getElementById("calc-btn");
+    var resultCard = document.getElementById("result-card");
+    var detailsSection = document.getElementById("details-section");
+    
+    var resW = document.getElementById("res-w");
+    var resH = document.getElementById("res-h");
+    var dWin = document.getElementById("d-w-in");
+    var dWcm = document.getElementById("d-w-cm");
+    var dHin = document.getElementById("d-h-in");
+    var dHcm = document.getElementById("d-h-cm");
+    var dArea = document.getElementById("d-area");
+    var dAreaCm = document.getElementById("d-area-cm");
+    var visRect = document.getElementById("vis-rect");
+    
+    function getRatio(a){
+        var parts = a.split(":");
+        return {w:parseFloat(parts[0]), h:parseFloat(parts[1])};
+    }
+    
+    function calc(){
+        var diag = parseFloat(diagInput.value);
+        var diagCm = parseFloat(diagCmInput.value);
+        var ratioStr = aspectSelect.value;
+        var r = getRatio(ratioStr);
+        
+        var d = diag;
+        if(!d && diagCm){
+            d = diagCm / 2.54;
+        }
+        if(!d || d <= 0) return;
+        
+        var denom = Math.sqrt(r.w*r.w + r.h*r.h);
+        var w = d * r.w / denom;
+        var h = d * r.h / denom;
+        var area = w * h;
+        var areaCm = (w*2.54) * (h*2.54);
+        
+        resultCard.style.display = "block";
+        detailsSection.style.display = "block";
+        
+        resW.innerText = w.toFixed(1) + " in";
+        resH.innerText = h.toFixed(1) + " in";
+        
+        dWin.innerText = w.toFixed(2) + " in";
+        dWcm.innerText = (w*2.54).toFixed(1) + " cm";
+        dHin.innerText = h.toFixed(2) + " in";
+        dHcm.innerText = (h*2.54).toFixed(1) + " cm";
+        dArea.innerText = area.toFixed(0) + " sq in";
+        dAreaCm.innerText = areaCm.toFixed(0) + " sq cm";
+        
+        var maxDim = Math.max(w, h);
+        var scale = 180 / maxDim;
+        visRect.style.width = (w*scale) + "px";
+        visRect.style.height = (h*scale) + "px";
+    }
+    
+    calcBtn.addEventListener("click", calc);
+    
+    [diagInput, diagCmInput].forEach(function(input){
+        input.addEventListener("keypress", function(e){
+            if(e.key === "Enter") calc();
+        });
+    });
+    
+    aspectSelect.addEventListener("change", calc);
+})();
+</script>
+</body>
+</html>

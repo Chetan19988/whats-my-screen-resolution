@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microphone &amp; Audio Test — Free Online Mic and Speaker Checker</title>
+    <meta name="description" content="Test microphone input with a live level meter and optional local recording, then check speakers or headphones with user-triggered tones and left/right channel tests.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/microphone-audio-test.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Microphone &amp; Audio Test — Free Online Mic and Speaker Checker">
+    <meta property="og:description" content="Check mic input with a live level meter and local recording. Play test tones and left/right speaker checks on demand. No audio upload.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/microphone-audio-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Microphone &amp; Audio Test — Free Online Audio Checker">
+    <meta name="twitter:description" content="Test your microphone, record locally, and check speaker channels using browser audio tools. Permission only on start.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Microphone & Audio Test — Free Online Mic and Speaker Checker",
+        "url": "https://whats-my-screen-resolution.netlify.app/microphone-audio-test.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Free in-browser microphone and speaker test with live input meter, optional local recording, test tones and channel checks.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Microphone & Audio Test", "item": "https://whats-my-screen-resolution.netlify.app/microphone-audio-test.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Does the microphone test upload or save audio?", "acceptedAnswer": {"@type": "Answer", "text": "No. Microphone audio is processed locally in your browser. Recording is optional and remains in the current page session; use the download control only if you want to save it locally."}},
+            {"@type": "Question", "name": "When is microphone permission requested?", "acceptedAnswer": {"@type": "Answer", "text": "The browser requests microphone access only after you press Start Microphone. Stop Microphone ends and releases the active audio tracks."}},
+            {"@type": "Question", "name": "Can this page measure professional microphone quality?", "acceptedAnswer": {"@type": "Answer", "text": "No. The meter shows relative signal level received by the browser, not calibrated loudness, frequency response, noise floor or microphone certification. Results depend on device settings and environment."}},
+            {"@type": "Question", "name": "Why can I not hear the speaker test?", "acceptedAnswer": {"@type": "Answer", "text": "Check system volume, output device selection, mute state and browser audio permissions. Some browsers require a user click before audio playback. Use a low volume initially."}},
+            {"@type": "Question", "name": "Does the left and right speaker test verify my hardware?", "acceptedAnswer": {"@type": "Answer", "text": "The page requests left/right test tones through the browser audio output. What you hear depends on operating-system routing, browser, audio device and any spatial audio processing; it is a basic listening check, not calibration."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button,select { font:inherit; }
+        button { cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.5rem 1.5rem 3rem; margin-bottom:1.5rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.2rem,6vw,4rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:1rem; }
+        .hero-sub { max-width:760px; margin:0 auto 1.5rem; color:var(--tm); font-size:1.08rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.8rem 1.25rem; border-radius:.8rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .2s ease,background .2s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .btn:disabled { cursor:not-allowed; opacity:.52; transform:none; }
+        .hero-note { color:var(--tm); font-size:.82rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1.5rem; color:var(--tm); font-size:.85rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:2rem; border:1px solid var(--border); border-radius:1.5rem; margin-bottom:1.5rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.8rem; margin-bottom:1.25rem; }
+        .section-icon { width:2.5rem; height:2.5rem; border-radius:.8rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:900; }
+        .section-heading h2 { font-size:1.5rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.95rem; margin-top:.25rem; }
+        h2 { font-size:1.5rem; line-height:1.25; margin-bottom:1rem; }
+        h3 { font-size:1.08rem; margin-bottom:.45rem; }
+        p { color:#475569; margin-bottom:.9rem; }
+        p:last-child { margin-bottom:0; }
+        .audio-grid { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(280px,.8fr); gap:1rem; align-items:start; }
+        .audio-card { min-width:0; padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .audio-card h3 { margin-bottom:.7rem; font-size:1rem; }
+        .audio-card p { font-size:.86rem; }
+        .control-row { display:flex; gap:.55rem; align-items:center; flex-wrap:wrap; margin-top:.75rem; }
+        .control-select { min-height:42px; min-width:160px; max-width:100%; padding:.55rem .7rem; color:var(--t); background:#fff; border:1px solid var(--border); border-radius:.65rem; }
+        .meter-box { margin:1rem 0 .4rem; }
+        .meter-top { display:flex; justify-content:space-between; gap:.6rem; margin-bottom:.35rem; color:var(--tm); font-size:.76rem; font-weight:800; }
+        .level-meter { height:1.15rem; overflow:hidden; background:#e2e8f0; border:1px solid #cbd5e1; border-radius:999px; }
+        .level-meter span { display:block; width:0; height:100%; background:linear-gradient(90deg,#22c55e 0%,#84cc16 60%,#f59e0b 82%,#ef4444 100%); border-radius:inherit; transition:width .07s linear; }
+        .meter-scale { display:flex; justify-content:space-between; margin-top:.2rem; color:#94a3b8; font-size:.65rem; }
+        .recording-indicator { display:inline-flex; align-items:center; gap:.4rem; color:var(--tm); font-size:.78rem; font-weight:800; }
+        .recording-indicator.active { color:var(--danger); }
+        .recording-dot { width:.55rem; height:.55rem; border-radius:50%; background:#94a3b8; }
+        .recording-indicator.active .recording-dot { background:var(--danger); animation:pulse 1s infinite; }
+        @keyframes pulse { 50% { opacity:.35; } }
+        .audio-status { min-height:2.8em; margin:.7rem 0 0!important; color:var(--tm); font-size:.8rem!important; }
+        .audio-status.error { color:var(--danger); }
+        .audio-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; margin-top:.8rem; }
+        .stat { min-width:0; padding:.65rem; background:#fff; border:1px solid var(--border); border-radius:.65rem; }
+        .stat span { display:block; color:var(--tm); font-size:.65rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+        .stat strong { display:block; margin-top:.2rem; color:var(--t); font-size:.9rem; font-weight:900; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+        .audio-playback { display:block; width:100%; margin-top:.8rem; }
+        .tone-buttons { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; margin-top:.7rem; }
+        .tone-buttons .btn { justify-content:center; padding:.65rem .55rem; font-size:.83rem; }
+        .tone-buttons .full { grid-column:1/-1; }
+        .volume-row { display:grid; grid-template-columns:auto minmax(80px,1fr) 3rem; align-items:center; gap:.6rem; margin-top:.8rem; color:var(--tm); font-size:.8rem; font-weight:700; }
+        .volume-row input { width:100%; accent-color:var(--p); }
+        .volume-value { color:var(--t); text-align:right; font-variant-numeric:tabular-nums; }
+        .info-note { margin-top:.8rem; padding:.7rem; background:#fff; border-left:3px solid var(--p); border-radius:.4rem; color:var(--tm); font-size:.76rem; }
+        .privacy-pill { display:flex; align-items:flex-start; gap:.55rem; padding:.75rem; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.7rem; font-size:.78rem; }
+        .privacy-pill svg { flex-shrink:0; }
+        .feature-grid,.steps-grid,.related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card { padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3 { font-size:1rem; }
+        .feature-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:1rem; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:1rem; }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span { margin:.2rem 0 0; color:var(--tm); font-size:.82rem; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:650px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:850px) { .audio-grid { grid-template-columns:1fr; } .two-col,.faq-grid { grid-template-columns:1fr; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.3rem 1rem; } .preview-controls { align-items:stretch; } .preview-controls .btn { flex:1 1 auto; } .tone-buttons { grid-template-columns:1fr 1fr; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser microphone &amp; audio test</div>
+        <h1>Microphone &amp; Audio Test</h1>
+        <p class="hero-sub">Check microphone input with a live level meter and optional local recording, then test speaker or headphone output with on-demand tones.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#microphone-test">Test microphone</a>
+            <a class="btn btn-secondary" href="#speaker-test">Test speakers</a>
+        </div>
+        <p class="hero-note"><strong>Permission only on start</strong> · <strong>No audio upload</strong> · <strong>Local playback</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Microphone &amp; Audio Test</span></nav>
+
+    <section class="section" id="microphone-test" aria-labelledby="mic-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">♫</div><div><h2 id="mic-title">Microphone Input Test</h2><p>Start the microphone to view the live input level. Recording is optional and stays in this browser tab.</p></div></div>
+        <div class="audio-grid">
+            <div class="audio-card">
+                <h3>Live Input Level</h3>
+                <label class="visually-hidden" for="micSelect">Select microphone</label>
+                <select class="control-select" id="micSelect" disabled><option value="">Default microphone</option></select>
+                <div class="meter-box" aria-label="Microphone input level">
+                    <div class="meter-top"><span>Input level</span><strong id="micLevelText">Not running</strong></div>
+                    <div class="level-meter"><span id="micLevelBar"></span></div>
+                    <div class="meter-scale"><span>Quiet</span><span>Strong</span><span>Clipping risk</span></div>
+                </div>
+                <div class="control-row">
+                    <button class="btn btn-primary" id="micStart" type="button">Start Microphone</button>
+                    <button class="btn btn-secondary" id="micStop" type="button" disabled>Stop Microphone</button>
+                    <span class="recording-indicator" id="recordingIndicator"><span class="recording-dot" aria-hidden="true"></span><span id="recordingLabel">Not recording</span></span>
+                </div>
+                <div class="control-row">
+                    <button class="btn btn-secondary" id="recordStart" type="button" disabled>Start Recording</button>
+                    <button class="btn btn-secondary" id="recordStop" type="button" disabled>Stop Recording</button>
+                    <button class="btn btn-secondary" id="recordDownload" type="button" disabled>Download Recording</button>
+                </div>
+                <audio class="audio-playback" id="recordPlayback" controls hidden aria-label="Recorded microphone playback"></audio>
+                <p class="audio-status" id="micStatus" role="status" aria-live="polite">Microphone is off. No permission has been requested.</p>
+            </div>
+            <aside class="camera-card" aria-label="Microphone stream details">
+                <h3>Input Track Details</h3>
+                <div class="audio-stats">
+                    <div class="stat"><span>Microphone</span><strong id="micName">—</strong></div>
+                    <div class="stat"><span>Sample rate</span><strong id="sampleRate">—</strong></div>
+                    <div class="stat"><span>Channels</span><strong id="channelCount">—</strong></div>
+                    <div class="stat"><span>Audio state</span><strong id="micState">Stopped</strong></div>
+                </div>
+                <div class="info-note">Settings are values reported by the active browser audio track. The level meter is relative, not calibrated loudness or a microphone quality score.</div>
+                <div class="privacy-pill" style="margin-top:.8rem"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span>No recording is created unless you start it. Audio data remains local unless you explicitly download the recording.</span></div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section" id="speaker-test" aria-labelledby="speaker-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">◖</div><div><h2 id="speaker-title">Speaker &amp; Headphone Output Test</h2><p>Play a tone or channel announcement only when you press a test button. Set a comfortable volume first.</p></div></div>
+        <div class="audio-grid">
+            <div class="audio-card">
+                <h3>Test Audio Output</h3>
+                <div class="volume-row"><label for="toneVolume">Tone volume</label><input id="toneVolume" type="range" min="0" max="30" value="12"><span class="volume-value" id="toneVolumeValue">12%</span></div>
+                <div class="tone-buttons">
+                    <button class="btn btn-secondary" id="toneLeft" type="button">Play Left</button>
+                    <button class="btn btn-secondary" id="toneRight" type="button">Play Right</button>
+                    <button class="btn btn-secondary" id="toneCenter" type="button">Play Center Tone</button>
+                    <button class="btn btn-secondary" id="toneStop" type="button" disabled>Stop Tone</button>
+                </div>
+                <p class="audio-status" id="speakerStatus" role="status" aria-live="polite">No tone is playing. Use headphones at a low volume for channel checks.</p>
+            </div>
+            <div class="callout"><h3>Safe, user-triggered playback</h3><p>These controls generate short test tones locally in the browser. Playback starts only after you press a test button. Left and right checks use browser audio panning; operating-system enhancements, mono output or connected hardware may change what you hear.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="what-it-tests" aria-labelledby="features-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="features-title">What This Microphone &amp; Audio Test Checks</h2><p>Basic, local checks of audio input and output in your browser.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">♫</div><h3>Microphone activity</h3><p>The live meter responds to audio signal reaching the browser. Speak normally to see whether the input is active.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">●</div><h3>Local recording</h3><p>Make a short recording in the page, play it back, and download it only if you choose. Recording requires an active microphone stream.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◖</div><h3>Speaker channels</h3><p>Play center, left and right test tones on demand to listen for basic output and channel routing.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="how-to-test" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">1</div><div><h2 id="how-title">How to Test Microphone and Audio</h2><p>Input permission and output playback are controlled independently.</p></div></div>
+        <div class="steps-grid">
+            <article class="step-card"><div class="step-num">STEP 01</div><div class="step-body"><h3>Start microphone input</h3><p>Choose Start Microphone and allow access in the browser prompt. Speak and watch the meter. Stop the microphone when the check is complete.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 02</div><div class="step-body"><h3>Record only if needed</h3><p>Start an optional recording, speak briefly, then stop it to enable playback. The recording stays in this page unless you choose Download Recording.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 03</div><div class="step-body"><h3>Check output channels</h3><p>Set a low volume and press Play Left, Play Right or Play Center Tone. Use headphones to distinguish channels, then press Stop Tone if needed.</p></div></article>
+        </div>
+    </section>
+
+    <section class="section" id="limitations" aria-labelledby="limits-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="limits-title">Privacy, Permissions &amp; Measurement Notes</h2><p>Browser audio tools provide simple functional checks, not studio measurements.</p></div></div>
+        <div class="two-col">
+            <div><h3>Permission and secure context</h3><p>Microphone access is requested only when you press Start Microphone. Modern browsers generally require HTTPS or localhost. The browser permission prompt and site settings control access.</p><h3>Local processing</h3><p>The meter uses browser audio analysis, and optional recording is created with the browser's recording API. No audio is transmitted by this page. A saved recording is downloaded to your device only when requested.</p></div>
+            <div class="callout"><h3>Not calibrated audio equipment</h3><p>The meter does not measure calibrated decibels, noise floor, frequency response or microphone quality. Test tones verify that browser playback is possible, but cannot certify speakers, headphones, channel balance or hearing safety.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Frequently Asked Questions</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>Does the microphone test upload or save audio?</h3><p>No. Audio is processed in the browser. Recording is optional and remains in the page session unless you explicitly download it.</p></article>
+            <article class="faq-item"><h3>When is microphone permission requested?</h3><p>Only after you press Start Microphone. Stop Microphone ends and releases the active audio track.</p></article>
+            <article class="faq-item"><h3>Is the level meter a decibel measurement?</h3><p>No. It shows relative signal level received by the browser, not calibrated loudness, frequency response or noise floor.</p></article>
+            <article class="faq-item"><h3>Why can I not hear a speaker test tone?</h3><p>Check system volume, output device, mute state and browser audio permissions. Begin at a low volume; some browsers require a user click before playback.</p></article>
+            <article class="faq-item"><h3>Does the left/right test verify my hardware?</h3><p>It requests panned tones through browser audio output. System routing, mono output and spatial audio effects may change what you hear, so it is a basic listening check only.</p></article>
+            <article class="faq-item"><h3>Why is my microphone missing?</h3><p>Grant permission after pressing Start Microphone, connect or enable the device, and check browser site settings. Device labels may be hidden until permission is allowed.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Device Tools</h2><p>More browser-based input, audio and display checks.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./camera-test.html"><strong>Camera Test</strong><span>Live webcam preview</span></a>
+            <a class="related-card" href="./keyboard-test.html"><strong>Keyboard Test</strong><span>Keys and simultaneous presses</span></a>
+            <a class="related-card" href="./mouse-test.html"><strong>Mouse Test</strong><span>Buttons, wheel, CPS and movement</span></a>
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Colors, text and touch</span></a>
+            <a class="related-card" href="./frame-rate-tester.html"><strong>Frame Rate Tester</strong><span>Visual motion and frame timing</span></a>
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display details</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to test your audio?</h2>
+        <p>Start the microphone only when ready, or press a speaker test button to play a local tone.</p>
+        <a class="btn btn-primary" href="#microphone-test">Start microphone test</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./how-to-check-phone-resolution.html">Phone Resolution Guide</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li><li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li><li><a href="./mouse-test.html">Mouse Test</a></li><li><a href="./keyboard-test.html">Keyboard Test</a></li><li><a href="./camera-test.html">Camera Test</a></li><li><a href="./microphone-audio-test.html">Microphone &amp; Audio Test</a></li></ul></div>
+        <div><h3>About this test</h3><p>Microphone permission starts only on request. Input is processed locally and audio is not uploaded by this tool.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var micStream=null;
+    var audioContext=null;
+    var analyser=null;
+    var sourceNode=null;
+    var meterFrame=0;
+    var recorder=null;
+    var recordedChunks=[];
+    var recordingBlob=null;
+    var currentObjectUrl="";
+    var selectedDeviceId="";
+    var toneNodes=[];
+    var activeToneContext=null;
+    var meterData=null;
+    var micSelect=document.getElementById("micSelect");
+    var micStatus=document.getElementById("micStatus");
+
+    function setMicMessage(message,isError){micStatus.textContent=message;micStatus.classList.toggle("error",Boolean(isError));}
+    function stopMeter(){if(meterFrame){cancelAnimationFrame(meterFrame);meterFrame=0;}document.getElementById("micLevelBar").style.width="0";document.getElementById("micLevelText").textContent="Not running";}
+    function clearInputDetails(){
+        ["micName","sampleRate","channelCount"].forEach(function(id){document.getElementById(id).textContent="—";});
+        document.getElementById("micState").textContent="Stopped";
+    }
+    function closeAudioContext(context){if(context&&context.state!=="closed")context.close().catch(function(){});}
+    function stopMicrophone(){
+        stopMeter();
+        if(recorder&&recorder.state!=="inactive")recorder.stop();
+        if(micStream)micStream.getTracks().forEach(function(track){track.stop();});
+        micStream=null;
+        if(sourceNode){try{sourceNode.disconnect();}catch(error){}sourceNode=null;}
+        analyser=null;
+        closeAudioContext(audioContext);audioContext=null;
+        micSelect.disabled=true;
+        document.getElementById("micStart").disabled=false;
+        document.getElementById("micStop").disabled=true;
+        document.getElementById("recordStart").disabled=true;
+        document.getElementById("micState").textContent="Stopped";
+        if(!recorder||recorder.state==="inactive")document.getElementById("recordStop").disabled=true;
+        if(!recordingBlob)document.getElementById("recordDownload").disabled=true;
+    }
+    function explainMicError(error){
+        if(!window.isSecureContext)return "Microphone access requires HTTPS or localhost.";
+        if(error&&error.name==="UnavailableError")return "Microphone access is unavailable in this browser.";
+        if(error&&error.name==="NotAllowedError")return "Microphone permission was denied. Allow access in browser site settings and try again.";
+        if(error&&error.name==="NotFoundError")return "No microphone was found. Connect or enable a microphone and try again.";
+        if(error&&error.name==="NotReadableError")return "The microphone could not be opened. It may be busy in another app.";
+        if(error&&error.name==="OverconstrainedError")return "The selected microphone is unavailable. Select another input and try again.";
+        return "Could not start the microphone. Check permissions and device availability.";
+    }
+    async function refreshMicrophones(){
+        if(!navigator.mediaDevices||!navigator.mediaDevices.enumerateDevices)return;
+        var devices=await navigator.mediaDevices.enumerateDevices();
+        var mics=devices.filter(function(device){return device.kind==="audioinput";});
+        micSelect.replaceChildren();
+        mics.forEach(function(device,index){var option=document.createElement("option");option.value=device.deviceId;option.textContent=device.label||"Microphone "+(index+1);micSelect.appendChild(option);});
+        micSelect.disabled=mics.length<2;
+        if(selectedDeviceId)micSelect.value=selectedDeviceId;
+    }
+    function drawMeter(){
+        if(!analyser)return;
+        analyser.getByteTimeDomainData(meterData);
+        var sum=0;
+        for(var i=0;i<meterData.length;i++){var sample=(meterData[i]-128)/128;sum+=sample*sample;}
+        var rms=Math.sqrt(sum/meterData.length);
+        var level=Math.min(100,Math.max(0,Math.round(rms*250)));
+        document.getElementById("micLevelBar").style.width=level+"%";
+        document.getElementById("micLevelText").textContent=level<2?"Quiet":"Signal detected · "+level+"%";
+        meterFrame=requestAnimationFrame(drawMeter);
+    }
+    async function startMicrophone(){
+        if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){setMicMessage(explainMicError({name:"UnavailableError"}),true);return;}
+        document.getElementById("micStart").disabled=true;
+        setMicMessage("Requesting microphone access…",false);
+        selectedDeviceId=micSelect.value||selectedDeviceId;
+        try{
+            var constraints={audio:selectedDeviceId?{deviceId:{exact:selectedDeviceId}}:true,video:false};
+            micStream=await navigator.mediaDevices.getUserMedia(constraints);
+            var track=micStream.getAudioTracks()[0];
+            var settings=track.getSettings?track.getSettings():{};
+            document.getElementById("micName").textContent=track.label||"Microphone";
+            document.getElementById("sampleRate").textContent=settings.sampleRate?settings.sampleRate+" Hz":"Unavailable";
+            document.getElementById("channelCount").textContent=settings.channelCount?String(settings.channelCount):"Unavailable";
+            document.getElementById("micState").textContent="Live";
+            document.getElementById("micStop").disabled=false;
+            document.getElementById("recordStart").disabled=typeof MediaRecorder==="undefined";
+            setMicMessage(typeof MediaRecorder==="undefined"?"Microphone active. Recording is not supported in this browser.":"Microphone active. Speak to see the input meter.",false);
+            await refreshMicrophones();
+            audioContext=new (window.AudioContext||window.webkitAudioContext)();
+            await audioContext.resume();
+            analyser=audioContext.createAnalyser();analyser.fftSize=1024;
+            meterData=new Uint8Array(analyser.fftSize);
+            sourceNode=audioContext.createMediaStreamSource(micStream);sourceNode.connect(analyser);
+            drawMeter();
+            track.addEventListener("ended",function(){if(micStream&&micStream.getAudioTracks()[0]===track){stopMicrophone();setMicMessage("Microphone stream ended.",true);}},{once:true});
+        }catch(error){stopMicrophone();setMicMessage(explainMicError(error),true);}
+    }
+    document.getElementById("micStart").addEventListener("click",startMicrophone);
+    document.getElementById("micStop").addEventListener("click",function(){stopMicrophone();setMicMessage("Microphone stopped and input track released.",false);});
+    micSelect.addEventListener("change",function(){selectedDeviceId=micSelect.value;if(micStream)startMicrophone();});
+    window.addEventListener("pagehide",function(){
+        stopMicrophone();
+        stopTone();
+        if(currentObjectUrl){URL.revokeObjectURL(currentObjectUrl);currentObjectUrl="";}
+    });
+
+    document.getElementById("recordStart").addEventListener("click",function(){
+        if(!micStream||typeof MediaRecorder==="undefined")return;
+        try{
+            var options={};
+            if(MediaRecorder.isTypeSupported("audio/webm;codecs=opus"))options.mimeType="audio/webm;codecs=opus";
+            else if(MediaRecorder.isTypeSupported("audio/mp4"))options.mimeType="audio/mp4";
+            recordedChunks=[];recordingBlob=null;
+            recorder=new MediaRecorder(micStream,options);
+            recorder.addEventListener("dataavailable",function(event){if(event.data&&event.data.size)recordedChunks.push(event.data);});
+            recorder.addEventListener("stop",function(){
+                if(recordedChunks.length){recordingBlob=new Blob(recordedChunks,{type:recorder.mimeType||"audio/webm"});
+                    if(currentObjectUrl)URL.revokeObjectURL(currentObjectUrl);
+                    currentObjectUrl=URL.createObjectURL(recordingBlob);
+                    var playback=document.getElementById("recordPlayback");playback.src=currentObjectUrl;playback.hidden=false;
+                    document.getElementById("recordDownload").disabled=false;
+                    setMicMessage("Recording ready for local playback. Download it only if you want a file copy.",false);
+                }
+                document.getElementById("recordStart").disabled=!micStream;
+                document.getElementById("recordStop").disabled=true;
+                document.getElementById("recordingIndicator").classList.remove("active");
+                document.getElementById("recordingLabel").textContent="Not recording";
+            });
+            recorder.start();
+            document.getElementById("recordStart").disabled=true;
+            document.getElementById("recordStop").disabled=false;
+            document.getElementById("recordDownload").disabled=true;
+            document.getElementById("recordingIndicator").classList.add("active");
+            document.getElementById("recordingLabel").textContent="Recording locally";
+            setMicMessage("Recording in this browser tab. Press Stop Recording when finished.",false);
+        }catch(error){setMicMessage("Recording could not start in this browser.",true);}
+    });
+    document.getElementById("recordStop").addEventListener("click",function(){if(recorder&&recorder.state!=="inactive")recorder.stop();});
+    document.getElementById("recordDownload").addEventListener("click",function(){
+        if(!recordingBlob)return;
+        var ext=recordingBlob.type.indexOf("mp4")>=0?"m4a":"webm";
+        var link=document.createElement("a");link.href=currentObjectUrl;link.download="microphone-test-recording."+ext;link.click();
+    });
+
+    var volumeSlider=document.getElementById("toneVolume");
+    volumeSlider.addEventListener("input",function(){document.getElementById("toneVolumeValue").textContent=volumeSlider.value+"%";});
+    function stopTone(){
+        toneNodes.forEach(function(node){try{node.stop();}catch(error){}try{node.disconnect();}catch(error){}});toneNodes=[];
+        closeAudioContext(activeToneContext);activeToneContext=null;
+        document.getElementById("toneStop").disabled=true;
+    }
+    async function playTone(pan,label){
+        stopTone();
+        try{
+            activeToneContext=new (window.AudioContext||window.webkitAudioContext)();
+            await activeToneContext.resume();
+            var oscillator=activeToneContext.createOscillator();
+            var gain=activeToneContext.createGain();
+            var panner=activeToneContext.createStereoPanner?activeToneContext.createStereoPanner():null;
+            oscillator.type="sine";oscillator.frequency.value=440;
+            gain.gain.setValueAtTime(0,activeToneContext.currentTime);
+            gain.gain.linearRampToValueAtTime(Number(volumeSlider.value)/100,activeToneContext.currentTime+.04);
+            gain.gain.setValueAtTime(Number(volumeSlider.value)/100,activeToneContext.currentTime+.65);
+            gain.gain.linearRampToValueAtTime(0,activeToneContext.currentTime+.8);
+            if(panner){panner.pan.value=pan;oscillator.connect(panner);panner.connect(gain);}else oscillator.connect(gain);
+            gain.connect(activeToneContext.destination);
+            toneNodes=[oscillator,gain];if(panner)toneNodes.push(panner);
+            oscillator.start();oscillator.stop(activeToneContext.currentTime+.82);
+            document.getElementById("toneStop").disabled=false;
+            document.getElementById("speakerStatus").textContent=label+" test tone playing. Use Stop Tone to end it immediately.";
+            oscillator.addEventListener("ended",function(){
+                if(toneNodes.indexOf(oscillator)>=0){toneNodes=[];closeAudioContext(activeToneContext);activeToneContext=null;document.getElementById("toneStop").disabled=true;document.getElementById("speakerStatus").textContent=label+" tone finished.";}
+            },{once:true});
+        }catch(error){stopTone();document.getElementById("speakerStatus").textContent="Audio playback is unavailable in this browser.";}
+    }
+    document.getElementById("toneLeft").addEventListener("click",function(){playTone(-1,"Left channel");});
+    document.getElementById("toneRight").addEventListener("click",function(){playTone(1,"Right channel");});
+    document.getElementById("toneCenter").addEventListener("click",function(){playTone(0,"Center");});
+    document.getElementById("toneStop").addEventListener("click",function(){stopTone();document.getElementById("speakerStatus").textContent="Tone stopped.";});
+    document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

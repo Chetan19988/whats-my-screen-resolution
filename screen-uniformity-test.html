@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Uniformity Test — Free Fullscreen Display Check</title>
+    <meta name="description" content="Inspect screen brightness and color uniformity with fullscreen gray, white, black and color patterns. Free visual test for monitors, laptops, phones and TVs.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/screen-uniformity-test.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Screen Uniformity Test — Free Fullscreen Display Check">
+    <meta property="og:description" content="Visually inspect screen brightness, gray uniformity and color consistency with fullscreen patterns in your browser. No download or upload.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/screen-uniformity-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Screen Uniformity Test — Fullscreen Display Check">
+    <meta name="twitter:description" content="Check display brightness and color consistency with fullscreen patterns. A free browser-based visual inspection tool.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Screen Uniformity Test — Free Fullscreen Display Check",
+        "url": "https://whats-my-screen-resolution.netlify.app/screen-uniformity-test.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Free browser-based visual screen uniformity test with fullscreen solid gray, white, black and color patterns for inspecting brightness and tint consistency.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Screen Uniformity Test", "item": "https://whats-my-screen-resolution.netlify.app/screen-uniformity-test.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "What is a screen uniformity test?", "acceptedAnswer": {"@type": "Answer", "text": "A screen uniformity test displays fullscreen gray, white, black and color patterns so you can visually inspect for uneven brightness, tint, shading or color patches across the panel."}},
+            {"@type": "Question", "name": "How do I check monitor brightness uniformity?", "acceptedAnswer": {"@type": "Answer", "text": "Use a dim, consistent room, disable automatic brightness and dynamic contrast if possible, then inspect fullscreen gray and white patterns from a normal viewing position. Compare the center, edges and corners."}},
+            {"@type": "Question", "name": "Does this tool measure or certify panel uniformity?", "acceptedAnswer": {"@type": "Answer", "text": "No. This page provides a visual inspection pattern only. It does not measure luminance, color difference or certify panel condition. Calibrated instruments are needed for quantitative uniformity measurements."}},
+            {"@type": "Question", "name": "Why should I use gray patterns?", "acceptedAnswer": {"@type": "Answer", "text": "Mid-gray and dark-gray patterns can make subtle shading, tint variation, clouding or dirty-screen effects easier to notice than some bright color patterns."}},
+            {"@type": "Question", "name": "Can I use this screen uniformity test on a phone or TV?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It runs in a modern browser on phones, tablets, laptops, monitors and TVs. Use fullscreen where available and review the patterns at a normal viewing distance."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button { font:inherit; cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.2rem 1.5rem 2.8rem; margin-bottom:1.1rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.1rem,6vw,3.5rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:.8rem; }
+        .hero-sub { max-width:780px; margin:0 auto 1.1rem; color:var(--tm); font-size:1.04rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.65rem; flex-wrap:wrap; margin-bottom:.9rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.76rem 1.15rem; border-radius:.75rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .18s ease,background .18s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .btn:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+        .hero-note { color:var(--tm); font-size:.8rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1rem; color:var(--tm); font-size:.83rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:1.6rem; border:1px solid var(--border); border-radius:1.35rem; margin-bottom:1.1rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:1rem; }
+        .section-icon { width:2.35rem; height:2.35rem; border-radius:.75rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:900; }
+        .section-heading h2 { font-size:1.4rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.9rem; margin-top:.2rem; }
+        h2 { font-size:1.45rem; line-height:1.25; margin-bottom:.8rem; }
+        h3 { font-size:1.04rem; margin-bottom:.4rem; }
+        p { color:#475569; margin-bottom:.75rem; }
+        p:last-child { margin-bottom:0; }
+        .tool-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(260px,.7fr); gap:1rem; align-items:start; }
+        .tool-main { min-width:0; }
+        .pattern-tabs { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:.7rem; }
+        .pattern-tab { min-height:39px; padding:.5rem .75rem; color:#475569; background:#fff; border:1px solid var(--border); border-radius:.6rem; font-size:.8rem; font-weight:800; }
+        .pattern-tab:hover { color:var(--p); background:var(--p-soft); border-color:#bfdbfe; }
+        .pattern-tab.active { color:#fff; background:var(--p); border-color:var(--p); }
+        .pattern-screen.custom-gradient { background-image:linear-gradient(90deg,rgba(0,0,0,.2),transparent 50%,rgba(255,255,255,.2)); }
+        .test-stage { position:relative; height:min(57vw,510px); min-height:300px; overflow:hidden; background:#0f172a; border:1px solid #334155; border-radius:1rem; outline:none; }
+        .test-stage:focus-visible { box-shadow:0 0 0 4px rgba(37,99,235,.22); }
+        .pattern-screen { position:absolute; inset:0; background:#808080; transition:background .15s; }
+        .pattern-screen.gradient { background:linear-gradient(90deg,#444 0%,#808080 50%,#c4c4c4 100%); }
+        .pattern-screen.grid-pattern { background-color:#808080; background-image:linear-gradient(rgba(0,0,0,.23) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.23) 1px,transparent 1px); background-size:10% 10%; }
+        .stage-overlay { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:1rem; color:#fff; text-align:center; background:rgba(15,23,42,.48); }
+        .stage-overlay[hidden] { display:none; }
+        .overlay-card { max-width:390px; padding:1.1rem 1.3rem; background:rgba(15,23,42,.78); border:1px solid rgba(255,255,255,.18); border-radius:1rem; backdrop-filter:blur(8px); }
+        .overlay-card h3 { color:#fff; font-size:1.06rem; }
+        .overlay-card p { color:#e2e8f0; font-size:.84rem; margin:0; }
+        .stage-toolbar { position:absolute; left:0; right:0; bottom:0; display:flex; justify-content:space-between; gap:.6rem; padding:.55rem .7rem; color:#fff; background:rgba(15,23,42,.78); font-size:.75rem; }
+        .test-stage.is-fullscreen { width:100vw; height:100vh; max-height:none; min-height:100vh; border:0; border-radius:0; }
+        .test-stage.is-fullscreen .stage-toolbar,
+        .test-stage.is-fullscreen .stage-overlay { display:none; }
+        .test-stage.is-fullscreen .pattern-screen { position:fixed; inset:0; }
+        .controls-row { display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; margin-top:.75rem; }
+        .color-row { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+        .color-swatch { width:2rem; height:2rem; padding:0; border:2px solid #cbd5e1; border-radius:.55rem; }
+        .color-swatch.active { border-color:var(--p); box-shadow:0 0 0 2px #bfdbfe; }
+        .control-label { display:flex; align-items:center; gap:.4rem; color:#475569; font-size:.8rem; font-weight:700; }
+        .control-label input { accent-color:var(--p); }
+        .info-panel { display:flex; flex-direction:column; gap:.8rem; }
+        .info-card { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .info-card h3 { margin-bottom:.65rem; font-size:.98rem; }
+        .stat-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.5rem; }
+        .stat { min-width:0; padding:.6rem; background:#fff; border:1px solid var(--border); border-radius:.6rem; }
+        .stat span { display:block; color:var(--tm); font-size:.63rem; font-weight:800; text-transform:uppercase; }
+        .stat strong { display:block; margin-top:.18rem; color:var(--t); font-size:.83rem; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+        .info-note { margin-top:.7rem; padding:.65rem .75rem; color:var(--tm); background:#fff; border-left:3px solid var(--p); border-radius:.4rem; font-size:.75rem; }
+        .quick-list { padding-left:1.1rem; color:#475569; font-size:.82rem; }
+        .quick-list li { margin:.35rem 0; }
+        .feature-grid,.steps-grid,.related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card { padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3 { font-size:1rem; }
+        .feature-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:1rem; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:1rem; }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span { margin:.2rem 0 0; color:var(--tm); font-size:.82rem; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:650px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:900px) { .tool-grid { grid-template-columns:1fr; } .info-panel { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media(max-width:650px) { .info-panel { grid-template-columns:1fr; } .two-col,.faq-grid { grid-template-columns:1fr; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.3rem 1rem; } .test-stage { height:75vw; min-height:260px; } .controls-row { gap:.4rem; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser display test</div>
+        <h1>Screen Uniformity Test</h1>
+        <p class="hero-sub">Visually inspect your monitor, laptop, phone or TV for uneven brightness, gray shading and color tint with fullscreen display patterns.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#uniformity-tool">Start uniformity test</a>
+            <a class="btn btn-secondary" href="#how-to-test">How to inspect</a>
+        </div>
+        <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No data upload</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Screen Uniformity Test</span></nav>
+
+    <section class="section" id="uniformity-tool" aria-labelledby="uniformity-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">▦</div><div><h2 id="uniformity-title">Interactive Screen Uniformity Test</h2><p>Choose a fullscreen pattern and compare the center, edges and corners at your normal viewing position.</p></div></div>
+        <div class="tool-grid">
+            <div class="tool-main">
+                <div class="pattern-tabs" role="group" aria-label="Uniformity test pattern">
+                    <button class="pattern-tab active" type="button" data-pattern="gray50">50% Gray</button>
+                    <button class="pattern-tab" type="button" data-pattern="gray25">25% Gray</button>
+                    <button class="pattern-tab" type="button" data-pattern="gray75">75% Gray</button>
+                    <button class="pattern-tab" type="button" data-pattern="white">White</button>
+                    <button class="pattern-tab" type="button" data-pattern="black">Black</button>
+                    <button class="pattern-tab" type="button" data-pattern="red">Red</button>
+                    <button class="pattern-tab" type="button" data-pattern="green">Green</button>
+                    <button class="pattern-tab" type="button" data-pattern="blue">Blue</button>
+                    <button class="pattern-tab" type="button" data-pattern="gradient">Gray Gradient</button>
+                    <button class="pattern-tab" type="button" data-pattern="grid">Grid Reference</button>
+                </div>
+                <div class="test-stage" id="testStage" tabindex="0" role="region" aria-label="Screen uniformity fullscreen test pattern">
+                    <div class="pattern-screen" id="patternScreen"></div>
+                    <div class="stage-overlay" id="stageOverlay">
+                        <div class="overlay-card"><h3 id="overlayTitle">Ready to inspect the display?</h3><p id="overlayText">Start a fullscreen pattern, then look for areas that appear brighter, darker or differently tinted.</p></div>
+                    </div>
+                    <div class="stage-toolbar"><span id="patternName">50% Gray · #808080</span><span>Press F for fullscreen · Esc to exit</span></div>
+                </div>
+                <div class="controls-row">
+                    <button class="btn btn-primary" id="autoToggle" type="button" aria-pressed="true">Stop Auto Test</button>
+                    <button class="btn btn-primary" id="fullscreenButton" type="button">Enter Fullscreen</button>
+                    <button class="btn btn-secondary" id="exitFullscreenButton" type="button">Exit Fullscreen</button>
+                    <label class="control-label"><input id="gradientToggle" type="checkbox"> Smooth gradient</label>
+                    <span class="toolbar-note" id="fullscreenStatus" role="status" aria-live="polite">Auto test is running · patterns change every 3 seconds.</span>
+                </div>
+                <div class="controls-row color-row" aria-label="Quick uniformity patterns">
+                    <span class="control-label">Gray level</span>
+                    <button class="color-swatch" type="button" data-pattern="gray25" style="background:#404040" aria-label="25 percent gray pattern"></button>
+                    <button class="color-swatch active" type="button" data-pattern="gray50" style="background:#808080" aria-label="50 percent gray pattern"></button>
+                    <button class="color-swatch" type="button" data-pattern="gray75" style="background:#bfbfbf" aria-label="75 percent gray pattern"></button>
+                    <span class="toolbar-note">Use gray levels to reveal subtle shading and tint.</span>
+                </div>
+            </div>
+            <aside class="info-panel" aria-label="Pattern information and inspection guide">
+                <div class="info-card">
+                    <h3>What to Look For</h3>
+                    <ul class="quick-list">
+                        <li>Uneven brightness from center to edges</li>
+                        <li>Color tint or patches in neutral gray</li>
+                        <li>Clouding or dirty-screen effect in dark gray</li>
+                        <li>Corner shading or localized bright areas</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Current Pattern</h3>
+                    <div class="stat-grid">
+                        <div class="stat"><span>Pattern</span><strong id="patternStat">50% Gray</strong></div>
+                        <div class="stat"><span>Pattern value</span><strong id="valueStat">#808080</strong></div>
+                        <div class="stat"><span>Viewport</span><strong id="viewportStat">—</strong></div>
+                        <div class="stat"><span>Pixel ratio</span><strong id="dprStat">—</strong></div>
+                    </div>
+                    <div class="info-note">Screen values describe the browser viewport. The displayed pattern is not a luminance measurement.</div>
+                </div>
+                <div class="info-card">
+                    <h3>Prepare the Display</h3>
+                    <ul class="quick-list">
+                        <li>Let the display warm up before comparison.</li>
+                        <li>Disable auto brightness, local dimming or dynamic contrast if practical.</li>
+                        <li>Use consistent room lighting and a normal viewing distance.</li>
+                        <li>Compare more than one gray level and color.</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section" id="what-it-tests" aria-labelledby="features-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="features-title">What a Screen Uniformity Test Checks</h2><p>Fullscreen patterns help your eyes compare different areas of the panel.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◐</div><h3>Brightness uniformity</h3><p>Gray and white fields make visible changes in brightness from the center to the edges easier to compare.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◒</div><h3>Gray uniformity</h3><p>Mid-gray and dark-gray patterns can reveal tint variation, clouding, shading or dirty-screen effects.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◉</div><h3>Color consistency</h3><p>Red, green, blue and neutral patterns help you notice visible color patches or uneven tint across the display.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="how-to-test" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">1</div><div><h2 id="how-title">How to Test Screen Uniformity</h2><p>Follow a consistent visual inspection routine.</p></div></div>
+        <div class="steps-grid">
+            <article class="step-card"><div class="step-num">STEP 01</div><div class="step-body"><h3>Prepare a neutral setup</h3><p>Use a comfortable brightness, disable automatic picture changes if practical, and keep room lighting consistent while you compare patterns.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 02</div><div class="step-body"><h3>Inspect fullscreen gray fields</h3><p>Start with 50% gray, then compare darker and lighter gray. Look across the center, sides, edges and corners for visible changes.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 03</div><div class="step-body"><h3>Compare other patterns</h3><p>Check white and black, then red, green and blue. Repeat any pattern where you noticed an unusual tint, patch or brightness shift.</p></div></article>
+        </div>
+    </section>
+
+    <section class="section" id="understanding-results" aria-labelledby="results-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="results-title">Understanding What You See</h2><p>This page displays patterns for a human visual comparison; it does not generate a pass/fail score.</p></div></div>
+        <div class="two-col">
+            <div><h3>Uneven brightness or tint</h3><p>If part of a uniform field looks visibly lighter, darker or differently tinted, compare the same region on other patterns and at your normal viewing position. Ambient light, viewing angle, display mode and local dimming can affect perception.</p><h3>Dark-scene clouding</h3><p>Dark gray can make some panel shading or clouding easier to notice. Check whether it is visible in typical use before deciding whether it matters to you.</p></div>
+            <div class="callout"><h3>Visual reference, not a measurement</h3><p>A browser cannot measure panel luminance or color difference with this pattern. For quantitative uniformity results, use a suitable calibrated meter and controlled conditions. This tool does not diagnose or certify hardware.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Frequently Asked Questions</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>What is a screen uniformity test?</h3><p>It displays fullscreen gray, white, black and color patterns so you can visually inspect for uneven brightness, shading, tint or color patches.</p></article>
+            <article class="faq-item"><h3>How do I check brightness uniformity?</h3><p>Use consistent room lighting, disable automatic display changes if practical, and compare fullscreen gray and white patterns across the center, edges and corners.</p></article>
+            <article class="faq-item"><h3>Does this tool measure or certify uniformity?</h3><p>No. It provides visual reference patterns only. Quantitative luminance or color-difference testing requires suitable calibrated instruments.</p></article>
+            <article class="faq-item"><h3>Why use gray patterns?</h3><p>Mid-gray and dark-gray fields can make subtle shading, tint variation, clouding or dirty-screen effects easier to notice.</p></article>
+            <article class="faq-item"><h3>Can I use this on a phone, laptop or TV?</h3><p>Yes. Open the page in a modern browser, use fullscreen where available and inspect at a normal viewing distance.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Display Tools</h2><p>More browser-based display checks.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Solid colors, grayscale and touch</span></a>
+            <a class="related-card" href="./dead-pixel-test.html"><strong>Dead Pixel Test</strong><span>Inspect fixed pixel defects</span></a>
+            <a class="related-card" href="./ghosting-test.html"><strong>Monitor Ghosting Test</strong><span>Motion trails and overdrive</span></a>
+            <a class="related-card" href="./device-information.html"><strong>Device Information</strong><span>Browser and screen details</span></a>
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display dimensions</span></a>
+            <a class="related-card" href="./frame-rate-tester.html"><strong>Frame Rate Tester</strong><span>Visual motion and frame timing</span></a>
+            <a class="related-card" href="./contrast-test.html"><strong>Contrast Test</strong><span>Shadow and highlight detail</span></a>
+            <a class="related-card" href="./brightness-test.html"><strong>Brightness Test</strong><span>Brightness-level inspection</span></a>
+            <a class="related-card" href="./gamma-test.html"><strong>Gamma Test</strong><span>Grayscale ramps</span></a>
+            <a class="related-card" href="./color-banding-test.html"><strong>Color Banding Test</strong><span>Gradient smoothness</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to inspect your display?</h2>
+        <p>Choose a uniform pattern, use fullscreen if available, and compare brightness and color across the panel.</p>
+        <a class="btn btn-primary" href="#uniformity-tool">Start the uniformity test</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./screen-uniformity-test.html">Screen Uniformity Test</a></li><li><a href="./contrast-test.html">Contrast Test</a></li><li><a href="./brightness-test.html">Brightness Test</a></li><li><a href="./gamma-test.html">Gamma Test</a></li><li><a href="./color-banding-test.html">Color Banding Test</a></li><li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li><li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li><li><a href="./touch-screen-tester.html">Touch Screen Tester</a></li><li><a href="./device-information.html">Device Information</a></li></ul></div>
+        <div><h3>About this test</h3><p>This page provides visual test patterns only. It does not measure or certify display uniformity.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var patterns={
+        gray25:{name:"25% Gray",value:"#404040",background:"#404040",note:"Dark gray can help reveal shadow shading or clouding."},
+        gray50:{name:"50% Gray",value:"#808080",background:"#808080",note:"Mid-gray is a useful neutral field for comparing tint and shading."},
+        gray75:{name:"75% Gray",value:"#BFBFBF",background:"#BFBFBF",note:"Light gray can reveal subtle color tint or brightness variation."},
+        white:{name:"White",value:"#FFFFFF",background:"#FFFFFF",note:"White can help compare bright-field brightness across the panel."},
+        black:{name:"Black",value:"#000000",background:"#000000",note:"Black can make bright patches and some dark-room effects easier to see."},
+        red:{name:"Red",value:"#FF0000",background:"#FF0000",note:"Check for visibly uneven red intensity or localized color differences."},
+        green:{name:"Green",value:"#00FF00",background:"#00FF00",note:"Check the green field for visible patches or tint changes."},
+        blue:{name:"Blue",value:"#0000FF",background:"#0000FF",note:"Check the blue field for visible patches or tint changes."},
+        gradient:{name:"Gray Gradient",value:"#444 → #C4",background:"linear-gradient(90deg,#444 0%,#808080 50%,#c4c4c4 100%)",note:"The gradient is a reference pattern; inspect for abrupt transitions or banding."},
+        grid:{name:"Grid Reference",value:"10% grid",background:"#808080",note:"Grid lines help compare geometry and panel edges. This is not a measurement."}
+    };
+    var selected="gray50";
+    var stage=document.getElementById("testStage");
+    var screen=document.getElementById("patternScreen");
+    var overlay=document.getElementById("stageOverlay");
+    var fullscreenElement=null;
+    var autoPatterns=["gray25","gray50","gray75","white","black","red","green","blue","gradient","grid"];
+    var autoTimer=0;
+    var autoRunning=true;
+    var manualPatternChange=false;
+    function choosePattern(key){
+        if(!patterns[key])return;
+        if(autoRunning&&!manualPatternChange)setAutoRunning(false);
+        selected=key;
+        document.getElementById("gradientToggle").checked=false;
+        var pattern=patterns[key];
+        screen.classList.remove("gradient","grid-pattern","custom-gradient");
+        screen.style.backgroundImage="";
+        screen.style.background=pattern.background;
+        if(key==="gradient")screen.classList.add("gradient");
+        if(key==="grid")screen.classList.add("grid-pattern");
+        overlay.hidden=true;
+        document.getElementById("patternName").textContent=pattern.name+" · "+pattern.value;
+        document.getElementById("patternStat").textContent=pattern.name;
+        document.getElementById("valueStat").textContent=pattern.value;
+        document.getElementById("overlayText").textContent=pattern.note;
+        document.querySelectorAll(".pattern-tab").forEach(function(button){var active=button.dataset.pattern===key;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});
+        document.querySelectorAll(".color-swatch").forEach(function(button){button.classList.toggle("active",button.dataset.pattern===key);});
+    }
+    document.querySelectorAll(".pattern-tab,.color-swatch").forEach(function(button){button.addEventListener("click",function(){choosePattern(button.dataset.pattern);});});
+    function setAutoRunning(running){
+        autoRunning=running;
+        window.clearInterval(autoTimer);autoTimer=0;
+        var button=document.getElementById("autoToggle");
+        button.textContent=running?"Stop Auto Test":"Start Auto Test";
+        button.classList.toggle("btn-secondary",running);
+        button.classList.toggle("btn-primary",!running);
+        button.setAttribute("aria-pressed",String(running));
+        if(running){
+            document.getElementById("fullscreenStatus").textContent="Auto test is running · patterns change every 3 seconds.";
+            autoTimer=window.setInterval(function(){var index=autoPatterns.indexOf(selected);manualPatternChange=true;choosePattern(autoPatterns[(index+1+autoPatterns.length)%autoPatterns.length]);manualPatternChange=false;},3000);
+        }else{
+            document.getElementById("fullscreenStatus").textContent="Auto test stopped · choose a pattern or start the auto test.";
+        }
+    }
+    document.getElementById("autoToggle").addEventListener("click",function(){setAutoRunning(!autoRunning);});
+    document.getElementById("gradientToggle").addEventListener("change",function(event){
+        screen.classList.toggle("custom-gradient",event.target.checked);
+        if(event.target.checked){screen.style.backgroundImage="linear-gradient(90deg,rgba(0,0,0,.2),transparent 50%,rgba(255,255,255,.2))";document.getElementById("patternName").textContent=patterns[selected].name+" · gradient overlay";}
+        else{var current=patterns[selected];screen.style.background=current.background;screen.style.backgroundImage="";if(selected==="gradient")screen.classList.add("gradient");if(selected==="grid")screen.classList.add("grid-pattern");document.getElementById("patternName").textContent=current.name+" · "+current.value;}
+    });
+    function enterFullscreen(){
+        fullscreenElement=stage;
+        var target=document.documentElement.requestFullscreen?document.documentElement:stage;
+        if(!document.fullscreenElement&&target.requestFullscreen){var request=target.requestFullscreen();if(request&&request.catch)request.catch(function(){document.getElementById("fullscreenStatus").textContent="Fullscreen request was unavailable; use the test panel as shown.";});}
+        else if(!target.requestFullscreen)document.getElementById("fullscreenStatus").textContent="Fullscreen is not supported by this browser.";
+    }
+    document.getElementById("fullscreenButton").addEventListener("click",enterFullscreen);
+    document.getElementById("exitFullscreenButton").addEventListener("click",function(){if(document.fullscreenElement)document.exitFullscreen();});
+    document.addEventListener("fullscreenchange",function(){
+        var active=Boolean(document.fullscreenElement);
+        stage.classList.toggle("is-fullscreen",active);
+        document.getElementById("fullscreenStatus").textContent=active?"Fullscreen active · press Esc to exit.":autoRunning?"Auto test is running · patterns change every 3 seconds.":"Auto test stopped · choose a pattern or start the auto test.";
+    });
+    document.addEventListener("keydown",function(event){
+        var tag=event.target&&event.target.tagName;
+        if(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT")return;
+        if(event.key.toLowerCase()==="f"){event.preventDefault();enterFullscreen();}
+        if(event.key==="ArrowRight"||event.key==="ArrowLeft"){
+            var keys=Object.keys(patterns);var index=keys.indexOf(selected);var direction=event.key==="ArrowRight"?1:-1;choosePattern(keys[(index+direction+keys.length)%keys.length]);
+        }
+    });
+    function updateViewport(){
+        document.getElementById("viewportStat").textContent=window.innerWidth+" × "+window.innerHeight;
+        document.getElementById("dprStat").textContent=(window.devicePixelRatio||1)+"x";
+    }
+    window.addEventListener("resize",updateViewport);
+    document.getElementById("year").textContent=new Date().getFullYear();
+    updateViewport();manualPatternChange=true;choosePattern("gray25");manualPatternChange=false;setAutoRunning(true);
+})();
+</script>
+</body>
+</html>

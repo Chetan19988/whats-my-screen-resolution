@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Screen Test — Free Monitor, Display &amp; Pixel Testing Tool</title>
+    <meta name="description" content="Test your monitor, laptop, phone or TV screen online with fullscreen solid-color, grayscale, text and touch tests. Free, private and no download required.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/screen-test.html">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Crect x='5' y='7' width='22' height='15' rx='3' fill='none' stroke='%23ffffff' stroke-width='2'/%3E%3Cpath d='M12 27h8M16 22v5' stroke='%23ffffff' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='12' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='16' cy='12' r='1.5' fill='%23ffffff'/%3E%3Ccircle cx='21' cy='12' r='1.5' fill='%23ffffff'/%3E%3C/svg%3E">
+
+    <meta property="og:title" content="Online Screen Test — Free Monitor, Display &amp; Pixel Testing Tool">
+    <meta property="og:description" content="Run a free online screen test for solid colors, grayscale, text sharpness and touch response. Works on any device in your browser.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/screen-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Online Screen Test — Free Display Testing Tool">
+    <meta name="twitter:description" content="Free online screen test for monitors, laptops, phones and TVs. No download, no account, no data upload.">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Online Screen Test — Free Display & Pixel Testing Tool",
+        "url": "https://whats-my-screen-resolution.netlify.app/screen-test.html",
+        "author": {
+            "@type": "Person",
+            "name": "Chetan Kumar",
+            "url": "https://www.linkedin.com/in/askchetan/"
+        },
+        "description": "Free browser-based screen testing tool for solid colors, grayscale, text sharpness, screen information and touch response.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Screen Resolution Checker",
+                "item": "https://whats-my-screen-resolution.netlify.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Online Screen Test",
+                "item": "https://whats-my-screen-resolution.netlify.app/screen-test.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is an online screen test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An online screen test displays fullscreen patterns and solid colors in your browser so you can visually inspect a display for pixels, uneven brightness, color cast, blur or touch issues. The tests are reference tools, not laboratory measurements."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to install software?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The screen test runs entirely in the browser and does not require a download, account or installation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use the screen test on a phone or tablet?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Open the page in a modern mobile browser, use fullscreen when available, and follow the on-screen instructions. The touch test works on touch-enabled screens."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the tool measure my monitor hardware?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The browser can report viewport, pixel ratio and frame timing, but it cannot certify panel brightness, color accuracy, refresh rate or pixel hardware. Use the visual patterns as a practical inspection aid."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why should I use fullscreen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Fullscreen removes browser chrome and operating-system bars from the test area, making it easier to inspect the complete display surface and its edges."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the result a professional inspection report?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The result is for reference only and can be affected by ambient light, viewing angle, browser rendering and display settings. Professional inspection requires calibrated equipment."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --p: #2563eb;
+            --p-hover: #1d4ed8;
+            --p-soft: #eff6ff;
+            --bg: #f8fafc;
+            --c: #ffffff;
+            --t: #1e293b;
+            --tm: #64748b;
+            --border: #e2e8f0;
+            --dark: #0f172a;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--t);
+            line-height: 1.6;
+            padding: 1rem;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 15% 5%, rgba(37, 99, 235, 0.06), transparent 28%), radial-gradient(circle at 90% 20%, rgba(14, 165, 233, 0.05), transparent 25%);
+            z-index: -1;
+        }
+        main { max-width: 1120px; margin: 0 auto; }
+        a { color: var(--p); }
+        button, input { font-family: inherit; }
+        button { cursor: pointer; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+        .hero {
+            background: var(--c);
+            padding: 3.5rem 1.5rem 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.08);
+            filter: blur(45px);
+            right: -100px;
+            top: -150px;
+        }
+        .hero > * { position: relative; z-index: 1; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--p-soft);
+            color: var(--p);
+            border: 1px solid #bfdbfe;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .eyebrow-dot { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--p); }
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+        .hero-sub { max-width: 760px; margin: 0 auto 1.5rem; color: var(--tm); font-size: 1.08rem; }
+        .hero-actions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1.25rem; border-radius: 0.8rem; font-weight: 800; text-decoration: none; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--p); color: white; border: 1px solid var(--p); }
+        .btn-primary:hover { background: var(--p-hover); }
+        .btn-secondary { background: white; color: var(--t); border: 1px solid var(--border); }
+        .btn-secondary:hover { border-color: #bfdbfe; background: var(--p-soft); }
+        .hero-note { font-size: 0.82rem; color: var(--tm); }
+        .hero-note strong { color: var(--success); }
+
+        .breadcrumbs { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin: 0 auto 1.5rem; color: var(--tm); font-size: 0.85rem; }
+        .breadcrumbs a { text-decoration: none; font-weight: 700; }
+        .breadcrumbs a:hover { color: var(--p); text-decoration: underline; }
+        .breadcrumbs span { opacity: 0.6; }
+
+        .section {
+            background: var(--c);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04);
+            border: 1px solid var(--border);
+        }
+        .section-heading { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.25rem; }
+        .section-icon { width: 2.5rem; height: 2.5rem; border-radius: 0.8rem; background: var(--p-soft); color: var(--p); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .section-heading h2 { font-size: 1.5rem; line-height: 1.2; margin: 0; }
+        .section-heading p { color: var(--tm); font-size: 0.95rem; margin-top: 0.25rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; line-height: 1.25; }
+        h3 { font-size: 1.08rem; margin-bottom: 0.45rem; }
+        p { margin-bottom: 0.9rem; color: #475569; }
+        p:last-child { margin-bottom: 0; }
+        .intro-text { font-size: 1.02rem; color: var(--t); }
+        .muted { color: var(--tm); }
+        .small { font-size: 0.85rem; }
+        .code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; background: #f1f5f9; border: 1px solid var(--border); border-radius: 0.4rem; padding: 0.1rem 0.35rem; }
+
+        .tool-section { scroll-margin-top: 1rem; }
+        .tool-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.75fr); gap: 1rem; align-items: start; }
+        .tool-column { min-width: 0; }
+        .panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.8rem; }
+        .panel-heading h2 { margin: 0; }
+        .panel-heading p { margin: 0.2rem 0 0; }
+        .mode-tabs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+        .mode-tab { border: 1px solid var(--border); background: #f8fafc; color: var(--tm); border-radius: 0.65rem; padding: 0.55rem 0.85rem; font-size: 0.85rem; font-weight: 800; transition: 0.2s ease; }
+        .mode-tab:hover { border-color: #bfdbfe; color: var(--p); }
+        .mode-tab.active { background: var(--p); border-color: var(--p); color: white; }
+
+        .test-panel {
+            position: relative;
+            min-height: 520px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: var(--dark);
+            border: 1px solid #334155;
+            cursor: pointer;
+            outline: none;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .test-panel:focus-visible { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25); }
+        .test-panel.is-fullscreen { cursor: default; border-color: #334155; }
+        .test-screen { position: absolute; inset: 0; min-height: inherit; background: #ffffff; transition: background-color 0.2s ease; }
+        .test-screen.pattern-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); }
+        .test-screen.pattern-grid span { display: block; min-height: 0; }
+        .test-screen.text-pattern { display: flex; align-items: center; justify-content: center; padding: 2rem; color: #111827; }
+        .text-pattern-inner { max-width: 80%; }
+        .text-pattern h3 { font-size: clamp(1.3rem, 4vw, 2.3rem); color: #111827; margin-bottom: 0.75rem; }
+        .text-pattern p { color: #374151; font-size: clamp(0.9rem, 2vw, 1.15rem); margin-bottom: 0.65rem; }
+        .text-pattern .text-line { display: block; width: 75%; height: 5px; margin: 0.7rem 0; background: #d1d5db; }
+        .test-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.58); color: white; padding: 1rem; transition: opacity 0.25s ease; }
+        .test-panel.is-fullscreen .test-overlay,
+        .test-panel.is-fullscreen .test-toolbar { display: none; }
+        .overlay-card { max-width: 430px; text-align: center; background: rgba(15, 23, 42, 0.78); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 1rem; padding: 1.5rem; backdrop-filter: blur(10px); }
+        .overlay-icon { width: 3rem; height: 3rem; margin: 0 auto 0.8rem; border-radius: 0.85rem; background: rgba(255, 255, 255, 0.13); display: flex; align-items: center; justify-content: center; }
+        .overlay-card h2 { color: white; font-size: 1.35rem; margin-bottom: 0.4rem; }
+        .overlay-card p { color: #cbd5e1; font-size: 0.9rem; }
+        .overlay-card .btn { margin-top: 0.5rem; }
+        .test-toolbar { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.65rem 0.85rem; background: rgba(15, 23, 42, 0.78); color: white; border-top: 1px solid rgba(255, 255, 255, 0.12); backdrop-filter: blur(8px); }
+        .toolbar-current { display: flex; align-items: center; gap: 0.55rem; min-width: 0; }
+        .toolbar-swatch { width: 0.9rem; height: 0.9rem; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.55); flex-shrink: 0; }
+        .toolbar-label { font-size: 0.85rem; font-weight: 800; white-space: nowrap; }
+        .toolbar-hex { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.78rem; color: #cbd5e1; }
+        .toolbar-shortcut { font-size: 0.75rem; color: #cbd5e1; white-space: nowrap; }
+        .swatch-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.55rem; margin-top: 0.8rem; }
+        .swatch { aspect-ratio: 1; border: 2px solid transparent; border-radius: 0.65rem; padding: 0; position: relative; overflow: hidden; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+        .swatch:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -6px rgba(15, 23, 42, 0.3); }
+        .swatch.active { border-color: var(--p); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18); }
+        .swatch span { position: absolute; left: 0; right: 0; bottom: 0; font-size: 0.62rem; font-weight: 800; color: white; text-align: center; padding: 0.15rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75); }
+        .custom-color-row { display: flex; align-items: center; gap: 0.65rem; flex-wrap: wrap; margin-top: 0.85rem; }
+        .color-picker { display: inline-flex; align-items: center; gap: 0.55rem; border: 1px solid var(--border); border-radius: 0.7rem; padding: 0.45rem 0.65rem; background: #f8fafc; }
+        .color-picker input[type="color"] { width: 2rem; height: 2rem; border: 0; padding: 0; background: transparent; cursor: pointer; }
+        .color-picker label { font-size: 0.78rem; font-weight: 800; color: var(--tm); }
+        .text-input { min-width: 9rem; border: 1px solid var(--border); border-radius: 0.65rem; padding: 0.6rem 0.75rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.85rem; background: white; color: var(--t); }
+        .text-input:focus { outline: 2px solid rgba(37, 99, 235, 0.25); border-color: var(--p); }
+        .btn-small { background: #f1f5f9; color: var(--t); border: 1px solid var(--border); border-radius: 0.65rem; padding: 0.58rem 0.8rem; font-size: 0.8rem; font-weight: 800; }
+        .btn-small:hover { background: var(--p-soft); border-color: #bfdbfe; color: var(--p); }
+        .custom-hint { width: 100%; font-size: 0.76rem; color: var(--tm); }
+
+        .info-panel { display: flex; flex-direction: column; gap: 1rem; }
+        .info-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; }
+        .info-card h2 { font-size: 1.05rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+        .info-card h2 .section-icon { width: 2rem; height: 2rem; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+        .stat { background: white; border: 1px solid var(--border); border-radius: 0.7rem; padding: 0.7rem; }
+        .stat-label { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tm); font-weight: 800; }
+        .stat-value { display: block; font-size: 0.9rem; font-weight: 900; color: var(--t); margin-top: 0.2rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+        .stat-value.good { color: var(--success); }
+        .info-note { margin-top: 0.8rem; padding: 0.7rem; background: white; border-left: 3px solid var(--p); border-radius: 0.4rem; font-size: 0.78rem; color: var(--tm); }
+        .guide-list { padding-left: 1.2rem; color: #475569; font-size: 0.86rem; }
+        .guide-list li { margin-bottom: 0.5rem; }
+        .guide-list strong { color: var(--t); }
+        .privacy-pill { display: flex; align-items: flex-start; gap: 0.55rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 0.7rem; padding: 0.75rem; color: #065f46; font-size: 0.78rem; }
+        .privacy-pill svg { flex-shrink: 0; margin-top: 0.1rem; }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .feature-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.2rem; transition: transform 0.2s ease, border-color 0.2s ease; }
+        .feature-card:hover { transform: translateY(-3px); border-color: #bfdbfe; }
+        .feature-card .section-icon { width: 2.25rem; height: 2.25rem; margin-bottom: 0.8rem; }
+        .feature-card h3 { font-size: 1rem; }
+        .feature-card p { font-size: 0.88rem; margin: 0; }
+
+        .two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .callout { background: var(--p-soft); border: 1px solid #bfdbfe; border-radius: 1rem; padding: 1.2rem; }
+        .callout h3 { color: var(--p); }
+        .callout p { font-size: 0.9rem; margin: 0; }
+        .formula-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 0.8rem; padding: 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; text-align: center; font-weight: 700; margin: 0.8rem 0; }
+        .example-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid var(--success); border-radius: 0.8rem; padding: 1rem; margin: 0.8rem 0; }
+
+        .mode-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .mode-detail { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: white; }
+        .mode-preview { height: 105px; display: flex; align-items: center; justify-content: center; }
+        .mode-preview.gray { background: linear-gradient(90deg, #000, #fff); }
+        .mode-preview.text { background: #fff; color: #111; padding: 1rem; font-weight: 800; }
+        .mode-detail-body { padding: 0.9rem 1rem 1rem; }
+        .mode-detail-body h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .mode-detail-body p { font-size: 0.82rem; margin: 0; }
+
+        .device-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .device-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem; text-decoration: none; color: var(--t); transition: transform 0.2s ease, border-color 0.2s ease; }
+        .device-card:hover { transform: translateY(-3px); border-color: #bfdbfe; }
+        .device-card .device-icon { width: 2.25rem; height: 2.25rem; border-radius: 0.7rem; background: var(--p-soft); color: var(--p); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+        .device-card h3 { font-size: 0.98rem; margin-bottom: 0.25rem; }
+        .device-card p { font-size: 0.82rem; margin: 0; }
+        .device-card .arrow { color: var(--p); font-weight: 900; margin-top: 0.55rem; display: block; }
+
+        .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+        .faq-item { border: 1px solid var(--border); border-radius: 0.9rem; padding: 1rem; background: #f8fafc; }
+        .faq-item h3 { font-size: 0.95rem; color: var(--t); }
+        .faq-item p { font-size: 0.86rem; margin: 0; }
+        .faq-item .question-mark { color: var(--p); font-family: Georgia, serif; font-style: italic; font-weight: 900; margin-right: 0.25rem; }
+
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.85rem; }
+        .related-card { display: flex; align-items: center; gap: 0.7rem; border: 1px solid var(--border); border-radius: 0.85rem; padding: 0.8rem; text-decoration: none; background: white; }
+        .related-card:hover { border-color: #bfdbfe; background: var(--p-soft); }
+        .related-card .section-icon { width: 2rem; height: 2rem; }
+        .related-card strong { display: block; font-size: 0.85rem; }
+        .related-card span { display: block; font-size: 0.75rem; color: var(--tm); }
+
+        .cta-section { background: var(--dark); color: white; text-align: center; padding: 3rem 1.5rem; border-radius: 1.5rem; position: relative; overflow: hidden; }
+        .cta-section::before { content: ""; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(37, 99, 235, 0.25); filter: blur(50px); left: -80px; top: -120px; }
+        .cta-section > * { position: relative; z-index: 1; }
+        .cta-section h2 { color: white; font-size: 2rem; }
+        .cta-section p { color: #cbd5e1; max-width: 650px; margin: 0 auto 1.5rem; }
+        .cta-section .btn-primary { background: white; color: var(--dark); border-color: white; }
+        .cta-section .btn-primary:hover { background: #e0e7ff; }
+
+        .footer-dark { background: #0f172a; color: #cbd5e1; padding: 3rem 2rem; border-radius: 1.5rem; margin-top: 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; }
+        .footer-dark h3 { color: white; margin-bottom: 0.8rem; font-size: 1rem; }
+        .footer-dark p, .footer-dark a { font-size: 0.86rem; }
+        .footer-dark a { color: #cbd5e1; text-decoration: none; }
+        .footer-dark a:hover { color: white; text-decoration: underline; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.45rem; }
+        .footer-bottom { border-top: 1px solid #334155; margin-top: 2rem; padding-top: 1.25rem; font-size: 0.8rem; color: #94a3b8; }
+
+        .touch-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr); gap: 1rem; align-items: stretch; }
+        .touch-canvas { min-height: 300px; border-radius: 0.8rem; background: #fff; border: 1px solid var(--border); touch-action: none; cursor: crosshair; }
+        .touch-status { display: flex; gap: 0.7rem; flex-wrap: wrap; margin: 0.8rem 0; }
+        .touch-status .stat { flex: 1; min-width: 8rem; }
+        .touch-help { font-size: 0.82rem; color: var(--tm); }
+
+        @media (max-width: 850px) {
+            .tool-grid { grid-template-columns: 1fr; }
+            .test-panel { min-height: 420px; }
+            .two-col, .faq-grid, .touch-wrap { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 560px) {
+            body { padding: 0.75rem; }
+            .hero { padding: 2.5rem 1rem 2rem; }
+            .section { padding: 1.35rem 1rem; }
+            .test-panel { min-height: 340px; }
+            .swatch-grid { grid-template-columns: repeat(4, 1fr); }
+            .toolbar-shortcut { display: none; }
+            .test-toolbar { justify-content: center; }
+            .panel-heading { flex-direction: column; }
+            .cta-section { padding: 2.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="hero">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser screen test</div>
+            <h1>Online Screen Test</h1>
+            <p class="hero-sub">Inspect your monitor, laptop, phone or TV with fullscreen colors, grayscale, text and touch patterns. Everything runs locally in your browser.</p>
+            <div class="hero-actions">
+                <a class="btn btn-primary" href="#test-tool">Start testing now</a>
+                <a class="btn btn-secondary" href="#how-to-use">How it works</a>
+            </div>
+            <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No data upload</strong></p>
+        </header>
+
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="./">Screen Resolution Checker</a>
+            <span aria-hidden="true">/</span>
+            <span>Online Screen Test</span>
+        </nav>
+
+        <section class="section tool-section" id="test-tool" aria-labelledby="test-tool-title">
+            <div class="tool-grid">
+                <div class="tool-column">
+                    <div class="panel-heading">
+                        <div>
+                            <h2 id="test-tool-title">Interactive Screen Test</h2>
+                            <p>Use a fullscreen pattern to inspect the display surface. Click the screen to enter fullscreen.</p>
+                        </div>
+                    </div>
+
+                    <div class="mode-tabs" role="tablist" aria-label="Test mode">
+                        <button class="mode-tab active" type="button" role="tab" aria-selected="true" data-mode="solid">Solid color</button>
+                        <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="gray">Grayscale</button>
+                        <button class="mode-tab" type="button" role="tab" aria-selected="false" data-mode="text">Text sharpness</button>
+                    </div>
+
+                    <div class="test-panel" id="testPanel" tabindex="0" role="button" aria-label="Fullscreen screen test. Activate to enter fullscreen.">
+                        <div class="test-screen" id="testScreen" aria-live="polite"></div>
+                        <div class="test-overlay" id="testOverlay">
+                            <div class="overlay-card">
+                                <div class="overlay-icon" aria-hidden="true">
+                                    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                                </div>
+                                <h2 id="overlayTitle">Enter fullscreen test</h2>
+                                <p id="overlayText">The test pattern will cover the full screen. Look for bright or dark spots, uneven areas, color cast and blur.</p>
+                                <button class="btn btn-primary" id="fullscreenButton" type="button">Enter fullscreen</button>
+                            </div>
+                        </div>
+                        <div class="test-toolbar" aria-hidden="true">
+                            <div class="toolbar-current">
+                                <span class="toolbar-swatch" id="toolbarSwatch"></span>
+                                <span class="toolbar-label" id="toolbarLabel">White</span>
+                                <span class="toolbar-hex" id="toolbarHex">#FFFFFF</span>
+                            </div>
+                            <span class="toolbar-shortcut">Press F for fullscreen · Esc to exit</span>
+                        </div>
+                    </div>
+
+                    <div class="swatch-grid" id="swatchGrid" aria-label="Solid color test swatches"></div>
+
+                    <div class="custom-color-row">
+                        <div class="color-picker">
+                            <input type="color" id="customColor" value="#ff6b00" aria-label="Choose a custom color">
+                            <label for="customColor">Custom color</label>
+                        </div>
+                        <input class="text-input" id="customHex" type="text" value="#FF6B00" maxlength="7" aria-label="Custom color hex value" placeholder="#FF6B00">
+                        <button class="btn-small" id="applyCustom" type="button">Apply color</button>
+                        <button class="btn-small" id="fullscreenCustom" type="button">Fullscreen color</button>
+                        <span class="custom-hint">Use a custom color when you want to inspect a specific hue or compare a color cast.</span>
+                    </div>
+                </div>
+
+                <aside class="info-panel" aria-label="Screen information and quick guide">
+                    <div class="info-card">
+                        <h2><span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></span> Screen Info</h2>
+                        <div class="stat-grid">
+                            <div class="stat"><span class="stat-label">Browser viewport</span><strong class="stat-value" id="viewportValue">—</strong></div>
+                            <div class="stat"><span class="stat-label">Pixel ratio</span><strong class="stat-value" id="dprValue">—</strong></div>
+                            <div class="stat"><span class="stat-label">Orientation</span><strong class="stat-value" id="orientationValue">—</strong></div>
+                            <div class="stat"><span class="stat-label">Window size</span><strong class="stat-value" id="windowValue">—</strong></div>
+                            <div class="stat"><span class="stat-label">Frame estimate</span><strong class="stat-value" id="frameValue">Measuring…</strong></div>
+                            <div class="stat"><span class="stat-label">Device type</span><strong class="stat-value" id="deviceValue">—</strong></div>
+                        </div>
+                        <div class="info-note">Physical resolution, panel brightness and color calibration are not exposed by ordinary browser APIs. These values describe the browser environment only.</div>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><span class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/></svg></span> Quick guide</h2>
+                        <ol class="guide-list">
+                            <li><strong>Warm up</strong> the display for 15–30 minutes before detailed color checks.</li>
+                            <li>Use <strong>native resolution</strong> and a standard or sRGB display mode.</li>
+                            <li>For bleed checks, use a <strong>dark room</strong> and pure black.</li>
+                            <li>Step back to your normal viewing distance before judging an issue.</li>
+                        </ol>
+                    </div>
+
+                    <div class="privacy-pill">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                        <span>Tests run on your device. No test data is sent to a server.</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="section" id="touch-test" aria-labelledby="touch-test-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2"/><path d="M14 10V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2"/><path d="M18 11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-4"/><path d="M18 11a2 2 0 0 0-2-2"/><circle cx="12" cy="12" r="1"/></svg></div>
+                <div><h2 id="touch-test-title">Touch Response Test</h2><p>Draw, swipe and use multiple fingers to inspect touch response on phones, tablets and touchscreen monitors.</p></div>
+            </div>
+            <div class="touch-wrap">
+                <div>
+                    <canvas class="touch-canvas" id="touchCanvas" width="800" height="400" aria-label="Touch drawing test area"></canvas>
+                    <div class="touch-status">
+                        <div class="stat"><span class="stat-label">Current points</span><strong class="stat-value" id="touchCurrent">0</strong></div>
+                        <div class="stat"><span class="stat-label">Maximum recorded</span><strong class="stat-value" id="touchMaximum">0</strong></div>
+                    </div>
+                    <div class="touch-help">The drawing area is only a response check. It does not measure sampling rate or guarantee hardware accuracy.</div>
+                </div>
+                <div>
+                    <h3>How to use it</h3>
+                    <p>Drag with one finger or pointer to check for breaks and delayed movement. Then place two or more fingers on the canvas to check multi-touch response.</p>
+                    <p>Swipe slowly across every corner and edge. A missing stroke, sudden jump or area that never responds may indicate a touch issue worth checking on the device itself.</p>
+                    <button class="btn btn-secondary" id="clearTouch" type="button" style="margin-top:0.5rem">Clear drawing</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="what-you-can-check" aria-labelledby="check-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg></div>
+                <div><h2 id="check-title">What You Can Check</h2><p>A practical visual inspection workflow for common display concerns.</p></div>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div>
+                    <h3>Bright, dark or stuck pixels</h3>
+                    <p>Full-screen solid colors make small bright, dark or fixed-color pixels easier to spot. Check several colors before deciding a spot is a defect.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></div>
+                    <h3>Backlight bleed and uniformity</h3>
+                    <p>Use pure black in a dark room and compare the corners, edges and center. IPS glow can shift with viewing angle, while bleed stays in a fixed position.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></div>
+                    <h3>Color cast and grayscale</h3>
+                    <p>Neutral gray makes warm, cool or green tint easier to notice. Use grayscale and white patterns to compare channel balance visually.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="section-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+                    <h3>Text sharpness and blur</h3>
+                    <p>High-contrast text and fine lines help reveal scaling, motion blur, ghosting or an incorrect display mode. They are visual clues, not measurements.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="test-modes" aria-labelledby="modes-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                <div><h2 id="modes-title">Test Modes</h2><p>Choose the pattern that matches the issue you want to inspect.</p></div>
+            </div>
+            <div class="mode-detail-grid">
+                <article class="mode-detail">
+                    <div class="mode-preview gray" aria-hidden="true"><span>Grayscale</span></div>
+                    <div class="mode-detail-body"><h3>Solid color</h3><p>White, black and primary colors expose pixel defects, color cast and uneven brightness.</p></div>
+                </article>
+                <article class="mode-detail">
+                    <div class="mode-preview gray" aria-hidden="true"><span>0 → 255</span></div>
+                    <div class="mode-detail-body"><h3>Grayscale</h3><p>Fourteen tonal steps help you compare shadow detail, highlight detail and banding.</p></div>
+                </article>
+                <article class="mode-detail">
+                    <div class="mode-preview text" aria-hidden="true">Aa</div>
+                    <div class="mode-detail-body"><h3>Text sharpness</h3><p>Readable text, fine lines and smooth edges help reveal scaling and motion artifacts.</p></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="how-to-use" aria-labelledby="how-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/></svg></div>
+                <div><h2 id="how-title">How to Get Started</h2><p>Follow these steps for a reliable visual inspection.</p></div>
+            </div>
+            <div class="two-col">
+                <div>
+                    <h3>1. Prepare the display</h3>
+                    <p>Let the screen warm up for at least 15 minutes. Use the native resolution, a standard color mode and a comfortable brightness level.</p>
+                    <h3>2. Enter fullscreen</h3>
+                    <p>Click the test area or press <span class="code">F</span>. On desktop, browser fullscreen removes the address bar and taskbar from the test surface.</p>
+                    <h3>3. Inspect the whole screen</h3>
+                    <p>Check the center, edges and corners. Move to your normal viewing distance and compare the same area against more than one test color.</p>
+                </div>
+                <div class="callout">
+                    <h3>Important limitation</h3>
+                    <p>This page helps you look at the display. It cannot certify pixel count, brightness, color accuracy, refresh rate or panel health. For a warranty or professional decision, use the manufacturer's policy and calibrated equipment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="screen-info-guide" aria-labelledby="info-guide-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg></div>
+                <div><h2 id="info-guide-title">Understanding Screen Information</h2><p>The browser can report useful environment values, but some display properties remain unavailable.</p></div>
+            </div>
+            <div class="two-col">
+                <div>
+                    <h3>Viewport</h3>
+                    <p>The viewport is the CSS pixel area available to the browser. It can be smaller than the physical display because of browser chrome, scaling or window size.</p>
+                    <h3>Device Pixel Ratio</h3>
+                    <p>DPR describes how many physical screen pixels correspond to one CSS pixel. A higher DPR can make text and graphics appear sharper.</p>
+                </div>
+                <div>
+                    <h3>Frame estimate</h3>
+                    <p>The frame estimate observes this page's animation rate. It is not a certified monitor refresh-rate measurement and can change when the tab is inactive.</p>
+                    <h3>Physical display data</h3>
+                    <p>Native resolution, panel type, measured brightness and color gamut are hardware or system properties that ordinary browser JavaScript cannot reliably report.</p>
+                </div>
+            </div>
+            <div class="example-box"><strong>Example:</strong> A phone may have a physical pixel grid much larger than its browser viewport because the operating system applies scaling. Always distinguish physical pixels from CSS pixels.</div>
+        </section>
+
+        <section class="section" id="device-guides" aria-labelledby="device-guides-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+                <div><h2 id="device-guides-title">Device Testing Guides</h2><p>Useful companion tools for checking resolution, density and display dimensions.</p></div>
+            </div>
+            <div class="device-grid">
+                <a class="device-card" href="./">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                    <h3>Screen Resolution Checker</h3><p>Check browser viewport, DPR, aspect ratio and device type.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./frame-rate-tester.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+                    <h3>Frame Rate Tester</h3><p>Compare visual motion and measure the page's frame rate.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./ppi-calculator.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+                    <h3>PPI Calculator</h3><p>Calculate pixel density from resolution and diagonal size.</p><span class="arrow">Open tool →</span>
+                </a>
+                <a class="device-card" href="./screen-size.html">
+                    <div class="device-icon" aria-hidden="true"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+                    <h3>Screen Size Calculator</h3><p>Calculate physical width, height and area from a diagonal.</p><span class="arrow">Open tool →</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section" id="faq" aria-labelledby="faq-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+                <div><h2 id="faq-title">Frequently Asked Questions</h2></div>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>What is an online screen test?</h3><p>It displays fullscreen patterns in your browser so you can visually inspect a display for pixels, uneven brightness, color cast, blur or touch issues.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Do I need to install software?</h3><p>No. The test runs in a modern browser and requires no download, account or installation.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Can I use it on a phone or tablet?</h3><p>Yes. Use fullscreen when available and use the touch area for response checks on touch-enabled devices.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Does the browser know my physical resolution?</h3><p>Not reliably. The browser reports the viewport and pixel ratio, but not the panel's physical pixel grid or hardware specifications.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Why use fullscreen for a screen test?</h3><p>Fullscreen removes browser and operating-system chrome so the complete test surface can be inspected.</p></div>
+                <div class="faq-item"><h3><span class="question-mark">Q.</span>Is this a professional inspection?</h3><p>No. Results are for reference only and can be affected by lighting, viewing angle, browser rendering and display settings.</p></div>
+            </div>
+        </section>
+
+        <section class="section" id="related-tools" aria-labelledby="related-title">
+            <div class="section-heading">
+                <div class="section-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+                <div><h2 id="related-title">Related Display Tools</h2><p>Combine a visual screen test with resolution and pixel-density checks.</p></div>
+            </div>
+            <div class="related-grid">
+                <a class="related-card" href="./">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+                    <div><strong>Screen Resolution Checker</strong><span>Viewport and DPR</span></div>
+                </a>
+                <a class="related-card" href="./frame-rate-tester.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+                    <div><strong>Frame Rate Tester</strong><span>Visual motion test</span></div>
+                </a>
+                <a class="related-card" href="./ppi-calculator.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+                    <div><strong>PPI Calculator</strong><span>Pixel density</span></div>
+                </a>
+                <a class="related-card" href="./screen-size.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+                    <div><strong>Screen Size Calculator</strong><span>Physical dimensions</span></div>
+                </a>
+                <a class="related-card" href="./ghosting-test.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><path d="M14 8h7M14 12h7M14 16h7"/></svg></div>
+                    <div><strong>Monitor Ghosting Test</strong><span>Motion trails</span></div>
+                </a>
+                <a class="related-card" href="./mouse-test.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="6"/><path d="M12 3v6"/></svg></div>
+                    <div><strong>Mouse Test</strong><span>Buttons, movement &amp; scroll</span></div>
+                </a>
+                <a class="related-card" href="./touch-screen-tester.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11V5a2 2 0 0 1 4 0v6"/><path d="M12 10V4a2 2 0 0 1 4 0v8"/><path d="M16 11V7a2 2 0 0 1 4 0v9a6 6 0 0 1-6 6h-2a6 6 0 0 1-4.8-2.4L4 15a2 2 0 0 1 3-2.6l2 2"/></svg></div>
+                    <div><strong>Touch Screen Tester</strong><span>Coverage and multi-touch</span></div>
+                </a>
+                <a class="related-card" href="./screen-uniformity-test.html">
+                    <div class="section-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+                    <div><strong>Screen Uniformity Test</strong><span>Brightness and color consistency</span></div>
+                </a>
+                <a class="related-card" href="./contrast-test.html"><strong>Contrast Test</strong><span>Shadow and highlight detail</span></a>
+                <a class="related-card" href="./brightness-test.html"><strong>Brightness Test</strong><span>Gray and white fields</span></a>
+                <a class="related-card" href="./gamma-test.html"><strong>Gamma Test</strong><span>Grayscale ramps</span></a>
+                <a class="related-card" href="./color-banding-test.html"><strong>Color Banding Test</strong><span>Gradient smoothness</span></a>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-labelledby="cta-title">
+            <h2 id="cta-title">Ready to inspect your screen?</h2>
+            <p>Open the interactive test, choose a pattern and check the display at your normal viewing distance.</p>
+            <a class="btn btn-primary" href="#test-tool">Start the screen test</a>
+        </section>
+    </main>
+
+    <footer class="footer-dark" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <h3>What is My Screen Resolution</h3>
+                <p>Free browser tools for screen resolution, motion, pixel density and display inspection.</p>
+            </div>
+            <div>
+                <h3>Display tools</h3>
+                <ul class="footer-links">
+                    <li><a href="./">Screen Resolution Checker</a></li>
+                    <li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li>
+                    <li><a href="./ppi-calculator.html">PPI Calculator</a></li>
+                    <li><a href="./screen-size.html">Screen Size Calculator</a></li>
+                    <li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li>
+                    <li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li>
+                    <li><a href="./mouse-test.html">Mouse Test</a></li>
+                    <li><a href="./keyboard-test.html">Keyboard Test</a></li>
+                    <li><a href="./camera-test.html">Camera Test</a></li>
+                    <li><a href="./touch-screen-tester.html">Touch Screen Tester</a></li>
+                    <li><a href="./screen-uniformity-test.html">Screen Uniformity Test</a></li>
+                    <li><a href="./contrast-test.html">Contrast Test</a></li>
+                    <li><a href="./brightness-test.html">Brightness Test</a></li>
+                    <li><a href="./gamma-test.html">Gamma Test</a></li>
+                    <li><a href="./color-banding-test.html">Color Banding Test</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>About this test</h3>
+                <p>The screen test is a visual inspection aid. It does not provide a certified hardware measurement or a warranty decision.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+    </footer>
+
+    <script>
+        (function () {
+            const colors = [
+                { name: "White", hex: "#FFFFFF" },
+                { name: "Black", hex: "#000000" },
+                { name: "Red", hex: "#FF0000" },
+                { name: "Green", hex: "#00FF00" },
+                { name: "Blue", hex: "#0000FF" },
+                { name: "Yellow", hex: "#FFFF00" },
+                { name: "Cyan", hex: "#00FFFF" },
+                { name: "Magenta", hex: "#FF00FF" },
+                { name: "Orange", hex: "#FF8800" },
+                { name: "25% gray", hex: "#404040" },
+                { name: "50% gray", hex: "#808080" },
+                { name: "75% gray", hex: "#BFBFBF" }
+            ];
+
+            const testPanel = document.getElementById("testPanel");
+            const testScreen = document.getElementById("testScreen");
+            const overlay = document.getElementById("testOverlay");
+            const overlayTitle = document.getElementById("overlayTitle");
+            const overlayText = document.getElementById("overlayText");
+            const fullscreenButton = document.getElementById("fullscreenButton");
+            const toolbarSwatch = document.getElementById("toolbarSwatch");
+            const toolbarLabel = document.getElementById("toolbarLabel");
+            const toolbarHex = document.getElementById("toolbarHex");
+            const swatchGrid = document.getElementById("swatchGrid");
+            const modeTabs = document.querySelectorAll(".mode-tab");
+            const customColor = document.getElementById("customColor");
+            const customHex = document.getElementById("customHex");
+            const applyCustom = document.getElementById("applyCustom");
+            const fullscreenCustom = document.getElementById("fullscreenCustom");
+            const viewportValue = document.getElementById("viewportValue");
+            const dprValue = document.getElementById("dprValue");
+            const orientationValue = document.getElementById("orientationValue");
+            const windowValue = document.getElementById("windowValue");
+            const frameValue = document.getElementById("frameValue");
+            const deviceValue = document.getElementById("deviceValue");
+            const year = document.getElementById("year");
+            let currentColorIndex = 0;
+            let currentMode = "solid";
+
+            function hexToRgb(hex) {
+                const value = hex.replace("#", "");
+                const number = parseInt(value, 16);
+                if (Number.isNaN(number) || value.length !== 6) return null;
+                return {
+                    r: (number >> 16) & 255,
+                    g: (number >> 8) & 255,
+                    b: number & 255
+                };
+            }
+
+            function setSolidColor(index) {
+                currentColorIndex = index;
+                const color = colors[index];
+                testScreen.classList.remove("pattern-grid", "text-pattern");
+                testScreen.style.background = color.hex;
+                toolbarSwatch.style.background = color.hex;
+                toolbarLabel.textContent = color.name;
+                toolbarHex.textContent = color.hex.toUpperCase();
+                swatchGrid.querySelectorAll(".swatch").forEach(function (button, buttonIndex) {
+                    button.classList.toggle("active", buttonIndex === index);
+                });
+                overlayTitle.textContent = "Enter fullscreen test";
+                overlayText.textContent = "The " + color.name.toLowerCase() + " screen helps reveal bright spots, dark spots, color cast and uneven brightness.";
+            }
+
+            function setGrayMode() {
+                currentMode = "gray";
+                testScreen.classList.remove("text-pattern");
+                testScreen.classList.add("pattern-grid");
+                testScreen.style.background = "#ffffff";
+                testScreen.innerHTML = "";
+                const levels = [0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216, 234, 255];
+                levels.forEach(function (level) {
+                    const block = document.createElement("span");
+                    block.style.background = "rgb(" + level + ", " + level + ", " + level + ")";
+                    block.setAttribute("aria-label", "Grayscale level " + level);
+                    testScreen.appendChild(block);
+                });
+                toolbarLabel.textContent = "Grayscale";
+                toolbarHex.textContent = "0–255";
+                toolbarSwatch.style.background = "linear-gradient(90deg, #000, #fff)";
+                overlayTitle.textContent = "Enter grayscale test";
+                overlayText.textContent = "Look for visible steps between neighboring gray levels, banding, color cast or areas that do not match.";
+                modeTabs.forEach(function (tab) {
+                    const active = tab.dataset.mode === "gray";
+                    tab.classList.toggle("active", active);
+                    tab.setAttribute("aria-selected", String(active));
+                });
+            }
+
+            function setTextMode() {
+                currentMode = "text";
+                testScreen.classList.remove("pattern-grid");
+                testScreen.classList.add("text-pattern");
+                testScreen.style.background = "#ffffff";
+                testScreen.innerHTML = '<div class="text-pattern-inner"><h3>Screen test text</h3><p>Clear text and fine edges help reveal scaling, blur, ghosting and response artifacts.</p><span class="text-line"></span><span class="text-line"></span><span class="text-line"></span><p style="font-size:0.7em;color:#6b7280">Aa Bb Cc 123 0987654321</p></div>';
+                toolbarLabel.textContent = "Text sharpness";
+                toolbarHex.textContent = "High contrast";
+                toolbarSwatch.style.background = "#ffffff";
+                overlayTitle.textContent = "Enter text test";
+                overlayText.textContent = "Check whether text stays sharp while moving or changing windows, and whether fine lines show trailing or color bleed.";
+                modeTabs.forEach(function (tab) {
+                    const active = tab.dataset.mode === "text";
+                    tab.classList.toggle("active", active);
+                    tab.setAttribute("aria-selected", String(active));
+                });
+            }
+
+            function setMode(mode) {
+                if (mode === "gray") setGrayMode();
+                else if (mode === "text") setTextMode();
+                else setSolidColor(currentColorIndex);
+            }
+
+            function enterFullscreen() {
+                const element = document.documentElement;
+                if (!document.fullscreenElement) {
+                    if (element.requestFullscreen) element.requestFullscreen();
+                    else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+                }
+            }
+
+            function exitFullscreen() {
+                if (document.fullscreenElement || document.webkitFullscreenElement) {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                }
+            }
+
+            function updateFullscreenClass() {
+                testPanel.classList.toggle("is-fullscreen", Boolean(document.fullscreenElement || document.webkitFullscreenElement));
+            }
+
+            function updateScreenInfo() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                const dpr = window.devicePixelRatio || 1;
+                viewportValue.textContent = width + " × " + height;
+                dprValue.textContent = dpr + "x";
+                orientationValue.textContent = width >= height ? "Landscape" : "Portrait";
+                windowValue.textContent = width + " × " + height + " px";
+                const agent = navigator.userAgent || "";
+                if (/iPad|Tablet|PlayBook/.test(agent)) deviceValue.textContent = "Tablet browser";
+                else if (/Mobi|Android|iPhone|iPad/.test(agent)) deviceValue.textContent = "Mobile browser";
+                else deviceValue.textContent = "Desktop browser";
+            }
+
+            function parseHex(value) {
+                const normalized = value.trim().replace(/^#/, "");
+                if (/^[0-9a-fA-F]{6}$/.test(normalized)) return "#" + normalized.toUpperCase();
+                return null;
+            }
+
+            function applyCustomColor() {
+                const color = parseHex(customHex.value);
+                if (!color) {
+                    customHex.setCustomValidity("Use a six-digit hex color such as #FF6B00.");
+                    customHex.reportValidity();
+                    return;
+                }
+                customHex.setCustomValidity("");
+                customColor.value = color.toLowerCase();
+                customHex.value = color;
+                setSolidColor(colors.findIndex(function (item) { return item.hex === color; }));
+                if (currentColorIndex < 0) {
+                    const index = colors.length;
+                    colors.push({ name: "Custom", hex: color });
+                    currentColorIndex = index;
+                    setSolidColor(index);
+                }
+            }
+
+            colors.forEach(function (color, index) {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "swatch";
+                button.style.background = color.hex;
+                button.setAttribute("aria-label", "Test " + color.name);
+                button.innerHTML = "<span>" + color.name + "</span>";
+                button.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    setSolidColor(index);
+                });
+                swatchGrid.appendChild(button);
+            });
+
+            modeTabs.forEach(function (tab) {
+                tab.addEventListener("click", function () { setMode(tab.dataset.mode); });
+            });
+
+            testPanel.addEventListener("click", function () {
+                if (document.fullscreenElement || document.webkitFullscreenElement) exitFullscreen();
+                else enterFullscreen();
+            });
+
+            fullscreenButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                enterFullscreen();
+            });
+
+            fullscreenCustom.addEventListener("click", function (event) {
+                event.stopPropagation();
+                applyCustomColor();
+                enterFullscreen();
+            });
+
+            applyCustom.addEventListener("click", applyCustomColor);
+            customColor.addEventListener("input", function () {
+                const color = customColor.value.toUpperCase();
+                customHex.value = color;
+                setSolidColor(colors.findIndex(function (item) { return item.hex === color; }));
+                if (currentColorIndex < 0) {
+                    const index = colors.length;
+                    colors.push({ name: "Custom", hex: color });
+                    currentColorIndex = index;
+                    setSolidColor(index);
+                }
+            });
+            customHex.addEventListener("input", function () {
+                const color = parseHex(customHex.value);
+                if (color) customColor.value = color.toLowerCase();
+            });
+
+            document.addEventListener("keydown", function (event) {
+                const tag = (event.target && event.target.tagName) || "";
+                if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+                if (event.key === "f" || event.key === "F") {
+                    event.preventDefault();
+                    enterFullscreen();
+                } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+                    event.preventDefault();
+                    const direction = event.key === "ArrowRight" ? 1 : -1;
+                    const next = (currentColorIndex + direction + colors.length) % colors.length;
+                    setSolidColor(next);
+                }
+            });
+
+            document.addEventListener("fullscreenchange", updateFullscreenClass);
+            document.addEventListener("webkitfullscreenchange", updateFullscreenClass);
+            window.addEventListener("resize", updateScreenInfo);
+
+            let frameCount = 0;
+            let lastReportTime = performance.now();
+            function updateFrameEstimate(now) {
+                frameCount++;
+                if (now - lastReportTime >= 1000) {
+                    const fps = Math.round((frameCount * 1000) / (now - lastReportTime));
+                    frameValue.textContent = fps > 0 ? fps + " FPS" : "Unavailable";
+                    frameValue.classList.toggle("good", fps >= 55);
+                    frameCount = 0;
+                    lastReportTime = now;
+                }
+                requestAnimationFrame(updateFrameEstimate);
+            }
+            requestAnimationFrame(updateFrameEstimate);
+
+            const touchCanvas = document.getElementById("touchCanvas");
+            const touchContext = touchCanvas.getContext("2d");
+            const touchCurrent = document.getElementById("touchCurrent");
+            const touchMaximum = document.getElementById("touchMaximum");
+            const clearTouch = document.getElementById("clearTouch");
+            let activePoints = new Map();
+            let maximumPoints = 0;
+            let lastPoint = null;
+
+            function resizeTouchCanvas() {
+                const rect = touchCanvas.getBoundingClientRect();
+                const ratio = window.devicePixelRatio || 1;
+                touchCanvas.width = Math.max(1, Math.floor(rect.width * ratio));
+                touchCanvas.height = Math.max(1, Math.floor(rect.height * ratio));
+                touchContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+                drawTouchCanvas();
+            }
+
+            function touchPoint(event) {
+                const rect = touchCanvas.getBoundingClientRect();
+                return {
+                    id: event.pointerId,
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top
+                };
+            }
+
+            function drawTouchCanvas() {
+                const rect = touchCanvas.getBoundingClientRect();
+                touchContext.clearRect(0, 0, rect.width, rect.height);
+                touchContext.lineWidth = 3;
+                touchContext.lineCap = "round";
+                touchContext.lineJoin = "round";
+                touchContext.strokeStyle = "#2563eb";
+                touchContext.shadowColor = "rgba(37, 99, 235, 0.2)";
+                touchContext.shadowBlur = 6;
+                activePoints.forEach(function (point) {
+                    if (lastPoint && lastPoint.id === point.id) {
+                        touchContext.beginPath();
+                        touchContext.moveTo(lastPoint.x, lastPoint.y);
+                        touchContext.lineTo(point.x, point.y);
+                        touchContext.stroke();
+                    }
+                    touchContext.beginPath();
+                    touchContext.arc(point.x, point.y, 7, 0, Math.PI * 2);
+                    touchContext.fillStyle = "#2563eb";
+                    touchContext.fill();
+                });
+                touchContext.shadowBlur = 0;
+            }
+
+            touchCanvas.addEventListener("pointerdown", function (event) {
+                event.preventDefault();
+                touchCanvas.setPointerCapture(event.pointerId);
+                const point = touchPoint(event);
+                activePoints.set(point.id, point);
+                lastPoint = point;
+                maximumPoints = Math.max(maximumPoints, activePoints.size);
+                touchCurrent.textContent = activePoints.size;
+                touchMaximum.textContent = maximumPoints;
+                drawTouchCanvas();
+            });
+
+            touchCanvas.addEventListener("pointermove", function (event) {
+                if (!activePoints.has(event.pointerId)) return;
+                event.preventDefault();
+                const point = touchPoint(event);
+                activePoints.set(event.pointerId, point);
+                lastPoint = point;
+                drawTouchCanvas();
+            });
+
+            function endTouch(event) {
+                activePoints.delete(event.pointerId);
+                touchCurrent.textContent = activePoints.size;
+                drawTouchCanvas();
+            }
+
+            touchCanvas.addEventListener("pointerup", endTouch);
+            touchCanvas.addEventListener("pointercancel", endTouch);
+            touchCanvas.addEventListener("pointerleave", endTouch);
+            clearTouch.addEventListener("click", function () {
+                activePoints.clear();
+                lastPoint = null;
+                touchCurrent.textContent = "0";
+                drawTouchCanvas();
+            });
+            window.addEventListener("resize", resizeTouchCanvas);
+
+            year.textContent = new Date().getFullYear();
+            setSolidColor(0);
+            updateScreenInfo();
+            resizeTouchCanvas();
+        })();
+    </script>
+</body>
+</html>

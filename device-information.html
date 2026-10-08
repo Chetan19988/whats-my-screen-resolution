@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Information — Browser, System &amp; Screen Details</title>
+    <meta name="description" content="View browser-reported device, operating system, screen, viewport and capability details. Free private device information tool with no download.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/device-information.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Device Information — Browser, System &amp; Screen Details">
+    <meta property="og:description" content="Check browser-reported system, browser, display and device capabilities in one place. Values are detected locally and are not uploaded.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/device-information.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Device Information — Browser &amp; Screen Details">
+    <meta name="twitter:description" content="View browser-reported OS, browser, screen, viewport and capability details privately in your browser.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Device Information — Browser, System & Screen Details",
+        "url": "https://whats-my-screen-resolution.netlify.app/device-information.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Free browser-based tool showing available device, system, browser, display and capability information without uploading data.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Device Information", "item": "https://whats-my-screen-resolution.netlify.app/device-information.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Can this tool identify my exact device model?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Browsers intentionally limit device identification. This page shows only information exposed through browser APIs and makes no exact hardware-model guarantee."}},
+            {"@type": "Question", "name": "Is the screen resolution the same as the browser viewport?", "acceptedAnswer": {"@type": "Answer", "text": "No. Screen dimensions report the display dimensions exposed to the browser in CSS pixels. The viewport is the page's current content area and can be smaller because of browser chrome, window sizing or scaling."}},
+            {"@type": "Question", "name": "Does the device information tool upload my details?", "acceptedAnswer": {"@type": "Answer", "text": "No. The page reads available browser APIs locally. It does not send device information to a server."}},
+            {"@type": "Question", "name": "Is the refresh rate value a hardware measurement?", "acceptedAnswer": {"@type": "Answer", "text": "No. Browsers do not generally expose a reliable physical display refresh-rate reading. Any animation timing observed by a webpage is only a rendering estimate and can be affected by browser scheduling."}},
+            {"@type": "Question", "name": "Why are some device details unavailable?", "acceptedAnswer": {"@type": "Answer", "text": "Browsers restrict device information for privacy and security, and supported APIs vary by browser, operating system and device. Unavailable values are shown as such rather than guessed."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button { font:inherit; cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.2rem 1.5rem 2.8rem; margin-bottom:1.1rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.1rem,6vw,3.5rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:.8rem; }
+        .hero-sub { max-width:780px; margin:0 auto 1.1rem; color:var(--tm); font-size:1.04rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.65rem; flex-wrap:wrap; margin-bottom:.9rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.76rem 1.15rem; border-radius:.75rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .18s ease,background .18s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .hero-note { color:var(--tm); font-size:.8rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1rem; color:var(--tm); font-size:.83rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:1.6rem; border:1px solid var(--border); border-radius:1.35rem; margin-bottom:1.1rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.75rem; margin-bottom:1rem; }
+        .section-icon { width:2.35rem; height:2.35rem; border-radius:.75rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:900; }
+        .section-heading h2 { font-size:1.4rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.9rem; margin-top:.2rem; }
+        h2 { font-size:1.45rem; line-height:1.25; margin-bottom:.8rem; }
+        h3 { font-size:1.04rem; margin-bottom:.4rem; }
+        p { color:#475569; margin-bottom:.75rem; }
+        p:last-child { margin-bottom:0; }
+        .toolbar { display:flex; align-items:center; justify-content:space-between; gap:.7rem; flex-wrap:wrap; margin-bottom:1rem; }
+        .toolbar-note { color:var(--tm); font-size:.8rem; }
+        .info-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; }
+        .info-card { min-width:0; padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .info-card h3 { display:flex; align-items:center; gap:.45rem; margin:0 0 .65rem; font-size:.96rem; }
+        .card-icon { width:1.8rem; height:1.8rem; display:inline-flex; justify-content:center; align-items:center; color:var(--p); background:var(--p-soft); border-radius:.55rem; font-size:.9rem; }
+        .data-list { display:flex; flex-direction:column; }
+        .data-row { display:grid; grid-template-columns:minmax(90px,.8fr) minmax(0,1.2fr); gap:.55rem; padding:.42rem 0; border-bottom:1px solid #e9eef5; font-size:.78rem; }
+        .data-row:last-child { border-bottom:0; }
+        .data-label { color:var(--tm); }
+        .data-value { min-width:0; color:var(--t); font-weight:800; text-align:right; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+        .data-value.unavailable { color:#94a3b8; font-weight:600; }
+        .status-chip { display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .5rem; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:999px; font-size:.7rem; font-weight:900; }
+        .status-chip.offline { color:#92400e; background:#fffbeb; border-color:#fde68a; }
+        .status-dot { width:.42rem; height:.42rem; border-radius:50%; background:currentColor; }
+        .info-note { padding:.75rem .9rem; margin-top:1rem; color:var(--tm); background:#fff; border-left:3px solid var(--p); border-radius:.45rem; font-size:.79rem; }
+        .privacy-pill { display:flex; align-items:flex-start; gap:.55rem; padding:.75rem; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.7rem; font-size:.78rem; }
+        .privacy-pill svg { flex-shrink:0; }
+        .feature-grid,.steps-grid,.related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card { padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3 { font-size:1rem; }
+        .feature-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:1rem; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:1rem; }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span { margin:.2rem 0 0; color:var(--tm); font-size:.82rem; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:680px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:900px) { .info-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .two-col,.faq-grid { grid-template-columns:1fr; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.3rem 1rem; } .info-grid { grid-template-columns:1fr; } .data-row { grid-template-columns:minmax(85px,.75fr) minmax(0,1.25fr); } .toolbar { align-items:flex-start; flex-direction:column; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser device report</div>
+        <h1>Device Information Tool</h1>
+        <p class="hero-sub">View browser and system details, screen size, viewport, display capabilities and available device features. Values are read from your browser and stay on this page.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#device-report">View device details</a>
+            <a class="btn btn-secondary" href="#how-it-works">How information is detected</a>
+        </div>
+        <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No data upload</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Device Information</span></nav>
+
+    <section class="section" id="device-report" aria-labelledby="report-heading">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">▣</div><div><h2 id="report-heading">Browser &amp; System Details</h2><p>Information available to this webpage right now. Values can change when the window, display or browser settings change.</p></div></div>
+        <div class="toolbar">
+            <span class="toolbar-note" id="updatedAt" aria-live="polite">Detected locally in this browser.</span>
+            <div class="hero-actions" style="margin:0">
+                <button class="btn btn-secondary" id="refreshButton" type="button">Refresh details</button>
+                <button class="btn btn-primary" id="copyButton" type="button">Copy report</button>
+                <button class="btn btn-secondary" id="downloadButton" type="button">Download report</button>
+            </div>
+        </div>
+        <div class="info-grid">
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">◉</span> Device &amp; System</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">Operating system</span><strong class="data-value" id="osValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Platform string</span><strong class="data-value" id="platformValue">—</strong></div>
+                <div class="data-row"><span class="data-label">CPU logical cores</span><strong class="data-value" id="coresValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Device memory</span><strong class="data-value" id="memoryValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Touch points</span><strong class="data-value" id="touchValue">—</strong></div>
+            </div></article>
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">⌘</span> Browser</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">Browser</span><strong class="data-value" id="browserValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Browser version</span><strong class="data-value" id="browserVersion">—</strong></div>
+                <div class="data-row"><span class="data-label">User agent</span><strong class="data-value" id="userAgentValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Language</span><strong class="data-value" id="languageValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Timezone</span><strong class="data-value" id="timezoneValue">—</strong></div>
+            </div></article>
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">▤</span> Screen &amp; Viewport</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">Screen size</span><strong class="data-value" id="screenValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Available screen</span><strong class="data-value" id="availableScreen">—</strong></div>
+                <div class="data-row"><span class="data-label">Browser viewport</span><strong class="data-value" id="viewportValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Device pixel ratio</span><strong class="data-value" id="dprValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Color depth</span><strong class="data-value" id="colorDepth">—</strong></div>
+                <div class="data-row"><span class="data-label">Orientation</span><strong class="data-value" id="orientationValue">—</strong></div>
+            </div></article>
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">◈</span> Browser Capabilities</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">JavaScript</span><strong class="data-value" id="javascriptValue">Enabled</strong></div>
+                <div class="data-row"><span class="data-label">Cookies</span><strong class="data-value" id="cookiesValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Online status</span><strong class="data-value" id="onlineValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Pointer type</span><strong class="data-value" id="pointerValue">—</strong></div>
+                <div class="data-row"><span class="data-label">WebGL</span><strong class="data-value" id="webglValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Secure context</span><strong class="data-value" id="secureValue">—</strong></div>
+            </div></article>
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">⇵</span> Connection (if exposed)</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">Connection type</span><strong class="data-value" id="connectionType">—</strong></div>
+                <div class="data-row"><span class="data-label">Effective type</span><strong class="data-value" id="effectiveType">—</strong></div>
+                <div class="data-row"><span class="data-label">Downlink estimate</span><strong class="data-value" id="downlinkValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Data saver</span><strong class="data-value" id="saveDataValue">—</strong></div>
+            </div><div class="info-note">Network Information API support varies. Connection estimates are browser-reported and are not a speed test.</div></article>
+            <article class="info-card"><h3><span class="card-icon" aria-hidden="true">⚙</span> Runtime</h3><div class="data-list">
+                <div class="data-row"><span class="data-label">Current URL</span><strong class="data-value" id="urlValue">—</strong></div>
+                <div class="data-row"><span class="data-label">Local time</span><strong class="data-value" id="localTime">—</strong></div>
+                <div class="data-row"><span class="data-label">Preferred color scheme</span><strong class="data-value" id="colorScheme">—</strong></div>
+                <div class="data-row"><span class="data-label">Reduced motion</span><strong class="data-value" id="reducedMotion">—</strong></div>
+                <div class="data-row"><span class="data-label">PDF viewer</span><strong class="data-value" id="pdfValue">—</strong></div>
+            </div></article>
+        </div>
+        <div class="info-note">Screen and viewport dimensions are browser-exposed CSS pixel values, not guaranteed physical pixel measurements. The browser may limit or mask system details for privacy. Unavailable values are not guessed.</div>
+        <div class="privacy-pill" style="margin-top:.8rem"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span>All details are collected in this page from browser APIs. This tool does not upload a device report.</span></div>
+    </section>
+
+    <section class="section" id="how-it-works" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="how-title">How Device Information Is Detected</h2><p>Values come from standard browser APIs and may vary across platforms.</p></div></div>
+        <div class="two-col">
+            <div><h3>Browser and platform identification</h3><p>The browser name is estimated from browser-provided user-agent data. Operating system and platform labels are best-effort readings from the browser platform and user-agent fields; browsers may reduce, change or mask those strings.</p><h3>Screen and viewport</h3><p>Screen size describes browser-reported screen dimensions in CSS pixels. The viewport is the visible page area and can be smaller because the browser window, interface or operating-system scaling takes space.</p></div>
+            <div class="callout"><h3>Capabilities, not full hardware inventory</h3><p>Logical CPU cores, approximate device memory, touch points, WebGL availability and connection details appear only when supported and exposed. This page does not identify an exact device model, inspect installed apps, or certify hardware specifications.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="what-it-shows" aria-labelledby="details-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="details-title">What This Device Information Tool Shows</h2><p>A useful overview of details that webpages are allowed to observe.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">▤</div><h3>Display layout</h3><p>Current screen and viewport dimensions, orientation, color depth and device pixel ratio.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">⌘</div><h3>Browser and system hints</h3><p>Browser family, approximate version, platform strings, preferred language and timezone.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">◈</div><h3>Available capabilities</h3><p>Browser-exposed touch points, logical cores, memory estimate, connection hints and graphics API availability.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="limitations" aria-labelledby="limits-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">!</div><div><h2 id="limits-title">What the Browser Cannot Reliably Identify</h2><p>Device information is intentionally limited for privacy, security and compatibility.</p></div></div>
+        <div class="two-col">
+            <div><h3>Not an exact hardware inventory</h3><p>Web pages generally cannot reliably retrieve the exact computer or phone model, serial number, installed applications, full hardware configuration, or all system settings. Some values may be rounded or intentionally reduced.</p></div>
+            <div class="callout"><h3>Not a hardware certification</h3><p>Reported resolution, memory, CPU core count, browser version and connection type are informational values from the current environment. They are not laboratory measurements, performance scores or warranty evidence.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Frequently Asked Questions</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>Can this tool identify my exact device model?</h3><p>Usually not. Browsers limit device identification. This page shows only details exposed through browser APIs and does not claim an exact hardware model.</p></article>
+            <article class="faq-item"><h3>Is screen size the same as viewport size?</h3><p>No. Screen dimensions refer to browser-exposed display dimensions in CSS pixels. The viewport is the page's current content area inside the browser.</p></article>
+            <article class="faq-item"><h3>Does it upload my device details?</h3><p>No. Details are read locally from browser APIs and are not sent to a server by this tool.</p></article>
+            <article class="faq-item"><h3>Is the refresh rate shown here a hardware measurement?</h3><p>No. Browsers do not generally expose a reliable physical display refresh rate. Page animation timing is only a rendering estimate and is affected by scheduling.</p></article>
+            <article class="faq-item"><h3>Why are some values unavailable?</h3><p>Browser support varies, and some details are limited for privacy. Unsupported or masked information is shown as unavailable instead of being inferred.</p></article>
+            <article class="faq-item"><h3>Can I use this on a phone or tablet?</h3><p>Yes. It reports browser-exposed values for phones, tablets, laptops and desktop systems, with the same privacy limitations.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Device Tools</h2><p>Use these testers for focused screen and input diagnostics.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display dimensions</span></a>
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Colors, text and touch</span></a>
+            <a class="related-card" href="./screen-uniformity-test.html"><strong>Screen Uniformity Test</strong><span>Brightness and color consistency</span></a>
+            <a class="related-card" href="./touch-screen-tester.html"><strong>Touch Screen Tester</strong><span>Touch detection and coverage</span></a>
+            <a class="related-card" href="./mouse-test.html"><strong>Mouse Test</strong><span>Buttons, wheel and movement</span></a>
+            <a class="related-card" href="./keyboard-test.html"><strong>Keyboard Test</strong><span>Keys and simultaneous presses</span></a>
+            <a class="related-card" href="./camera-test.html"><strong>Camera Test</strong><span>Live webcam preview</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Explore your device details</h2>
+        <p>Refresh the report any time to see current browser, system and screen information.</p>
+        <a class="btn btn-primary" href="#device-report">View device report</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./screen-uniformity-test.html">Screen Uniformity Test</a></li><li><a href="./touch-screen-tester.html">Touch Screen Tester</a></li><li><a href="./mouse-test.html">Mouse Test</a></li><li><a href="./keyboard-test.html">Keyboard Test</a></li><li><a href="./camera-test.html">Camera Test</a></li><li><a href="./microphone-audio-test.html">Microphone &amp; Audio Test</a></li></ul></div>
+        <div><h3>About this tool</h3><p>Details shown are browser-reported and may be approximate, masked or unavailable. This page does not upload your device report.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var reportData={};
+    function value(id,text,unavailable){
+        var element=document.getElementById(id);
+        element.textContent=text===undefined||text===null||text===""?"Unavailable":String(text);
+        element.classList.toggle("unavailable",Boolean(unavailable)||element.textContent==="Unavailable");
+        reportData[element.closest(".data-row").querySelector(".data-label").textContent]=element.textContent;
+    }
+    function readBrowser(ua){
+        var entries=navigator.userAgentData&&navigator.userAgentData.brands?navigator.userAgentData.brands:[];
+        var brand=entries.find(function(item){return !/Not.A.Brand/i.test(item.brand);});
+        if(brand)return {name:brand.brand,version:brand.version,platform:navigator.userAgentData.platform||"Unavailable"};
+        var candidates=[
+            {name:"Microsoft Edge",re:/EdgA?\/(\d[\d.]*|[\d.]+)/},
+            {name:"Opera",re:/OPR\/(\d[\d.]+)/},
+            {name:"Samsung Internet",re:/SamsungBrowser\/(\d[\d.]+)/},
+            {name:"Firefox",re:/Firefox\/(\d[\d.]+)/},
+            {name:"Chrome",re:/Chrome\/(\d[\d.]+)/},
+            {name:"Safari",re:/Version\/(\d[\d.]+).*Safari/}
+        ];
+        for(var i=0;i<candidates.length;i++){var match=ua.match(candidates[i].re);if(match)return {name:candidates[i].name,version:match[1],platform:navigator.platform||"Unavailable"};}
+        return {name:"Unknown browser",version:"Unavailable",platform:navigator.platform||"Unavailable"};
+    }
+    function readOS(ua,platform){
+        if(/Windows NT 10/.test(ua))return "Windows (NT 10 family)";
+        if(/Windows NT 6\.3/.test(ua))return "Windows 8.1";
+        if(/Windows NT 6\.2/.test(ua))return "Windows 8";
+        if(/Windows NT 6\.1/.test(ua))return "Windows 7";
+        if(/Android/.test(ua))return "Android";
+        if(/iPhone|iPad|iPod/.test(ua))return "iOS / iPadOS";
+        if(/Mac OS X|Macintosh/.test(ua))return "macOS";
+        if(/CrOS/.test(ua))return "ChromeOS";
+        if(/Linux/.test(ua))return "Linux";
+        if(platform&&platform!=="Win32"&&platform!=="MacIntel"&&platform!=="Linux x86_64")return platform+" (reported)";
+        return "Unavailable";
+    }
+    function getPointerSummary(){
+        if(!window.matchMedia)return "Unavailable";
+        var values=[];
+        [["(pointer: fine)","Fine"],["(pointer: coarse)","Coarse"],["(pointer: none)","None"]].forEach(function(item){if(window.matchMedia(item[0]).matches)values.push(item[1]);});
+        var hover=window.matchMedia("(hover: hover)").matches?"hover":"no hover";
+        return values.length?values.join(" / ")+" · "+hover:"Unavailable";
+    }
+    function detectWebGL(){
+        try{var canvas=document.createElement("canvas");var context=canvas.getContext("webgl")||canvas.getContext("experimental-webgl");if(!context)return false;var extension=context.getExtension("WEBGL_lose_context");if(extension)extension.loseContext();return true;}catch(error){return false;}
+    }
+    function connectionDetails(){
+        var net=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+        value("connectionType",net&&net.type?net.type:"Unavailable",!net||!net.type);
+        value("effectiveType",net&&net.effectiveType?net.effectiveType:"Unavailable",!net||!net.effectiveType);
+        value("downlinkValue",net&&Number.isFinite(net.downlink)?net.downlink+" Mbps":"Unavailable",!net||!Number.isFinite(net.downlink));
+        value("saveDataValue",net&&typeof net.saveData==="boolean"?(net.saveData?"On":"Off"):"Unavailable",!net||typeof net.saveData!=="boolean");
+    }
+    function refresh(){
+        var ua=navigator.userAgent||"";
+        var browser=readBrowser(ua);
+        var os=readOS(ua,browser.platform||navigator.platform||"");
+        var screenWidth=window.screen&&window.screen.width;
+        var screenHeight=window.screen&&window.screen.height;
+        var availWidth=window.screen&&window.screen.availWidth;
+        var availHeight=window.screen&&window.screen.availHeight;
+        var orientation=window.screen&&window.screen.orientation&&window.screen.orientation.type?window.screen.orientation.type.replace("-primary",""):window.innerWidth>=window.innerHeight?"Landscape":"Portrait";
+        var scheme=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"Dark":window.matchMedia?"Light":"Unavailable";
+        var reduced=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)").matches?"Preferred":"Not preferred":"Unavailable";
+        var platformLabel=browser.platform||navigator.platform||"Unavailable";
+        value("osValue",os,os==="Unavailable");
+        value("platformValue",platformLabel,platformLabel==="Unavailable");
+        value("coresValue",navigator.hardwareConcurrency?String(navigator.hardwareConcurrency)+" logical":"Unavailable",!navigator.hardwareConcurrency);
+        value("memoryValue",navigator.deviceMemory?"~"+navigator.deviceMemory+" GB":"Unavailable",!navigator.deviceMemory);
+        value("touchValue",navigator.maxTouchPoints!==undefined?String(navigator.maxTouchPoints):"Unavailable",navigator.maxTouchPoints===undefined);
+        value("browserValue",browser.name,false);
+        value("browserVersion",browser.version,browser.version==="Unavailable");
+        value("userAgentValue",ua||"Unavailable",!ua);
+        value("languageValue",navigator.languages&&navigator.languages.length?navigator.languages.join(", "):navigator.language||"Unavailable",!navigator.language);
+        var timezone="Unavailable";try{timezone=Intl.DateTimeFormat().resolvedOptions().timeZone||"Unavailable";}catch(error){}
+        value("timezoneValue",timezone,timezone==="Unavailable");
+        value("screenValue",screenWidth&&screenHeight?screenWidth+" × "+screenHeight+" CSS px":"Unavailable",!screenWidth||!screenHeight);
+        value("availableScreen",availWidth&&availHeight?availWidth+" × "+availHeight+" CSS px":"Unavailable",!availWidth||!availHeight);
+        value("viewportValue",window.innerWidth+" × "+window.innerHeight+" CSS px",false);
+        value("dprValue",window.devicePixelRatio?window.devicePixelRatio+"x":"Unavailable",!window.devicePixelRatio);
+        value("colorDepth",window.screen&&window.screen.colorDepth?window.screen.colorDepth+" bit":"Unavailable",!window.screen||!window.screen.colorDepth);
+        value("orientationValue",orientation,false);
+        value("javascriptValue","Enabled",false);
+        value("cookiesValue",navigator.cookieEnabled===undefined?"Unavailable":navigator.cookieEnabled?"Enabled":"Disabled",navigator.cookieEnabled===undefined);
+        var online=navigator.onLine?"Online":"Offline";value("onlineValue",online,false);document.getElementById("onlineValue").classList.toggle("offline",!navigator.onLine);
+        value("pointerValue",getPointerSummary(),getPointerSummary()==="Unavailable");
+        var webglAvailable=detectWebGL();
+        value("webglValue",webglAvailable?"Available":"Unavailable",!webglAvailable);
+        value("secureValue",window.isSecureContext?"Secure context":"Not secure context",false);
+        connectionDetails();
+        value("urlValue",location.origin+location.pathname,false);
+        value("localTime",new Date().toLocaleString(),false);
+        value("colorScheme",scheme,scheme==="Unavailable");
+        value("reducedMotion",reduced,reduced==="Unavailable");
+        value("pdfValue",navigator.pdfViewerEnabled===undefined?"Unavailable":navigator.pdfViewerEnabled?"Available":"Not reported",navigator.pdfViewerEnabled===undefined);
+        document.getElementById("updatedAt").textContent="Updated locally · "+new Date().toLocaleTimeString();
+    }
+    function createReport(){
+        var lines=["DEVICE INFORMATION REPORT",new Date().toLocaleString(),""];
+        Object.keys(reportData).forEach(function(key){lines.push(key+": "+reportData[key]);});
+        lines.push("","Values are browser-reported and may be approximate, masked or unavailable. Not a hardware certification.");
+        return lines.join("\n");
+    }
+    document.getElementById("refreshButton").addEventListener("click",refresh);
+    document.getElementById("copyButton").addEventListener("click",async function(){try{await navigator.clipboard.writeText(createReport());document.getElementById("updatedAt").textContent="Report copied to clipboard · "+new Date().toLocaleTimeString();}catch(error){document.getElementById("updatedAt").textContent="Clipboard unavailable. Use Download report instead.";}});
+    document.getElementById("downloadButton").addEventListener("click",function(){var blob=new Blob([createReport()],{type:"text/plain"});var url=URL.createObjectURL(blob);var link=document.createElement("a");link.href=url;link.download="device-information-report.txt";link.click();setTimeout(function(){URL.revokeObjectURL(url);},1000);});
+    window.addEventListener("resize",refresh);
+    window.addEventListener("orientationchange",refresh);
+    window.addEventListener("online",refresh);
+    window.addEventListener("offline",refresh);
+    if(navigator.connection&&navigator.connection.addEventListener)navigator.connection.addEventListener("change",refresh);
+    document.getElementById("year").textContent=new Date().getFullYear();
+    refresh();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Test — Free Online Keyboard Tester &amp; Key Checker</title>
+    <meta name="description" content="Test keyboard keys online with a visual keyboard, live key states, press counts, held-key tracking and a recent event log. Free and private in your browser.">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://whats-my-screen-resolution.netlify.app/keyboard-test.html">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:title" content="Keyboard Test — Free Online Keyboard Tester">
+    <meta property="og:description" content="Check keyboard keys with a live visual keyboard, press counts, simultaneous key states and recent key events. Runs locally in your browser.">
+    <meta property="og:url" content="https://whats-my-screen-resolution.netlify.app/keyboard-test.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Keyboard Test — Free Online Keyboard Tester">
+    <meta name="twitter:description" content="Test keyboard keys online with visual key states and event details. No download or data upload.">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Keyboard Test — Free Online Keyboard Tester",
+        "url": "https://whats-my-screen-resolution.netlify.app/keyboard-test.html",
+        "author": {"@type": "Person", "name": "Chetan Kumar", "url": "https://www.linkedin.com/in/askchetan/"},
+        "description": "Free browser keyboard test with a visual keyboard, live pressed-key states, press counts and recent key event details.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "en",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Screen Resolution Checker", "item": "https://whats-my-screen-resolution.netlify.app/"},
+            {"@type": "ListItem", "position": 2, "name": "Keyboard Test", "item": "https://whats-my-screen-resolution.netlify.app/keyboard-test.html"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "How do I test a keyboard key?", "acceptedAnswer": {"@type": "Answer", "text": "Focus the visual keyboard test area and press the physical key. A key highlighted in blue means the browser delivered its keyboard event to this page."}},
+            {"@type": "Question", "name": "Can this page test N-key rollover?", "acceptedAnswer": {"@type": "Answer", "text": "The page shows how many simultaneous key presses the browser reports, but browser, operating-system and keyboard behavior can affect the result. It is not a certified hardware rollover measurement."}},
+            {"@type": "Question", "name": "Why do some keys not appear in the test?", "acceptedAnswer": {"@type": "Answer", "text": "Some keys are intercepted by the operating system or browser, and special function keys may not generate page events. Laptop layouts and non-US keyboard layouts also differ from the visual reference."}},
+            {"@type": "Question", "name": "Does the keyboard test record what I type?", "acceptedAnswer": {"@type": "Answer", "text": "No. The tool displays key labels and browser event codes in the current page session. It does not read text entered elsewhere, store keystrokes, or upload key data."}},
+            {"@type": "Question", "name": "Can I use the test on a phone or tablet?", "acceptedAnswer": {"@type": "Answer", "text": "The page can show keys from a connected physical or Bluetooth keyboard. An on-screen keyboard may not send the same key events to a webpage, depending on the device and browser."}}
+        ]
+    }
+    </script>
+    <style>
+        :root { --p:#2563eb; --p-hover:#1d4ed8; --p-soft:#eff6ff; --bg:#f8fafc; --c:#fff; --t:#1e293b; --tm:#64748b; --border:#e2e8f0; --dark:#0f172a; --success:#059669; --warning:#d97706; --danger:#dc2626; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        html { scroll-behavior:smooth; }
+        body { font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--t); line-height:1.6; padding:1rem; }
+        main { max-width:1120px; margin:0 auto; }
+        a { color:var(--p); }
+        button { font:inherit; cursor:pointer; }
+        .hero { position:relative; overflow:hidden; text-align:center; background:var(--c); border:1px solid var(--border); border-radius:1.5rem; padding:3.5rem 1.5rem 3rem; margin-bottom:1.5rem; box-shadow:0 10px 15px -3px rgba(15,23,42,.08); }
+        .hero::after { content:""; position:absolute; width:330px; height:330px; border-radius:50%; background:rgba(37,99,235,.08); filter:blur(45px); right:-100px; top:-150px; }
+        .hero>* { position:relative; z-index:1; }
+        .eyebrow { display:inline-flex; align-items:center; gap:.5rem; background:var(--p-soft); color:var(--p); border:1px solid #bfdbfe; padding:.35rem .8rem; border-radius:999px; font-size:.75rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
+        .eyebrow-dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--p); }
+        h1 { font-size:clamp(2.2rem,6vw,4rem); font-weight:900; line-height:1.05; letter-spacing:-.04em; margin-bottom:1rem; }
+        .hero-sub { max-width:760px; margin:0 auto 1.5rem; color:var(--tm); font-size:1.08rem; }
+        .hero-actions { display:flex; justify-content:center; gap:.75rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.8rem 1.25rem; border-radius:.8rem; font-weight:800; text-decoration:none; border:1px solid transparent; transition:transform .2s ease,background .2s ease; }
+        .btn:hover { transform:translateY(-2px); }
+        .btn-primary { background:var(--p); color:#fff; border-color:var(--p); }
+        .btn-primary:hover { background:var(--p-hover); }
+        .btn-secondary { background:#fff; color:var(--t); border-color:var(--border); }
+        .btn-secondary:hover { background:var(--p-soft); }
+        .hero-note { color:var(--tm); font-size:.82rem; }
+        .hero-note strong { color:var(--success); }
+        .breadcrumbs { display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; margin:0 auto 1.5rem; color:var(--tm); font-size:.85rem; }
+        .breadcrumbs a { text-decoration:none; font-weight:700; }
+        .breadcrumbs span { opacity:.6; }
+        .section { background:var(--c); padding:2rem; border:1px solid var(--border); border-radius:1.5rem; margin-bottom:1.5rem; box-shadow:0 4px 6px -1px rgba(15,23,42,.04); }
+        .section-heading { display:flex; align-items:flex-start; gap:.8rem; margin-bottom:1.25rem; }
+        .section-icon { width:2.5rem; height:2.5rem; border-radius:.8rem; background:var(--p-soft); color:var(--p); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-weight:900; }
+        .section-heading h2 { font-size:1.5rem; line-height:1.2; margin:0; }
+        .section-heading p { color:var(--tm); font-size:.95rem; margin-top:.25rem; }
+        h2 { font-size:1.5rem; line-height:1.25; margin-bottom:1rem; }
+        h3 { font-size:1.08rem; margin-bottom:.45rem; }
+        p { color:#475569; margin-bottom:.9rem; }
+        p:last-child { margin-bottom:0; }
+        .keyboard-layout { display:flex; flex-direction:column; gap:.45rem; padding:1rem; overflow-x:auto; background:#f1f5f9; border:1px solid var(--border); border-radius:1rem; outline:none; }
+        .keyboard-layout:focus-visible { box-shadow:0 0 0 4px rgba(37,99,235,.2); }
+        .keyboard-layout:focus-visible .keyboard-prompt { display:none; }
+        .keyboard-row { display:flex; justify-content:center; gap:.35rem; min-width:760px; }
+        .keycap { --key-width:1; position:relative; flex:var(--key-width) 0 0; min-width:0; height:48px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.1rem; padding:.2rem; color:var(--t); background:#fff; border:1px solid #cbd5e1; border-bottom-width:3px; border-radius:.45rem; text-align:center; user-select:none; transition:background .08s,border-color .08s,transform .08s,color .08s; }
+        .keycap .key-label { max-width:100%; overflow:hidden; font-size:.72rem; font-weight:800; line-height:1.1; text-overflow:ellipsis; white-space:nowrap; }
+        .keycap .key-secondary { color:var(--tm); font-size:.56rem; line-height:1; }
+        .keycap.wide-125 { --key-width:1.25; }
+        .keycap.wide-15 { --key-width:1.5; }
+        .keycap.wide-175 { --key-width:1.75; }
+        .keycap.wide-2 { --key-width:2; }
+        .keycap.wide-225 { --key-width:2.25; }
+        .keycap.wide-275 { --key-width:2.75; }
+        .keycap.space-key { --key-width:6.25; }
+        .keycap.is-down { color:#fff; background:var(--p); border-color:var(--p-hover); border-bottom-width:1px; transform:translateY(2px); }
+        .keycap.is-down .key-secondary { color:#dbeafe; }
+        .keyboard-prompt { position:absolute; z-index:1; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; color:#64748b; font-size:.95rem; font-weight:800; text-align:center; }
+        .keyboard-wrap { position:relative; }
+        .keyboard-hint { display:flex; justify-content:space-between; gap:.7rem; flex-wrap:wrap; margin:.7rem 0 0; color:var(--tm); font-size:.78rem; }
+        .keyboard-actions { display:flex; align-items:center; gap:.55rem; flex-wrap:wrap; margin-top:.9rem; }
+        .small-button { padding:.55rem .8rem; border:1px solid var(--border); border-radius:.65rem; background:#fff; color:var(--t); font-size:.8rem; font-weight:800; }
+        .small-button:hover { background:var(--p-soft); border-color:#bfdbfe; color:var(--p); }
+        .keyboard-dashboard { display:grid; grid-template-columns:minmax(0,1fr) minmax(270px,.62fr); gap:1rem; align-items:start; }
+        .keyboard-panel { min-width:0; padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .keyboard-panel h3 { margin:0 0 .8rem; font-size:1rem; }
+        .live-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem; }
+        .live-stat { min-width:0; padding:.7rem; background:#fff; border:1px solid var(--border); border-radius:.7rem; }
+        .live-stat span { display:block; color:var(--tm); font-size:.67rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+        .live-stat strong { display:block; margin-top:.2rem; color:var(--t); font-size:.92rem; font-weight:900; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+        .held-keys { min-height:74px; display:flex; align-content:flex-start; flex-wrap:wrap; gap:.4rem; padding:.65rem; background:#fff; border:1px solid var(--border); border-radius:.7rem; }
+        .held-chip { padding:.2rem .45rem; color:var(--p); background:var(--p-soft); border:1px solid #bfdbfe; border-radius:.4rem; font-size:.75rem; font-weight:800; }
+        .empty-state { color:var(--tm); font-size:.8rem; }
+        .event-log { min-height:188px; max-height:260px; overflow:auto; list-style:none; padding:0; background:#fff; border:1px solid var(--border); border-radius:.7rem; }
+        .event-log li { display:grid; grid-template-columns:4.2rem minmax(5rem,1fr) minmax(4.2rem,.8fr); gap:.45rem; padding:.48rem .6rem; border-bottom:1px solid #eef2f7; color:#475569; font-size:.74rem; font-variant-numeric:tabular-nums; }
+        .event-log li:last-child { border-bottom:0; }
+        .event-log .event-kind { color:var(--p); font-weight:900; }
+        .privacy-pill { display:flex; align-items:flex-start; gap:.55rem; padding:.75rem; color:#065f46; background:#ecfdf5; border:1px solid #a7f3d0; border-radius:.7rem; font-size:.78rem; }
+        .privacy-pill svg { flex-shrink:0; }
+        .info-note { margin-top:.8rem; padding:.7rem; background:#fff; border-left:3px solid var(--p); border-radius:.4rem; color:var(--tm); font-size:.78rem; }
+        .feature-grid,.steps-grid,.related-grid,.device-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+        .feature-card { padding:1.1rem; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .feature-card .section-icon { width:2.25rem; height:2.25rem; margin-bottom:.75rem; }
+        .feature-card h3 { font-size:1rem; }
+        .feature-card p { font-size:.87rem; margin:0; }
+        .step-card { overflow:hidden; background:#fff; border:1px solid var(--border); border-radius:1rem; }
+        .step-num { padding:.45rem 1rem; color:#fff; background:var(--p); font-size:.8rem; font-weight:900; letter-spacing:.08em; }
+        .step-body { padding:1rem; }
+        .step-body h3 { font-size:.98rem; }
+        .step-body p { font-size:.86rem; margin:0; }
+        .two-col { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+        .callout { padding:1.2rem; background:var(--p-soft); border:1px solid #bfdbfe; border-radius:1rem; }
+        .callout h3 { color:var(--p); }
+        .callout p { font-size:.9rem; margin:0; }
+        .faq-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.85rem; }
+        .faq-item { padding:1rem; background:#f8fafc; border:1px solid var(--border); border-radius:.9rem; }
+        .faq-item h3 { font-size:.95rem; }
+        .faq-item p { font-size:.86rem; margin:0; }
+        .related-card,.device-card { display:block; padding:1rem; color:var(--t); text-decoration:none; background:#f8fafc; border:1px solid var(--border); border-radius:1rem; }
+        .related-card:hover,.device-card:hover { background:var(--p-soft); border-color:#bfdbfe; }
+        .related-card strong,.related-card span { display:block; }
+        .related-card span,.device-card p { margin:.2rem 0 0; color:var(--tm); font-size:.82rem; }
+        .device-card h3 { font-size:.98rem; }
+        .device-card .arrow { display:block; margin-top:.55rem; color:var(--p); font-size:.82rem; font-weight:900; }
+        .cta-section { padding:3rem 1.5rem; color:#fff; background:var(--dark); border-radius:1.5rem; text-align:center; }
+        .cta-section h2 { color:#fff; font-size:2rem; }
+        .cta-section p { max-width:650px; margin:0 auto 1.5rem; color:#cbd5e1; }
+        .cta-section .btn-primary { color:var(--dark); background:#fff; border-color:#fff; }
+        .footer-dark { margin-top:1.5rem; padding:3rem 2rem; color:#cbd5e1; background:#0f172a; border-radius:1.5rem; }
+        .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+        .footer-dark h3 { margin-bottom:.8rem; color:#fff; font-size:1rem; }
+        .footer-dark p,.footer-dark a { font-size:.86rem; }
+        .footer-dark a { color:#cbd5e1; text-decoration:none; }
+        .footer-dark a:hover { color:#fff; text-decoration:underline; }
+        .footer-links { list-style:none; }
+        .footer-links li { margin-bottom:.45rem; }
+        .footer-bottom { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #334155; color:#94a3b8; font-size:.8rem; }
+        @media(max-width:900px) { .keyboard-dashboard { grid-template-columns:1fr; } .keyboard-layout { padding:.7rem; } }
+        @media(max-width:560px) { body { padding:.75rem; } .hero { padding:2.5rem 1rem 2rem; } .section { padding:1.3rem .8rem; } .keyboard-row { gap:.22rem; } .keycap { height:43px; border-radius:.35rem; } .keycap .key-label { font-size:.65rem; } .keyboard-layout { padding:.55rem; } .footer-dark { padding:2rem 1.2rem; } }
+        @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+    </style>
+</head>
+<body>
+<main>
+    <header class="hero">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free browser keyboard test</div>
+        <h1>Keyboard Test</h1>
+        <p class="hero-sub">Check keys with a live visual keyboard, press counts, held-key tracking and a recent event log. All key events are processed locally in your browser.</p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="#keyboard-tool">Start keyboard test</a>
+            <a class="btn btn-secondary" href="#how-to-test">How it works</a>
+        </div>
+        <p class="hero-note"><strong>No download</strong> · <strong>No account</strong> · <strong>No key upload</strong></p>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./">Screen Resolution Checker</a><span aria-hidden="true">/</span><span>Keyboard Test</span></nav>
+
+    <section class="section" id="keyboard-tool" aria-labelledby="keyboard-tool-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">⌨</div><div><h2 id="keyboard-tool-title">Interactive Keyboard Tester</h2><p>Focus the keyboard area, then press keys on your physical keyboard. Pressed keys light up until released.</p></div></div>
+        <div class="keyboard-wrap">
+            <div class="keyboard-layout" id="keyboardLayout" tabindex="0" role="region" aria-label="Visual keyboard test area. Focus here and press keys on your keyboard."></div>
+            <div class="keyboard-prompt" id="keyboardPrompt" aria-hidden="true">Click here, then press keys on your keyboard</div>
+        </div>
+        <div class="keyboard-hint"><span>Use the physical keyboard while this area has focus.</span><span>Some system and browser shortcut keys may not be delivered to webpages.</span></div>
+        <div class="keyboard-actions"><button class="small-button" id="clearKeyboard" type="button">Clear counts and event log</button><span class="empty-state" id="keyboardStatus" role="status" aria-live="polite">Waiting for keyboard input.</span></div>
+        <div class="keyboard-dashboard" style="margin-top:1rem">
+            <section class="keyboard-panel" aria-labelledby="key-stats-title">
+                <h3 id="key-stats-title">Live Key Activity</h3>
+                <div class="live-grid">
+                    <div class="live-stat"><span>Last key</span><strong id="lastKey">—</strong></div>
+                    <div class="live-stat"><span>Key code</span><strong id="lastCode">—</strong></div>
+                    <div class="live-stat"><span>Total presses</span><strong id="pressTotal">0</strong></div>
+                    <div class="live-stat"><span>Keys held now</span><strong id="heldCount">0</strong></div>
+                    <div class="live-stat"><span>Most held together</span><strong id="maxHeld">0</strong></div>
+                    <div class="live-stat"><span>Repeat events</span><strong id="repeatTotal">0</strong></div>
+                </div>
+                <h3 style="margin-top:1rem">Currently Held Keys</h3>
+                <div class="held-keys" id="heldKeys" aria-live="polite"><span class="empty-state">No keys held</span></div>
+                <div class="info-note">Simultaneous-key count shows events received by this page. Browser and operating-system handling can affect rollover results; this is not a certified hardware test.</div>
+            </section>
+            <section class="keyboard-panel" aria-labelledby="event-log-title">
+                <h3 id="event-log-title">Recent Key Events</h3>
+                <ol class="event-log" id="eventLog" aria-live="polite"><li><span class="empty-state">No key events yet</span></li></ol>
+                <div class="privacy-pill" style="margin-top:.8rem"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg><span>Only key labels and event codes are shown here. Keystrokes are not uploaded or saved after this page session.</span></div>
+            </section>
+        </div>
+    </section>
+
+    <section class="section" id="what-it-tests" aria-labelledby="features-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">✓</div><div><h2 id="features-title">What This Keyboard Test Checks</h2><p>Use the live key display to check ordinary keyboard input in this browser.</p></div></div>
+        <div class="feature-grid">
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">⌨</div><h3>Individual keys</h3><p>Press alphanumeric, modifier, navigation and function keys and check which key events reach the webpage.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">⇧</div><h3>Held and simultaneous keys</h3><p>Hold a combination such as Shift plus a letter. The display shows the currently held keys and the largest simultaneous set seen in this session.</p></article>
+            <article class="feature-card"><div class="section-icon" aria-hidden="true">↻</div><h3>Repeat behavior</h3><p>Hold a key that normally repeats. Repeat events are counted separately from initial key presses when the browser reports them.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="how-to-test" aria-labelledby="how-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">1</div><div><h2 id="how-title">How to Test Your Keyboard</h2><p>Run a quick visual check without installing software.</p></div></div>
+        <div class="steps-grid">
+            <article class="step-card"><div class="step-num">STEP 01</div><div class="step-body"><h3>Focus the test area</h3><p>Click inside the visual keyboard. The prompt disappears when the tester is focused and ready to receive your physical key presses.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 02</div><div class="step-body"><h3>Check each key</h3><p>Press keys one by one and confirm each corresponding keycap highlights. Hold keys briefly to test release and browser-reported repeat events.</p></div></article>
+            <article class="step-card"><div class="step-num">STEP 03</div><div class="step-body"><h3>Try combinations</h3><p>Hold several keys together and inspect the live held-key list and simultaneous count. Release them and confirm their visual states clear.</p></div></article>
+        </div>
+    </section>
+
+    <section class="section" id="limitations" aria-labelledby="limits-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">i</div><div><h2 id="limits-title">Keyboard Test Limitations</h2><p>Browser keyboard events cannot reveal every hardware or operating-system behavior.</p></div></div>
+        <div class="two-col">
+            <div><h3>Browser and system shortcuts</h3><p>Some keys and combinations are reserved by the operating system or browser and may not reach this page. Function keys, media controls, firmware keys, and certain platform shortcuts can behave differently.</p><h3>Keyboard layouts</h3><p>The visual reference uses a common US QWERTY arrangement. Physical layouts vary by region and keyboard model. The event code identifies a physical-position key where supported; the displayed label is only a reference.</p></div>
+            <div class="callout"><h3>Not a hardware rollover certification</h3><p>The simultaneous count reflects keydown events that the current browser delivered to this page. It cannot certify N-key rollover, switch condition, electrical matrix behavior, wireless reliability or a keyboard's internal scan rate.</p></div>
+        </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">?</div><div><h2 id="faq-title">Frequently Asked Questions</h2></div></div>
+        <div class="faq-grid">
+            <article class="faq-item"><h3>How do I test a key?</h3><p>Focus the visual keyboard and press the physical key. A highlighted key means its browser keyboard event reached this page.</p></article>
+            <article class="faq-item"><h3>Can this test certify N-key rollover?</h3><p>No. It shows the simultaneous key events reported to the page, but browser, operating-system and device behavior can affect the result.</p></article>
+            <article class="faq-item"><h3>Why do some keys not appear?</h3><p>Some keys are intercepted by the system or browser, and function or special keys may not generate webpage events. Layouts also vary.</p></article>
+            <article class="faq-item"><h3>Does the test record what I type?</h3><p>No. It displays key labels and event codes in the current page session. It does not read text entered elsewhere, save keystrokes or upload key data.</p></article>
+            <article class="faq-item"><h3>Can I test a laptop or external keyboard?</h3><p>Yes. Focus the test area and press the built-in or connected keyboard keys you want to check.</p></article>
+            <article class="faq-item"><h3>Does it work with an on-screen keyboard?</h3><p>It depends on the device and browser. Some virtual keyboards do not send the same physical keyboard events to webpages.</p></article>
+        </div>
+    </section>
+
+    <section class="section" id="related-tools" aria-labelledby="related-title">
+        <div class="section-heading"><div class="section-icon" aria-hidden="true">↗</div><div><h2 id="related-title">Related Device Tools</h2><p>More browser-based display and input checks.</p></div></div>
+        <div class="related-grid">
+            <a class="related-card" href="./mouse-test.html"><strong>Mouse Test</strong><span>Buttons, wheel, CPS and movement</span></a>
+            <a class="related-card" href="./screen-test.html"><strong>Online Screen Test</strong><span>Colors, text and touch</span></a>
+            <a class="related-card" href="./ghosting-test.html"><strong>Monitor Ghosting Test</strong><span>Motion trails and overdrive</span></a>
+            <a class="related-card" href="./dead-pixel-test.html"><strong>Dead Pixel Test</strong><span>Fullscreen color inspection</span></a>
+            <a class="related-card" href="./frame-rate-tester.html"><strong>Frame Rate Tester</strong><span>Visual motion and frame timing</span></a>
+            <a class="related-card" href="./"><strong>Screen Resolution Checker</strong><span>Viewport and display details</span></a>
+            <a class="related-card" href="./camera-test.html"><strong>Camera Test</strong><span>Live webcam preview</span></a>
+            <a class="related-card" href="./microphone-audio-test.html"><strong>Microphone &amp; Audio Test</strong><span>Mic input and speaker output</span></a>
+            <a class="related-card" href="./touch-screen-tester.html"><strong>Touch Screen Tester</strong><span>Touch input diagnostics</span></a>
+        </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+        <h2 id="cta-title">Ready to test your keyboard?</h2>
+        <p>Focus the visual keyboard, press each physical key, and watch its state update instantly.</p>
+        <a class="btn btn-primary" href="#keyboard-tool">Start the keyboard test</a>
+    </section>
+</main>
+
+<footer class="footer-dark" role="contentinfo">
+    <div class="footer-grid">
+        <div><h3>What is My Screen Resolution</h3><p>Free browser tools for screen resolution, display inspection and device input testing.</p></div>
+        <div><h3>Free tools</h3><ul class="footer-links"><li><a href="./">Screen Resolution Checker</a></li><li><a href="./frame-rate-tester.html">Frame Rate Tester</a></li><li><a href="./ppi-calculator.html">PPI Calculator</a></li><li><a href="./screen-size.html">Screen Size Calculator</a></li><li><a href="./how-to-check-phone-resolution.html">Phone Resolution Guide</a></li><li><a href="./screen-test.html">Online Screen Test</a></li><li><a href="./ghosting-test.html">Monitor Ghosting Test</a></li><li><a href="./dead-pixel-test.html">Dead Pixel Test</a></li><li><a href="./mouse-test.html">Mouse Test</a></li><li><a href="./keyboard-test.html">Keyboard Test</a></li><li><a href="./camera-test.html">Camera Test</a></li><li><a href="./microphone-audio-test.html">Microphone &amp; Audio Test</a></li></ul></div>
+        <div><h3>About this test</h3><p>Keyboard Test displays browser-delivered key events in this page only. It does not certify hardware or record and upload what you type.</p></div>
+    </div>
+    <div class="footer-bottom">© <span id="year">2026</span> whats-my-screen-resolution.netlify · Designed and maintained by Chetan Kumar</div>
+</footer>
+
+<script>
+(function(){
+    "use strict";
+    var layout=document.getElementById("keyboardLayout");
+    var prompt=document.getElementById("keyboardPrompt");
+    var held=new Map();
+    var pressCounts=new Map();
+    var eventEntries=[];
+    var totalPresses=0;
+    var repeatEvents=0;
+    var maxHeld=0;
+    var keyboardRows=[
+        [["Esc","Escape",1],["F1","F1",1],["F2","F2",1],["F3","F3",1],["F4","F4",1],["F5","F5",1],["F6","F6",1],["F7","F7",1],["F8","F8",1],["F9","F9",1],["F10","F10",1],["F11","F11",1],["F12","F12",1],["PrtSc","PrintScreen",1],["ScrLk","ScrollLock",1],["Pause","Pause",1]],
+        [["`","Backquote",1],["1","Digit1",1],["2","Digit2",1],["3","Digit3",1],["4","Digit4",1],["5","Digit5",1],["6","Digit6",1],["7","Digit7",1],["8","Digit8",1],["9","Digit9",1],["0","Digit0",1],["-","Minus",1],["=","Equal",1],["Backspace","Backspace",2]],
+        [["Tab","Tab",1.5],["Q","KeyQ",1],["W","KeyW",1],["E","KeyE",1],["R","KeyR",1],["T","KeyT",1],["Y","KeyY",1],["U","KeyU",1],["I","KeyI",1],["O","KeyO",1],["P","KeyP",1],["[","BracketLeft",1],["]","BracketRight",1],["\\","Backslash",1.5]],
+        [["Caps","CapsLock",1.75],["A","KeyA",1],["S","KeyS",1],["D","KeyD",1],["F","KeyF",1],["G","KeyG",1],["H","KeyH",1],["J","KeyJ",1],["K","KeyK",1],["L","KeyL",1],[";","Semicolon",1],["'","Quote",1],["Enter","Enter",2.25]],
+        [["Shift","ShiftLeft",2.25],["Z","KeyZ",1],["X","KeyX",1],["C","KeyC",1],["V","KeyV",1],["B","KeyB",1],["N","KeyN",1],["M","KeyM",1],[",","Comma",1],[".","Period",1],["/","Slash",1],["Shift","ShiftRight",2.75]],
+        [["Ctrl","ControlLeft",1.25],["Win","MetaLeft",1.25],["Alt","AltLeft",1.25],["Space","Space",6.25],["Alt","AltRight",1.25],["Menu","ContextMenu",1],["Ctrl","ControlRight",1.25],["←","ArrowLeft",1],["↑","ArrowUp",1],["↓","ArrowDown",1],["→","ArrowRight",1]],
+        [["Insert","Insert",1],["Home","Home",1],["PgUp","PageUp",1],["Delete","Delete",1],["End","End",1],["PgDn","PageDown",1]],
+        [["Num","NumLock",1],["/","NumpadDivide",1],["*","NumpadMultiply",1],["-","NumpadSubtract",1],["7","Numpad7",1],["8","Numpad8",1],["9","Numpad9",1],["+","NumpadAdd",1.5],["4","Numpad4",1],["5","Numpad5",1],["6","Numpad6",1],["1","Numpad1",1],["2","Numpad2",1],["3","Numpad3",1],["Enter","NumpadEnter",1.5],["0","Numpad0",2],[".","NumpadDecimal",1]]
+    ];
+    var labelsByCode=new Map();
+
+    keyboardRows.forEach(function(row){
+        var rowElement=document.createElement("div");
+        rowElement.className="keyboard-row";
+        row.forEach(function(item){
+            var label=item[0],code=item[1],width=item[2];
+            var key=document.createElement("div");
+            key.className="keycap";
+            if(width===1.25)key.classList.add("wide-125");
+            else if(width===1.5)key.classList.add("wide-15");
+            else if(width===1.75)key.classList.add("wide-175");
+            else if(width===2)key.classList.add("wide-2");
+            else if(width===2.25)key.classList.add("wide-225");
+            else if(width===2.75)key.classList.add("wide-275");
+            else if(width>3)key.classList.add("space-key");
+            key.dataset.code=code;
+            key.setAttribute("aria-hidden","true");
+            var primary=document.createElement("span");primary.className="key-label";primary.textContent=label;key.appendChild(primary);
+            if(/^(Key|Digit|Numpad)/.test(code)){var secondary=document.createElement("span");secondary.className="key-secondary";secondary.textContent=code;key.appendChild(secondary);}
+            rowElement.appendChild(key);
+            labelsByCode.set(code,label);
+        });
+        layout.appendChild(rowElement);
+    });
+
+    function displayName(event){
+        if(labelsByCode.has(event.code))return labelsByCode.get(event.code);
+        if(event.key&&event.key.length===1)return event.key.toUpperCase();
+        return event.key||event.code||"Unknown key";
+    }
+    function updateHeld(){
+        var keys=Array.from(held.values());
+        document.getElementById("heldCount").textContent=String(keys.length);
+        maxHeld=Math.max(maxHeld,keys.length);
+        document.getElementById("maxHeld").textContent=String(maxHeld);
+        var holder=document.getElementById("heldKeys");
+        holder.replaceChildren();
+        if(!keys.length){var empty=document.createElement("span");empty.className="empty-state";empty.textContent="No keys held";holder.appendChild(empty);return;}
+        keys.forEach(function(item){var chip=document.createElement("span");chip.className="held-chip";chip.textContent=item.label;holder.appendChild(chip);});
+    }
+    function addLog(kind,name,code){
+        var stamp=new Date().toLocaleTimeString();
+        eventEntries.unshift({time:stamp,kind:kind,key:name,code:code||"—"});
+        eventEntries=eventEntries.slice(0,10);
+        var log=document.getElementById("eventLog");log.replaceChildren();
+        eventEntries.forEach(function(entry){
+            var li=document.createElement("li");
+            [["event-kind",entry.kind],["",entry.key],["",entry.code]].forEach(function(value){var span=document.createElement("span");if(value[0])span.className=value[0];span.textContent=value[1];li.appendChild(span);});
+            log.appendChild(li);
+        });
+    }
+    function updateKeyStatus(text){document.getElementById("keyboardStatus").textContent=text;}
+    function isEditable(target){return target&&(target.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));}
+    layout.addEventListener("click",function(){layout.focus({preventScroll:true});prompt.hidden=true;});
+    layout.addEventListener("focus",function(){prompt.hidden=true;});
+    layout.addEventListener("blur",function(){releaseAll();prompt.hidden=false;});
+
+    window.addEventListener("keydown",function(event){
+        if(isEditable(event.target))return;
+        if(document.activeElement!==layout)return;
+        if(event.ctrlKey||event.metaKey||event.altKey)return;
+        var code=event.code||event.key;
+        var label=displayName(event);
+        var keycap=layout.querySelector('[data-code="'+CSS.escape(code)+'"]');
+        if(keycap)keycap.classList.add("is-down");
+        if(!event.repeat&&!held.has(code)){
+            held.set(code,{label:label,started:performance.now()});
+            totalPresses+=1;
+            pressCounts.set(code,(pressCounts.get(code)||0)+1);
+            document.getElementById("pressTotal").textContent=String(totalPresses);
+            addLog("Down",label,code);
+        }else if(event.repeat){
+            repeatEvents+=1;
+            document.getElementById("repeatTotal").textContent=String(repeatEvents);
+            addLog("Repeat",label,code);
+        }
+        document.getElementById("lastKey").textContent=label;
+        document.getElementById("lastCode").textContent=code||"—";
+        updateHeld();
+        updateKeyStatus(label+(event.repeat?" repeated":" pressed"));
+        if(event.target===layout&&event.cancelable&&event.key!=="Tab"&&!event.ctrlKey&&!event.metaKey&&!event.altKey)event.preventDefault();
+    },true);
+
+    window.addEventListener("keyup",function(event){
+        if(document.activeElement!==layout)return;
+        var code=event.code||event.key;
+        var active=held.get(code);
+        if(!active)return;
+        var duration=Math.max(0,performance.now()-active.started);
+        held.delete(code);
+        var keycap=layout.querySelector('[data-code="'+CSS.escape(code)+'"]');
+        if(keycap)keycap.classList.remove("is-down");
+        addLog("Up",active.label,code);
+        updateHeld();
+        updateKeyStatus(active.label+" released · held "+Math.round(duration)+" ms");
+        if(event.target===layout&&event.cancelable&&event.key!=="Tab")event.preventDefault();
+    },true);
+
+    function releaseAll(){
+        held.forEach(function(value,code){var keycap=layout.querySelector('[data-code="'+CSS.escape(code)+'"]');if(keycap)keycap.classList.remove("is-down");});
+        held.clear();updateHeld();
+    }
+    window.addEventListener("blur",releaseAll);
+    document.addEventListener("visibilitychange",function(){if(document.hidden)releaseAll();});
+    document.getElementById("clearKeyboard").addEventListener("click",function(){
+        releaseAll();pressCounts.clear();eventEntries=[];totalPresses=0;repeatEvents=0;maxHeld=0;
+        layout.querySelectorAll(".keycap.is-down").forEach(function(key){key.classList.remove("is-down");});
+        document.getElementById("lastKey").textContent="—";
+        document.getElementById("lastCode").textContent="—";
+        document.getElementById("pressTotal").textContent="0";
+        document.getElementById("heldCount").textContent="0";
+        document.getElementById("maxHeld").textContent="0";
+        document.getElementById("repeatTotal").textContent="0";
+        var log=document.getElementById("eventLog");log.replaceChildren();var empty=document.createElement("li");empty.innerHTML="<span class=\"empty-state\">No key events yet</span>";log.appendChild(empty);
+        updateKeyStatus("Keyboard test cleared. Focus the visual keyboard and press keys to begin.");
+    });
+    document.getElementById("year").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
